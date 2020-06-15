@@ -1,0 +1,38 @@
+/*箭头*/
+.arrows-head {
+    position: relative;
+    width: 0.16rem;
+    height: 0.16rem;
+    background-color: green;
+}
+
+.arrows-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    height: 0.125rem;
+    width: 0.125rem;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+    /*background-color: red;*/
+    color: black;
+}
+
+.bottom-pos {
+    border-width: 0 0.015rem 0.015rem 0;
+}
+
+.up-pos {
+    border-width: 0.015rem 0 0 0.015rem;
+}
+
+.left-pos {
+    border-width: 0 0 0.015rem 0.015rem;
+}
+
+.arrows-img {
+    width: 0.125rem;
+    margin-right: 0.04rem;
+}

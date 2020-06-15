@@ -1,0 +1,12 @@
+/*返回按钮*/
+.re-back-btn {
+    width: 1.1rem;
+    font-size: 0.16rem;
+    line-height: 0.72rem;
+    position: relative;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: red;*/
+}
