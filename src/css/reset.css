@@ -11,12 +11,6 @@ li {
     list-style-type: none;
 }
 
-hr {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
-
 button, input, textarea {
     border: none;
     background-color: transparent;

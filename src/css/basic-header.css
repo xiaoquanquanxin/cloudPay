@@ -1,11 +1,11 @@
 /*头部*/
 .basic-header {
-
-}
-
-.basic-header-content {
     height: 0.72rem;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.01rem solid #EEEEEE;
 }
 
 .basic-header .basic-header {

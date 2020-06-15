@@ -1,0 +1,25 @@
+/*亮的按钮*/
+.footer-btn-light {
+    color: #004b97;
+    background-color: #e4f2ff;
+    width: 2.7rem;
+    margin-right: 0.1rem;
+}
+
+/*暗的按钮*/
+.footer-btn-dark {
+    color: white;
+    border-color: #004b97;
+    background-color: #004b97;
+    width: 100%;
+}
+
+/*按钮基础*/
+.footer-btn-basic {
+    height: 0.56rem;
+    font-size: 0.16rem;
+    border-width: 0.01rem;
+    border-style: solid;
+    border-radius: 0.08rem;
+}
+
