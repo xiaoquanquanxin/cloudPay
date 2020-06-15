@@ -15,7 +15,13 @@ export class BasicStruct extends React.Component {
                 {/*去支付按钮*/}
                 <GoToPay/>
                 {/*脚部基础*/}
-                <BasicFooter/>
+                <BasicFooter
+                    // notDealWithBtn={true}
+                    // confirmPaymentBtn={true}
+                    toPayForBtn={true}
+                    // viewOrderBtn={true}
+                    // continueDealWith={true}
+                />
             </div>
         );
     }
