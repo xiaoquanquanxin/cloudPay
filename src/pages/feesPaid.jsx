@@ -1,5 +1,7 @@
 import React from 'react';
 import '../css/color.css';
+import { OrderAmount } from '../components/feesPaid/orderAmount';
+import { ChoosePaymentMethod } from '../components/feesPaid/choosePaymentMethod';
 
 // 支付成功内容
 export class FeesPaid extends React.Component {
@@ -16,7 +18,8 @@ export class FeesPaid extends React.Component {
     render(){
         return (
             <div className='basic-struct'>
-                费用支付
+                <OrderAmount/>
+                <ChoosePaymentMethod/>
             </div>
         );
     }

@@ -35,10 +35,10 @@ export function remSet(win, doc){
             var width = docEle.clientWidth;
             if (width < 320) {
                 docEle.style.fontSize = 42.6667 + 'px';
-            } else if (width > 750) {
+            } else if (width > 835) {
                 docEle.style.fontSize = 100 + 'px';
             } else {
-                docEle.style.fontSize = 100 * (width / 750) + 'px';
+                docEle.style.fontSize = 100 * (width / 835) + 'px';
             }
         };
     win.addEventListener(evt, fn, false);

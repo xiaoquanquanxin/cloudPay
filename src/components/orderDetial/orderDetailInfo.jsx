@@ -1,11 +1,12 @@
 import React from 'react';
 import './orderDetailInfo.css';
 import '../../css/color.css';
+import { SubTitle } from '../subTitle/subTitle';
 
 export function OrderDetailInfo(props){
     return (
         <div>
-            <p className='detail-info-title'>订单信息</p>
+            <SubTitle text='订单信息'/>
             <div className='pay-for-success-info border-grey'>
                 <div className='info-item'>
                     <span>订单号码</span>

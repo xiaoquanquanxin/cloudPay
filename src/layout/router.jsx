@@ -5,7 +5,6 @@ import {
     Switch,
     Route,
     Redirect,
-    HashRouter,
     BrowserRouter as Router,
 } from 'react-router-dom';
 //  主体

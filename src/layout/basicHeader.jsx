@@ -25,6 +25,8 @@ export class BasicHeader extends React.Component {
                 state.title = '费用支付';
                 state.rightSide = '确认订单';
                 break;
+            default:
+                throw new Error(props.location.pattern);
         }
     }
 

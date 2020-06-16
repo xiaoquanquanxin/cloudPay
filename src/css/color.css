@@ -9,6 +9,8 @@
     --detail-info-title-blue: #007FFE;
     --font-orange: #F75345;
     --font-red: #FF5100;
+    --order-amount: #F64A3B;
+
 }
 
 /*文字灰色*/
@@ -52,6 +54,11 @@
 /*订单详情-状态*/
 .status-detail-red {
     color: var(--font-red);
+}
+
+/*费用支付-订单金额*/
+.order-amount {
+    color: var(--order-amount);
 }
 
 /*!*微信成功*!*/

@@ -1,6 +1,6 @@
 import './arrowsHead.css';
 import React from 'react';
-import arrowsHeadSrc from './arrowsHead.png';
+import arrowsHeadSrc from '../../images/arrowsHead.png';
 
 //  箭头
 export function ArrowsHead(){

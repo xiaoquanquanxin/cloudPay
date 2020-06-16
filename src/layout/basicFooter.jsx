@@ -27,6 +27,8 @@ export class BasicFooter extends React.Component {
             case ROUTER_FEES_PAID:
                 state.toPayForBtn = true;
                 break;
+            default:
+                throw new Error(props.location.pattern);
         }
 
     }
