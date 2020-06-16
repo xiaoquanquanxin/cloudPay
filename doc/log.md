@@ -21,3 +21,7 @@ https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_auth
 http://qq784602719.imwork.net/school/rechargeHome  去掉最后一个斜杠后面的字符串
 支付授权目录 http://qq784602719.imwork.net/school/ 
 
+
+3.业务流程
+https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4
+
