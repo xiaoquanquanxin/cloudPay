@@ -3,10 +3,7 @@ import './headerRightSide.css';
 import '../../css/color.css';
 
 export function HeaderRightSide(props){
-    let innerHtml = '';
-    if (props.hasRightSide) {
-        innerHtml = '确认订单';
-    }
+    const innerHtml = props.rightSide || '';
     return (
         <span className='header-right-side color-grey'>{innerHtml}</span>
     );

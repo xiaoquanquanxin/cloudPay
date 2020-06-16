@@ -12,7 +12,7 @@ import { ROUTER_FEES_PAID, ROUTER_ORDER_CONFIRM, ROUTER_ORDER_DETAIL } from '../
 export class BasicFooter extends React.Component {
     constructor(props){
         super(props);
-        console.log(`footer`, props.location.pathname);
+        // console.log(`footer`, props.location.pathname);
         const state = {};
         this.state = state;
         switch (props.location.pathname) {
