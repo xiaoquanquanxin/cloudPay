@@ -1,0 +1,39 @@
+/*整体*/
+.pay-for-success-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 0.78rem;
+    padding-bottom: 0.72rem;
+    border-bottom: 0.01rem dashed lightgrey;
+    margin: 0 0.3rem;
+}
+
+/*✅*/
+.pay-for-success-log-img {
+    width: 0.88rem;
+    height: 0.88rem;
+    vertical-align: middle;
+    -webkit-mask-position: 50% 50%;
+    mask-position: 50% 50%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+}
+
+.weui-icon-search {
+    mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%2022C6.477%2022%202%2017.523%202%2012S6.477%202%2012%202s10%204.477%2010%2010-4.477%2010-10%2010zm-1.177-7.86l-2.765-2.767L7%2012.431l3.119%203.121a1%201%200%20001.414%200l5.952-5.95-1.062-1.062-5.6%205.6z%22%2F%3E%3C%2Fsvg%3E);
+}
+
+.weui-icon-success {
+    background-color: #07c160;
+}
+
+/*文本*/
+.pay-for-success-log-text {
+    font-size: 0.26rem;
+    margin-top: 0.3rem;
+
+}
