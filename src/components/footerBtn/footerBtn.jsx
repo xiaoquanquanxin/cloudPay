@@ -62,42 +62,42 @@ export class ConfirmPaymentBtn extends React.Component {
     }
 }
 
-//  继续办理
-export class ContinueDealWith extends React.Component {
+//  取消订单
+export class CancelOrder extends React.Component {
     constructor(props){
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(){
-        console.log('继续办理');
-    }
-
-    render(){
-        return (
-            <button
-                className='footer-btn-basic footer-btn-dark'
-                onClick={this.handleClick}>继续办理</button>
-        );
-    }
-}
-
-//  查看订单
-export class ViewOrderBtn extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        console.log('查看订单');
+        console.log('取消订单');
     }
 
     render(){
         return (
             <button
                 className='footer-btn-basic footer-btn-light'
-                onClick={this.handleClick}>查看订单</button>
+                onClick={this.handleClick}>取消订单</button>
         );
     }
 }
+
+//  继续办理
+// export class ContinueDealWith extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+//
+//     handleClick(){
+//         console.log('继续办理');
+//     }
+//
+//     render(){
+//         return (
+//             <button
+//                 className='footer-btn-basic footer-btn-dark'
+//                 onClick={this.handleClick}>继续办理</button>
+//         );
+//     }
+// }

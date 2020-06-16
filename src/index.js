@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { remSet } from './utils/utils';
 import './css/reset.css';
-import { BasicStruct } from './layout/basicStruct.jsx';
+import { App } from './layout/router';
 //  设置字体大小
 remSet(window, document);
 
+
 ReactDOM.render(
-    <BasicStruct/>,
+    <App/>,
     document.getElementById('root'),
 );

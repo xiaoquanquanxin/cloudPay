@@ -5,7 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 0.01rem solid;
+    border-width: 0 0 0.01rem;
+    border-style: solid;
 }
 
 .basic-header .basic-header {
