@@ -1,10 +1,13 @@
 :root {
     --font-grey: #5B5B5B;
-    --border-grey: #DBDBDB;
+    --border-grey: #EAEAEA;
     --border-grey-blue: #D6E0E9;
     --btn-dark-blue: #004b97;
     --btn-light-blue: #e4f2ff;
     --weui-icon-success: #07c160;
+    --detail-info-title-blue: #007FFE;
+    --font-orange: #FF282F;
+    --font-red: #FF1F00;
 }
 
 /*文字灰色*/
@@ -35,7 +38,23 @@
     background-color: var(--btn-dark-blue);
 }
 
-/*微信成功*/
-.weui-icon-success {
-    background-color: var(--weui-icon-success)
+/*订单详情-金额*/
+.order-detail-cost-amount {
+    color: var(--font-orange)
+}
+
+/*订单详情-状态*/
+.status-detail-red {
+    color: var(--font-red);
+}
+
+/*!*微信成功*!*/
+/*.weui-icon-success {*/
+/*    background-color: var(--weui-icon-success)*/
+/*}*/
+
+
+/*测试css优先级*/
+.border-text {
+    border-color: red;
 }

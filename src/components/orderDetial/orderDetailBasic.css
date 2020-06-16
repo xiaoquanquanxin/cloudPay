@@ -1,0 +1,22 @@
+/*房间和什么费用*/
+.order-detail-basic {
+    margin: 0.2rem 0.3rem;
+}
+
+/*房间*/
+.order-detail-room {
+    font-weight: 600;
+}
+
+/*什么费用*/
+.order-detail-cost {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.14rem;
+}
+
+.order-detail-room, .order-detail-cost {
+    line-height: 0.66rem;
+    border-width: 0 0 0.01rem;
+    border-style: solid;
+}

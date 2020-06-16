@@ -1,0 +1,36 @@
+/*整体内容*/
+.pay-for-success-info {
+    margin: 0 0.3rem;
+    padding: 0.16rem 0;
+    border-width: 0.01rem 0;
+    border-style: solid;
+}
+
+/*具体内容*/
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.38rem;
+    font-size: 0.14rem;
+}
+
+/*订单信息*/
+.detail-info-title {
+    margin: 0 0.3rem;
+    line-height: 0.48rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 600;
+}
+
+.detail-info-title::before {
+    display: inline-block;
+    content: '';
+    width: 0.04rem;
+    height: 0.16rem;
+    border-radius: 0.02rem;
+    margin-right: 0.06rem;
+    background-color: var(--detail-info-title-blue);
+}
