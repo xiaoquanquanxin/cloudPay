@@ -1,0 +1,15 @@
+/*选项*/
+.choose-payment-method-item {
+    line-height: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.17rem;
+    border-width: 0 0 0.01rem;
+    border-style: solid;
+}
+
+.choose-payment-method-item > .logo {
+    display: flex;
+    align-items: center;
+}

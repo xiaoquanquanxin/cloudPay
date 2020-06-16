@@ -1,0 +1,13 @@
+/*订单金额  */
+.order-amount-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 0.81rem;
+    border-width: 0 0 0.01rem;
+    border-style: solid;
+    font-size: 0.17rem;
+    margin: 0 0.3rem;
+    font-weight: 300;
+}
+
