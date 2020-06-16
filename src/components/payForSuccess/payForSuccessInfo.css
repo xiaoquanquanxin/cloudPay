@@ -1,0 +1,10 @@
+.pay-for-success-info {
+    margin: 0.24rem 0.3rem 0;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.38rem;
+}
