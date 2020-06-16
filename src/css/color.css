@@ -1,18 +1,24 @@
 :root {
-    --font-grey: #5B5B5B;
-    --border-grey: #EAEAEA;
+    --font-grey: #6E6E6E;
+    --font-dark: #333333;
+    --border-grey: #E0E6ED;
     --border-grey-blue: #D6E0E9;
-    --btn-dark-blue: #004b97;
-    --btn-light-blue: #e4f2ff;
+    --btn-dark-blue: #1660A3;
+    --btn-light-blue: #ECF5FF;
     --weui-icon-success: #07c160;
     --detail-info-title-blue: #007FFE;
-    --font-orange: #FF282F;
-    --font-red: #FF1F00;
+    --font-orange: #F75345;
+    --font-red: #FF5100;
 }
 
 /*文字灰色*/
 .color-grey {
     color: var(--font-grey)
+}
+
+/*文字深色*/
+.color-dark {
+    color: var(--font-dark)
 }
 
 /*边框灰色*/

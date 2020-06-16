@@ -4,6 +4,8 @@
     padding: 0.16rem 0;
     border-width: 0.01rem 0;
     border-style: solid;
+    font-weight: 300;
+    font-size: 0.15rem;
 }
 
 /*具体内容*/
@@ -22,7 +24,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.17rem;
 }
 
 .detail-info-title::before {

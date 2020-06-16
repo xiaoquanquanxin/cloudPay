@@ -14,8 +14,13 @@
     justify-content: space-between;
 }
 
+/*状态*/
+.status-detail {
+    font-size: 0.17rem;
+}
+
 /*倒计时*/
 /*时间*/
 .countdown-pay, .status-detail-time {
-    font-size: 0.12rem;
+    font-size: 0.13rem;
 }

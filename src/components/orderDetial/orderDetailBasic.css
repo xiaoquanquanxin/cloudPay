@@ -5,14 +5,16 @@
 
 /*房间*/
 .order-detail-room {
-    font-weight: 600;
+    font-size: 0.17rem;
+    font-weight: 500;
 }
 
 /*什么费用*/
 .order-detail-cost {
     display: flex;
     justify-content: space-between;
-    font-size: 0.14rem;
+    font-size: 0.15rem;
+    font-weight: 200;
 }
 
 .order-detail-room, .order-detail-cost {
