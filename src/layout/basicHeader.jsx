@@ -1,8 +1,10 @@
 import React from 'react';
+import '../css/basic-header.css';
+import '../css/color.css'
 import { ReBackBtn } from '../components/reBackBtn/reBackBtn';
 import { HeaderTitle } from '../components/headerTitle/headerTitle';
 // import { request } from '../utils/request';
-import '../css/basic-header.css';
+
 import { HeaderRightSide } from '../components/HeaderRightSide/headerRightSide';
 
 //  头部组件
@@ -32,7 +34,7 @@ export class BasicHeader extends React.Component {
         const state = this.state;
         const hasReBackBtn = state.hasReBackBtn ? <ReBackBtn/> : '';
         return (
-            <header className='basic-header'>
+            <header className='basic-header border-grey-blue'>
                 {/*返回按钮*/}
                 {hasReBackBtn}
                 {/*头部title*/}

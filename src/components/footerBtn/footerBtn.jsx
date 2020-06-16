@@ -1,5 +1,6 @@
 import React from 'react';
 import './footerBtn.css';
+import '../../css/color.css';
 
 //  暂不办理
 export class NotDealWithBtn extends React.Component {

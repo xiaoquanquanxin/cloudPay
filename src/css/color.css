@@ -1,0 +1,41 @@
+:root {
+    --font-grey: #5B5B5B;
+    --border-grey: #DBDBDB;
+    --border-grey-blue: #D6E0E9;
+    --btn-dark-blue: #004b97;
+    --btn-light-blue: #e4f2ff;
+    --weui-icon-success: #07c160;
+}
+
+/*文字灰色*/
+.color-grey {
+    color: var(--font-grey)
+}
+
+/*边框灰色*/
+.border-grey {
+    border-color: var(--border-grey);
+}
+
+/*边框灰蓝色*/
+.border-grey-blue {
+    border-color: var(--border-grey-blue)
+}
+
+/*脚部按钮*/
+.footer-btn-light {
+    color: var(--btn-dark-blue);
+    background-color: var(--btn-light-blue);
+}
+
+/*脚部按钮*/
+.footer-btn-dark {
+    color: white;
+    border-color: var(--btn-dark-blue);
+    background-color: var(--btn-dark-blue);
+}
+
+/*微信成功*/
+.weui-icon-success {
+    background-color: var(--weui-icon-success)
+}

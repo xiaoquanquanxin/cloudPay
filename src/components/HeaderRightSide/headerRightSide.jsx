@@ -1,5 +1,6 @@
 import React from 'react';
 import './headerRightSide.css';
+import '../../css/color.css';
 
 export function HeaderRightSide(props){
     let innerHtml = '';
@@ -7,6 +8,6 @@ export function HeaderRightSide(props){
         innerHtml = '确认订单';
     }
     return (
-        <span className='header-right-side'>{innerHtml}</span>
+        <span className='header-right-side color-grey'>{innerHtml}</span>
     );
 }
