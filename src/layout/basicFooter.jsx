@@ -7,7 +7,11 @@ import {
     CancelOrder,
 } from '../components/footerBtn/footerBtn';
 //  路由
-import { ROUTER_FEES_PAID, ROUTER_ORDER_CONFIRM, ROUTER_ORDER_DETAIL } from '../utils/constant';
+import {
+    ROUTER_FEES_PAID,
+    ROUTER_ORDER_CONFIRM,
+    ROUTER_ORDER_DETAIL
+} from '../utils/constant';
 
 export class BasicFooter extends React.Component {
     constructor(props){

@@ -6,7 +6,11 @@ import { HeaderTitle } from '../components/headerTitle/headerTitle';
 // import { request } from '../utils/request';
 
 import { HeaderRightSide } from '../components/HeaderRightSide/headerRightSide';
-import { ROUTER_FEES_PAID, ROUTER_ORDER_CONFIRM, ROUTER_ORDER_DETAIL } from '../utils/constant';
+import {
+    ROUTER_FEES_PAID,
+    ROUTER_ORDER_CONFIRM,
+    ROUTER_ORDER_DETAIL
+} from '../utils/constant';
 
 //  头部组件
 export class BasicHeader extends React.Component {

@@ -13,6 +13,11 @@
     --freeze: #ECECEC;
 }
 
+/*文字蓝色*/
+.color-blue {
+    color: var(--btn-dark-blue)
+}
+
 /*文字灰色*/
 .color-grey {
     color: var(--font-grey)

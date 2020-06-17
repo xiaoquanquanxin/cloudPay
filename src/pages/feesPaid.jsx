@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/color.css';
 import { OrderAmount } from '../components/feesPaid/orderAmount';
 import { ChoosePaymentMethod } from '../components/feesPaid/choosePaymentMethod';
+import { QRCode } from '../components/QRCode/QRCode';
 
 // 支付成功内容
 export class FeesPaid extends React.Component {
@@ -11,7 +12,9 @@ export class FeesPaid extends React.Component {
         this.state = {
             name: 'FeesPaid',
             //  被选中的方式，3：微信
-            checkedMethod: 3
+            checkedMethod: 3,
+            //  二维码是否展示
+            QRCodeIsShow: true,
         };
         this.handleClickCheck = this.handleClickCheck.bind(this);
     }
@@ -37,13 +40,19 @@ export class FeesPaid extends React.Component {
     }
 
     render(){
-        // console.log(this.state.checkedMethod);
+        const state = this.state;
         return (
             <div className='basic-struct'>
+                {/*支付信息*/}
                 <OrderAmount/>
+                {/*支付选择*/}
                 <ChoosePaymentMethod
-                    checkedMethod={this.state.checkedMethod}
+                    checkedMethod={state.checkedMethod}
                     handleClickCheck={this.handleClickCheck}
+                />
+                {/*二维码*/}
+                <QRCode
+                    QRCodeIsShow={state.QRCodeIsShow}
                 />
             </div>
         );
