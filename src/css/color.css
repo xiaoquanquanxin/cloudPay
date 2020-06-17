@@ -10,7 +10,7 @@
     --font-orange: #F75345;
     --font-red: #FF5100;
     --order-amount: #F64A3B;
-
+    --freeze: #ECECEC;
 }
 
 /*文字灰色*/
@@ -61,10 +61,16 @@
     color: var(--order-amount);
 }
 
-/*!*微信成功*!*/
-/*.weui-icon-success {*/
-/*    background-color: var(--weui-icon-success)*/
-/*}*/
+/*微信勾选*/
+.weui-icon-success {
+    background-color: var(--weui-icon-success)
+}
+
+
+/*微信没勾选*/
+.weui-icon-freeze {
+    background-color: var(--freeze)
+}
 
 
 /*测试css优先级*/
