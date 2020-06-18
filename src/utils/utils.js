@@ -1,31 +1,5 @@
-//  判断胜负
-export function calculateWinner(squares){
-    const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
-            return {
-                winner: squares[a],
-                winLine: lines[i]
-            };
-        }
-    }
-    return null;
-}
-
-//  游戏结束
-export function isGameOverFn(squares){
-    return squares.every(item => item !== null);
-}
+import Qs from 'qs';
+import md5 from 'md5';
 
 //  重置字体大小
 export function remSet(win, doc){
@@ -45,3 +19,34 @@ export function remSet(win, doc){
     doc.addEventListener('DOMContentLoaded', fn, false);
 }
 
+/**
+ *
+ * 所有参数按照字母unicode编码排序，用&符号拼接
+ * 后面+时间戳+appkey
+ * 再md5处理下。
+ * 放在header里。
+ * header还有时间戳。
+ * header的数据type是form表单
+ *
+ * */
+export function requestEndorse(originData){
+    const timestamp = new Date().getTime();
+    const appKey = '123';
+    const _data = {};
+    //  参数排序
+    Object.keys(originData).sort().forEach(key => {
+        _data[key] = originData[key];
+    });
+    //  组合md5
+    const md5Data = Object.assign({}, _data, {
+        timestamp,
+        appKey,
+    });
+    // console.log(Qs.stringify(md5Data));
+    const requestData = Qs.stringify(_data);
+    return {
+        auth: md5(Qs.stringify(md5Data)),
+        timestamp,
+        requestData,
+    };
+}

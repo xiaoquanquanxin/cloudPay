@@ -19,9 +19,15 @@ import {
     ROUTER_ORDER_DETAIL
 } from '../utils/constant';
 import { FeesPaid } from '../pages/feesPaid';
+import { connect } from 'react-redux';
 
 //  基础结构
-export class App extends React.Component {
+export const App = connect()(class _App extends React.Component {
+    constructor(props){
+        super(props);
+        console.log('page🍃:router\nprops:', props);
+    }
+
     render(){
         return (
             <div className='basic-struct'>
@@ -48,4 +54,4 @@ export class App extends React.Component {
             </div>
         );
     }
-}
+});

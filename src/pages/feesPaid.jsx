@@ -8,13 +8,11 @@ import { QRCode } from '../components/QRCode/QRCode';
 export class FeesPaid extends React.Component {
     constructor(props){
         super(props);
-        // console.log(this.props.location);
+        // console.log('page🍃:支付成功\nprops:', props);
         this.state = {
             name: 'FeesPaid',
             //  被选中的方式，3：微信
             checkedMethod: 3,
-            //  二维码是否展示
-            QRCodeIsShow: true,
         };
         this.handleClickCheck = this.handleClickCheck.bind(this);
     }
@@ -30,10 +28,6 @@ export class FeesPaid extends React.Component {
         if (this.state.checkedMethod === checkedMethod) {
             return;
         }
-        // this.setState((state) => {
-        //     state.checkedMethod = checkedMethod;
-        //     console.log('点击事件', this.state);
-        // });
         this.setState({
             checkedMethod,
         });
@@ -41,6 +35,8 @@ export class FeesPaid extends React.Component {
 
     render(){
         const state = this.state;
+        // const props = this.props;
+        // console.log(props);
         return (
             <div className='basic-struct'>
                 {/*支付信息*/}
@@ -52,7 +48,7 @@ export class FeesPaid extends React.Component {
                 />
                 {/*二维码*/}
                 <QRCode
-                    QRCodeIsShow={state.QRCodeIsShow}
+                    amount={13.43}
                 />
             </div>
         );

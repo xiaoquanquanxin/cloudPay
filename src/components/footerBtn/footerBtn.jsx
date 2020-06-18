@@ -1,6 +1,8 @@
 import React from 'react';
 import './footerBtn.css';
 import '../../css/color.css';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '../../store/mask';
 
 //  暂不办理
 export class NotDealWithBtn extends React.Component {
@@ -23,24 +25,26 @@ export class NotDealWithBtn extends React.Component {
 }
 
 //  去支付
-export class ToPayForBtn extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
+export const ToPayForBtn = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(
+    class _ToPayForBtn extends React.Component {
+        // constructor(props){
+        //     super(props);
+        // }
+        render(){
+            const props = this.props;
+            // window.props = props;
+            return (
+                <button
+                    className='footer-btn-basic footer-btn-dark'
+                    onClick={() => {props.QRCodeToggleClick(true);}}>去支付
+                </button>
+            );
+        }
     }
-
-    handleClick(){
-        console.log('去支付');
-    }
-
-    render(){
-        return (
-            <button
-                className='footer-btn-basic footer-btn-dark'
-                onClick={this.handleClick}>去支付</button>
-        );
-    }
-}
+);
 
 //  确认支付以上费用
 export class ConfirmPaymentBtn extends React.Component {
