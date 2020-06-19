@@ -2,17 +2,26 @@ import Qs from 'qs';
 import md5 from 'md5';
 
 //  重置字体大小
-export function remSet(win, doc){
-    var docEle = doc.documentElement,
+export function remSet(win, doc, isWx){
+    //  设备宽度
+    let maxDeviceWidth;
+    //  如果是微信端
+    if (isWx) {
+        maxDeviceWidth = 750;
+    } else {
+        //  pad
+        maxDeviceWidth = 835;
+    }
+    const docEle = doc.documentElement,
         evt = 'onorientationchange' in window ? 'onorientationchange' : 'resize', //区分Mobile和PC以加载不同的事件
         fn = function (){
             var width = docEle.clientWidth;
             if (width < 320) {
                 docEle.style.fontSize = 42.6667 + 'px';
-            } else if (width > 835) {
+            } else if (width > maxDeviceWidth) {
                 docEle.style.fontSize = 100 + 'px';
             } else {
-                docEle.style.fontSize = 100 * (width / 835) + 'px';
+                docEle.style.fontSize = 100 * (width / maxDeviceWidth) + 'px';
             }
         };
     win.addEventListener(evt, fn, false);
@@ -49,4 +58,11 @@ export function requestEndorse(originData){
         timestamp,
         requestData,
     };
+}
+
+//  判断是微信端？
+export function isWX(){
+    const ua = navigator.userAgent.toLowerCase();
+    const test = ua.match(/MicroMessenger/i);
+    return test && test[0] === 'micromessenger';
 }

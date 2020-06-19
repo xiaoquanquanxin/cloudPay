@@ -3,68 +3,64 @@ import './footerBtn.css';
 import '../../css/color.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/mask';
+import { withRouter } from 'react-router-dom';
 
 //  暂不办理
-export class NotDealWithBtn extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        console.log('暂不办理');
-    }
-
-    render(){
+export const NotDealWithBtn = withRouter(
+    ({ history }) => {
+        // console.log(history, '暂不办理');
         return (
             <button
                 className='footer-btn-basic footer-btn-light'
-                onClick={this.handleClick}>暂不办理</button>
+                onClick={() => {
+                    console.log('暂不办理');
+                    history.go(-1);
+                }}>
+                暂不办理
+            </button>
         );
     }
-}
+);
 
 //  去支付
 export const ToPayForBtn = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    class _ToPayForBtn extends React.Component {
-        // constructor(props){
-        //     super(props);
-        // }
+    (props) => {
+        console.log(props);
+        return (
+            <button
+                className='footer-btn-basic footer-btn-dark'
+                onClick={() => {props.QRCodeToggleClick(true);}}>去支付
+            </button>
+        );
+    },
+);
+
+//  确认支付以上费用
+export const ConfirmPaymentBtn = withRouter(
+    class _ConfirmPaymentBtn extends React.Component {
+        constructor(props){
+            super(props);
+            // console.log('page🍃:router\nConirmPaymentBtn:', props);
+            this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick(){
+            console.log('确认支付以上费用');
+        }
+
         render(){
-            const props = this.props;
-            // window.props = props;
+            // console.log(this.props);
             return (
                 <button
                     className='footer-btn-basic footer-btn-dark'
-                    onClick={() => {props.QRCodeToggleClick(true);}}>去支付
-                </button>
+                    onClick={this.handleClick}>确认支付以上费用</button>
             );
         }
     }
 );
-
-//  确认支付以上费用
-export class ConfirmPaymentBtn extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        console.log('确认支付以上费用');
-    }
-
-    render(){
-        return (
-            <button
-                className='footer-btn-basic footer-btn-dark'
-                onClick={this.handleClick}>确认支付以上费用</button>
-        );
-    }
-}
 
 //  取消订单
 export class CancelOrder extends React.Component {

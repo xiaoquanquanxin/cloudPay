@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { requestEndorse } from './utils';
 
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+//  定义中间件
 axios.interceptors.response.use(
     response => {
         // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
@@ -43,6 +43,7 @@ axios.interceptors.response.use(
     }
 );
 
+//  疯转请求
 export function request(options){
     //  加签完毕的数据
     const {

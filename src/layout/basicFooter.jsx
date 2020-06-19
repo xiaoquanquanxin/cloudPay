@@ -8,54 +8,40 @@ import {
 } from '../components/footerBtn/footerBtn';
 //  路由
 import {
-    ROUTER_FEES_PAID,
     ROUTER_ORDER_CONFIRM,
-    ROUTER_ORDER_DETAIL
+    ROUTER_ORDER_DETAIL,
+    ROUTER_FEES_PAID,
 } from '../utils/constant';
 
-export class BasicFooter extends React.Component {
-    constructor(props){
-        super(props);
-        // console.log(`footer`, props.location.pathname);
-        const state = {};
-        this.state = state;
-        switch (props.location.pathname) {
-            case ROUTER_ORDER_CONFIRM:
-                state.notDealWithBtn = true;
-                state.confirmPaymentBtn = true;
-                break;
-            case ROUTER_ORDER_DETAIL:
-                state.cancelOrder = true;
-                state.toPayForBtn = true;
-                break;
-            case ROUTER_FEES_PAID:
-                state.toPayForBtn = true;
-                break;
-            default:
-                throw new Error(props.location.pattern);
-        }
-
+//  脚部信息
+export function BasicFooter({ footerType }){
+    let footerButtonLeft;
+    let footerButtonRight;
+    // console.log(footerType);
+    switch (footerType) {
+        case ROUTER_ORDER_CONFIRM:
+            //  暂不办理
+            footerButtonLeft = <NotDealWithBtn/>;
+            //  确认支付以上费用
+            footerButtonRight = <ConfirmPaymentBtn/>;
+            break;
+        case ROUTER_ORDER_DETAIL:
+            // 取消订单
+            footerButtonLeft = <CancelOrder/>;
+            //  去支付
+            footerButtonRight = <ToPayForBtn/>;
+            break;
+        case ROUTER_FEES_PAID:
+            //  去支付
+            footerButtonLeft = <ToPayForBtn/>;
+            break;
+        default:
+            console.log(`错误的类型 footerType : ${footerType}`);
     }
-
-    render(){
-        const state = this.state;
-        //  暂不办理
-        let notDealWithBtn = state.notDealWithBtn ? <NotDealWithBtn/> : '';
-        //  去支付
-        let toPayForBtn = state.toPayForBtn ? <ToPayForBtn/> : '';
-        //  确认支付以上费用
-        let confirmPaymentBtn = state.confirmPaymentBtn ? <ConfirmPaymentBtn/> : '';
-        //  取消订单
-        let cancelOrder = state.cancelOrder ? <CancelOrder/> : '';
-
-        return (
-            <footer className='basic-footer'>
-                {cancelOrder}
-                {notDealWithBtn}
-                {toPayForBtn}
-                {confirmPaymentBtn}
-            </footer>
-        );
-    }
-
+    return (
+        <footer className='basic-footer'>
+            {footerButtonLeft}
+            {footerButtonRight}
+        </footer>
+    );
 }

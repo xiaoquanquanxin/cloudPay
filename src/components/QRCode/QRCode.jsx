@@ -5,13 +5,22 @@ import '../../css/color.css';
 import scan_code from '../../images/scan_code.png';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/mask';
+import { withRouter } from 'react-router-dom';
+import { func } from 'prop-types';
 
 //  二维码弹框
-export const QRCode = connect(
+export const QRCode = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    function ({ isShow, QRCodeToggleClick, QRCodeImg, amount }){
+    function ({
+        isShow,
+        QRCodeImg,
+        amount,
+        QRCodeToggleClick,
+        history
+    }){
+        console.log(history);
         // console.log('page🍃:弹框\nisShow:', isShow);
         //  todo    在这里使用redux
         if (!isShow) {
@@ -34,15 +43,27 @@ export const QRCode = connect(
                     <div className='qr-code-buttons border-grey'>
                         <button
                             className='color-grey border-grey'
-                            onClick={() => {QRCodeToggleClick(false);}}
+                            onClick={gotoOrderDetail(QRCodeToggleClick,history)}
                         >放弃付款
                         </button>
-                        <button className='color-blue'>付款完成</button>
+                        <button
+                            className='color-blue'
+                            onClick={gotoOrderDetail(QRCodeToggleClick,history)}
+                        >付款完成
+                        </button>
                     </div>
                 </div>
             </div>
         );
     }
-);
+));
 
+//  去订单详情
+const gotoOrderDetail = (QRCodeToggleClick,history) => {
+    return () => {
+        const res = QRCodeToggleClick(false);
 
+        history.push('/orderDetail');
+        console.log(res.isShow);
+    };
+};

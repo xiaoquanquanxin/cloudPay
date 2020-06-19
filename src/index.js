@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { remSet } from './utils/utils';
 import './css/reset.css';
 import { App } from './layout/router';
 import { Provider } from 'react-redux';
-
 import { createStore } from 'redux';
 import AppRedux from './store/reducers';
-// import { setQRCodeIsShow } from './store/actions';
-//  设置字体大小
-remSet(window, document);
+import { basicConfig } from './utils/basicConfig';
 
+//  基础配置
+basicConfig();
 let store = createStore(AppRedux);
 ReactDOM.render(
     <Provider store={store}>
