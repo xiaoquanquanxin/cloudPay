@@ -4,11 +4,11 @@
 import { ACTION_1 } from './actions';
 
 //  打开，关闭支付谈框
-export function namespace_QRCode(state = { isShow: false, QRCodeImg: null, }, action){
+export function namespace_qrCode(state = { isShow: false, qrCodeImg: null, }, action){
     if (action.type === ACTION_1) {
         return {
             isShow: action.isShow,
-            QRCodeImg: action.QRCodeImg
+            qrCodeImg: action.qrCodeImg
         };
     }
     return state;

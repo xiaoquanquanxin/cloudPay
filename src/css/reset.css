@@ -21,3 +21,7 @@ button, input, textarea {
 #root {
     font-size: 0.16rem;
 }
+
+.hide {
+    display: none;
+}

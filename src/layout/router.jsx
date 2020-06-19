@@ -17,31 +17,25 @@ import {
 } from '../utils/constant';
 import { FeesPaid } from '../pages/feesPaid';
 import { connect } from 'react-redux';
+import { Loading } from '../components/loading/loading';
 
 //  基础结构
 export const App = connect()(
-    class _App extends React.Component {
-        // constructor(props){
-        //     super(props);
-        //     console.log('page🍃:router\nprops:', props);
-        // }
-
+    class extends React.Component {
         render(){
             return (
                 <Router>
                     <Switch>
                         {/*确认订单*/}
                         <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
-
                         {/*费用支付*/}
                         <Route path={ROUTER_FEES_PAID} component={FeesPaid}/>
-
                         {/*订单详情*/}
                         <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
-
                         {/*默认路由*/}
                         <Redirect from="/*" to={ROUTER_ORDER_CONFIRM}/>
                     </Switch>
+                    <Loading/>
                 </Router>
             );
         }
