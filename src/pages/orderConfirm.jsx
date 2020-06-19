@@ -8,9 +8,19 @@ import { ROUTER_ORDER_CONFIRM } from '../utils/constant';
 //  楼盘图片
 import building from '../images/building.png';
 
-// 支付成功内容
+// 确认订单layout
 export function OrderConfirm({ history }){
-    // console.log('🍉', history);
+    console.log('🍉确认订单layout', history);
+    const OrderConfirmBody = (
+        <div className='basic-struct'>
+            <img src={building} alt="当前楼盘logo"/>
+            <div>
+                楼盘的各种信息
+            </div>
+            <SubTitle text='费用合计'/>
+            <div>金额1221</div>
+        </div>
+    );
     return (
         <div className='basic-struct'>
             {/*头部基础*/}
@@ -18,28 +28,10 @@ export function OrderConfirm({ history }){
                 headerType={ROUTER_ORDER_CONFIRM}
             />
             {/*主要内容*/}
-            <OrderConfirmBody/>
+            {OrderConfirmBody}
             <BasicFooter
                 footerType={ROUTER_ORDER_CONFIRM}
             />
-        </div>
-    );
-}
-
-//  主要内容
-export function OrderConfirmBody(){
-    // const _SubTitle = () => {
-    //     return <SubTitle text='费用合计'/>;
-    // };
-    return (
-        <div className='basic-struct'>
-            <img src={building} alt="当前楼盘logo"/>
-            <div>
-                楼盘的各种信息
-            </div>
-            {/*<Route component={_SubTitle}/>*/}
-            <SubTitle text='费用合计'/>
-            <div>金额1221</div>
         </div>
     );
 }

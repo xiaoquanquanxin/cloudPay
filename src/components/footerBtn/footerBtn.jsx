@@ -4,6 +4,7 @@ import '../../css/color.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/mask';
 import { withRouter } from 'react-router-dom';
+import { ROUTER_FEES_PAID } from '../../utils/constant';
 
 //  暂不办理
 export const NotDealWithBtn = withRouter(
@@ -40,25 +41,15 @@ export const ToPayForBtn = connect(
 
 //  确认支付以上费用
 export const ConfirmPaymentBtn = withRouter(
-    class _ConfirmPaymentBtn extends React.Component {
-        constructor(props){
-            super(props);
-            // console.log('page🍃:router\nConirmPaymentBtn:', props);
-            this.handleClick = this.handleClick.bind(this);
-        }
-
-        handleClick(){
-            console.log('确认支付以上费用');
-        }
-
-        render(){
-            // console.log(this.props);
-            return (
-                <button
-                    className='footer-btn-basic footer-btn-dark'
-                    onClick={this.handleClick}>确认支付以上费用</button>
-            );
-        }
+    function ({ history }){
+        return (
+            <button
+                className='footer-btn-basic footer-btn-dark'
+                onClick={() => {
+                    console.log('去费用支付');
+                    history.push(ROUTER_FEES_PAID);
+                }}>确认支付以上费用</button>
+        );
     }
 );
 

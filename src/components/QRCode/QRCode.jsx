@@ -6,7 +6,6 @@ import scan_code from '../../images/scan_code.png';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/mask';
 import { withRouter } from 'react-router-dom';
-import { func } from 'prop-types';
 
 //  二维码弹框
 export const QRCode = withRouter(connect(
@@ -20,7 +19,7 @@ export const QRCode = withRouter(connect(
         QRCodeToggleClick,
         history
     }){
-        console.log(history);
+        // console.log(history);
         // console.log('page🍃:弹框\nisShow:', isShow);
         //  todo    在这里使用redux
         if (!isShow) {
