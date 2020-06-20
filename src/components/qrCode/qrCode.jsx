@@ -6,7 +6,7 @@ import scan_code from '../../images/scan_code.png';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { GiveUpPay, PaymentFinished } from '../qrCodeButtons/qrCodeButtons';
+import { requestGetOrderDetail } from '../../api/api';
 
 //  二维码弹框
 export const QRCode = withRouter(connect(
@@ -16,11 +16,10 @@ export const QRCode = withRouter(connect(
     function ({ namespace_qrCode, amount }){
         // console.log(history);
         const { qrCodeImg, isShow } = namespace_qrCode;
-        //  todo    在这里使用redux
         if (!isShow) {
             return '';
         }
-        console.log('🍎二维码弹框', namespace_qrCode);
+        console.log('🍎二维码弹框');
         return (
             <div className='qr-code-wrap'>
                 <div className='qr-code-container'>
@@ -30,10 +29,7 @@ export const QRCode = withRouter(connect(
                         <img src={qrCodeImg} alt="二维码载入失败，请重试"/>
                         <p className='color-grey'>请扫描二维码进行支付</p>
                     </div>
-                    <div className='qr-code-buttons border-grey'>
-                        <GiveUpPay/>
-                        <PaymentFinished/>
-                    </div>
+                    <QRCodeButtons/>
                 </div>
             </div>
         );
@@ -51,3 +47,38 @@ function RenderScan(){
         </div>
     );
 }
+
+//  底部按钮
+const QRCodeButtons = withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(
+        ({ qrCodeToggleClick, history, loadingToggle }) => {
+            return (
+                <div className='qr-code-buttons border-grey'>
+                    <button
+                        className='color-grey border-grey'
+                        onClick={() => {
+                            //  放弃付款
+                            qrCodeToggleClick(false);
+                        }}
+                    >放弃付款
+                    </button>
+                    <button
+                        className='color-blue'
+                        onClick={() => {
+                            //  付款完成
+                            loadingToggle(true);
+                            qrCodeToggleClick(false);
+                            setTimeout(() => {
+                                loadingToggle(false);
+                                history.push('/orderDetail');
+                            }, 5000);
+                        }}
+                    >付款完成
+                    </button>
+                </div>
+            );
+        })
+);

@@ -24,9 +24,9 @@ export class OrderDetail extends React.Component {
         const OrderDetailBody = (
             <div>
                 {/*订单状态*/}
-                <OrderDetailStatus/>;
+                <OrderDetailStatus/>
                 {/*订单基础信息*/}
-                <OrderDetailBasic/>;
+                <OrderDetailBasic/>
                 {/*信息*/}
                 <OrderDetailInfo
                     code={122}

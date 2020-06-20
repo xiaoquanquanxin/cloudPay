@@ -69,23 +69,6 @@ export const FeesPaid = connect(
 
         render(){
             const state = this.state;
-            const FeesPaidBody = (
-                <div>
-                    {/*支付信息*/}
-                    <OrderAmount
-                        amount={state.amount}
-                    />
-                    {/*支付选择*/}
-                    <ChoosePaymentMethod
-                        checkedMethod={state.checkedMethod}
-                        handleClickCheck={this.handleClickCheck}
-                    />
-                    {/*二维码*/}
-                    <QRCode
-                        amount={state.amount}
-                    />
-                </div>
-            );
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
@@ -93,7 +76,21 @@ export const FeesPaid = connect(
                         headerType={ROUTER_FEES_PAID}
                     />
                     {/*主要内容*/}
-                    {FeesPaidBody}
+                    <div>
+                        {/*支付信息*/}
+                        <OrderAmount
+                            amount={state.amount}
+                        />
+                        {/*支付选择*/}
+                        <ChoosePaymentMethod
+                            checkedMethod={state.checkedMethod}
+                            handleClickCheck={this.handleClickCheck}
+                        />
+                        {/*二维码*/}
+                        <QRCode
+                            amount={state.amount}
+                        />
+                    </div>
                     <BasicFooter
                         footerType={ROUTER_FEES_PAID}
                     />

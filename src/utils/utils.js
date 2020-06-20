@@ -1,5 +1,6 @@
 import Qs from 'qs';
 import md5 from 'md5';
+import { appId } from './constant';
 
 //  重置字体大小
 export function remSet(win, doc, isWx){
@@ -40,7 +41,7 @@ export function remSet(win, doc, isWx){
  * */
 export function requestEndorse(originData){
     const timestamp = new Date().getTime();
-    const appKey = '123';
+    const appKey = appId;
     const _data = {};
     //  参数排序
     Object.keys(originData).sort().forEach(key => {
