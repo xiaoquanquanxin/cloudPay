@@ -1,53 +1,81 @@
 import React from 'react';
 import '../css/color.css';
-
 import { OrderDetailInfo } from '../components/orderDetial/orderDetailInfo';
 import { OrderDetailStatus } from '../components/orderDetial/orderDetailStatus';
 import { OrderDetailBasic } from '../components/orderDetial/orderDetailBasic';
 import { BasicHeader } from '../layout/basicHeader';
 import { ROUTER_ORDER_DETAIL } from '../utils/constant';
 import { BasicFooter } from '../layout/basicFooter';
+import { requestGetOrderDetail } from '../api/api';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
 
 // 支付成功内容
-export class OrderDetail extends React.Component {
-    constructor(props){
-        super(props);
-        console.log('👵OrderDetail',  props.history);
+export const OrderDetail = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(
+    class extends React.Component {
+        constructor(props){
+            super(props);
+            console.log('👵OrderDetail', props.history);
+            this.state = {};
+            props.loadingToggle(true);
+        }
+
+        componentDidMount(){
+            //  请求
+            requestGetOrderDetail()
+                .then(v => {
+                    this.props.loadingToggle(false);
+                });
+        }
+
+        renderBody({
+            code, amount, completionTime,
+            room, costType, cost,
+            orderTime, orderState, countDown
+        }){
+            return (
+                <div>
+                    {/*主要内容*/}
+                    <div>
+                        {/*订单状态*/}
+                        <OrderDetailStatus
+                            orderState={orderState}
+                            orderTime={orderTime}
+                            countDown={countDown}/>
+                        {/*订单基础信息*/}
+                        <OrderDetailBasic
+                            room={room}
+                            costType={costType}
+                            cost={cost}
+                        />
+                        {/*信息*/}
+                        <OrderDetailInfo
+                            code={code}
+                            amount={amount}
+                            completionTime={completionTime}
+                        />
+                    </div>
+                </div>
+            );
+        }
+
+        render(){
+            return (
+                <div className='basic-struct'>
+                    {/*头部基础*/}
+                    <BasicHeader
+                        headerType={ROUTER_ORDER_DETAIL}
+                    />
+                    {this.renderBody(this.state)}
+                    <BasicFooter
+                        footerType={ROUTER_ORDER_DETAIL}
+                    />
+                </div>
+
+            );
+        }
     }
-
-    componentDidMount(){
-        //  请求
-
-    }
-
-    render(){
-        const OrderDetailBody = (
-            <div>
-                {/*订单状态*/}
-                <OrderDetailStatus/>
-                {/*订单基础信息*/}
-                <OrderDetailBasic/>
-                {/*信息*/}
-                <OrderDetailInfo
-                    code={122}
-                    amount={45232}
-                    completionTime={3223}
-                />
-            </div>
-        );
-        return (
-            <div className='basic-struct'>
-                {/*头部基础*/}
-                <BasicHeader
-                    headerType={ROUTER_ORDER_DETAIL}
-                />
-                {/*主要内容*/}
-                {OrderDetailBody}
-                <BasicFooter
-                    footerType={ROUTER_ORDER_DETAIL}
-                />
-            </div>
-
-        );
-    }
-}
+);
