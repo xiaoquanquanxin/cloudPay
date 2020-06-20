@@ -6,18 +6,30 @@ import {
     Switch,
     BrowserRouter as Router,
 } from 'react-router-dom';
-//  主体
-import { OrderDetail } from '../pages/orderDetail';
-import { OrderConfirm } from '../pages/orderConfirm';
+import { connect } from 'react-redux';
+
 //  路由
 import {
     ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
     ROUTER_FEES_PAID,
 } from '../utils/constant';
-import { FeesPaid } from '../pages/feesPaid';
-import { connect } from 'react-redux';
+//  loading组件
 import { Loading } from '../components/loading/loading';
+//  异步加载组件
+import asyncComponent from './asyncComponentLoader';
+//  交付办理组件
+const OrderConfirm = asyncComponent(
+    () => import( '../pages/orderConfirm')
+);
+//  费用支付组件
+const FeesPaid = asyncComponent(
+    () => import( '../pages/feesPaid')
+);
+//  订单详情组件
+const OrderDetail = asyncComponent(
+    () => import( '../pages/orderDetail')
+);
 
 //  基础结构
 export const App = connect()(

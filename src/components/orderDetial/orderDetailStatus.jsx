@@ -1,18 +1,82 @@
 import React from 'react';
 import './orderDetailStatus.css';
 import '../../css/color.css';
+import { timeSurplus } from '../../utils/utils';
+import { Surplus } from './countDown';
 
 //  订单状态
 export function OrderDetailStatus({
-    orderState = '订单状态', orderTime = '00:00', countDown = '00:00'
+    orderState = -1, orderTime = '-', countDown
 }){
     return (
         <div className='order-detail-status border-grey'>
-            <p className='status-detail-line'>
-                <span className='status-detail status-detail-red'>{orderState}</span>
-                <time className='status-detail-time color-grey'>{orderTime}</time>
-            </p>
-            <p className='countdown-pay color-grey'>{countDown}后关闭</p>
+            <StatusTitle
+                orderState={orderState}
+                orderTime={orderTime}
+            />
+            <CountDown
+                orderState={orderState}
+                countDown={'2020-06-20 17:19'}
+            />
         </div>
     );
 }
+
+//  状态名称
+function StatusTitle({ orderState, orderTime }){
+    let str;
+    //  感谢您使用在线缴费！
+    switch (orderState) {
+        case 1:
+            str = '支付成功';
+            break;
+        case 2:
+            str = '待支付';
+            break;
+        case 3:     // 3、4一样
+        case 4:
+            str = '已取消';
+            break;
+        case -1:
+            str = '';
+            break;
+        default:
+            throw new Error(`错误的${orderState}`);
+    }
+
+    return (
+        <p className='status-detail-line'>
+            <span className='status-detail status-detail-red'>{str}</span>
+            <time className='status-detail-time color-grey'>{orderTime}</time>
+        </p>
+    );
+}
+
+//  倒计时
+function CountDown({ orderState, countDown }){
+    let str;
+    //  感谢您使用在线缴费！
+    switch (orderState) {
+        case 1:
+            str = '感谢您使用在线缴费';
+            break;
+        case 2:
+            countDown = countDown.replace(/-/ig, '/');
+            let timeStamp = timeSurplus(countDown);
+            str = <Surplus timeStamp={timeStamp}/>;
+            break;
+        case 3:
+            str = '付款超时，订单已关闭！';
+            break;
+        case 4:
+            str = '取消成功，订单已关闭！';
+            break;
+        case -1:
+            str = '';
+            break;
+        default:
+            throw new Error(`错误的${orderState}`);
+    }
+    return <p className='countdown-pay color-grey'>{str}</p>;
+}
+

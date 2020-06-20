@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
 
 // 支付成功内容
-export const OrderDetail = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
@@ -27,7 +27,14 @@ export const OrderDetail = connect(
             //  请求
             requestGetOrderDetail()
                 .then(v => {
-                    this.props.loadingToggle(false);
+                    setTimeout(() => {
+                        this.props.loadingToggle(false);
+                        this.setState(state => {
+                            return {
+                                orderState: 2,
+                            };
+                        });
+                    }, 1111);
                 });
         }
 
@@ -74,7 +81,6 @@ export const OrderDetail = connect(
                         footerType={ROUTER_ORDER_DETAIL}
                     />
                 </div>
-
             );
         }
     }

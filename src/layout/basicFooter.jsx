@@ -29,11 +29,11 @@ export function BasicFooter({ footerType }){
             // 取消订单
             footerButtonLeft = <CancelOrder/>;
             //  去支付
-            footerButtonRight = <ToPayForBtn/>;
+            footerButtonRight = <ToPayForBtn isFrom={ROUTER_ORDER_DETAIL}/>;
             break;
         case ROUTER_FEES_PAID:
             //  去支付
-            footerButtonLeft = <ToPayForBtn/>;
+            footerButtonRight = <ToPayForBtn/>;
             break;
         default:
             console.log(`错误的类型 footerType : ${footerType}`);

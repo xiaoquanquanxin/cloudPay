@@ -67,3 +67,22 @@ export function isWX(){
     const test = ua.match(/MicroMessenger/i);
     return test && test[0] === 'micromessenger';
 }
+
+//  倒计时
+export function timeSurplus(countDown){
+    const surplus = new Date(countDown).getTime() - new Date().getTime();
+    //  秒
+    return Math.trunc(surplus / 1000);
+}
+
+//  将时间戳转为展示时间
+export function standardTime(timeStamp){
+    const minutes = Math.trunc(timeStamp / 60);
+    const seconds = timeStamp % 60;
+    return `${fillUpWithZero(minutes)}分${fillUpWithZero(seconds)}秒`;
+}
+
+//  补充零
+function fillUpWithZero(n){
+    return n > 9 ? n : '0' + n;
+}

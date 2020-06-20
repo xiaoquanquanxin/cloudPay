@@ -4,7 +4,7 @@ import '../../css/color.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { ROUTER_FEES_PAID } from '../../utils/constant';
+import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '../../utils/constant';
 import {
     requestGetQRCode
 } from '../../api/api';
@@ -27,16 +27,22 @@ export const NotDealWithBtn = withRouter(
 );
 
 //  去支付
-export const ToPayForBtn = (connect(
+export const ToPayForBtn = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    ({ qrCodeToggleClick, loadingToggle }) => {
+    ({ qrCodeToggleClick, loadingToggle, isFrom, history }) => {
         // console.log('🍎去支付按钮组件', props);
         return (
             <button
                 className='footer-btn-basic footer-btn-dark'
                 onClick={() => {
+                    console.log(isFrom);
+                    //  如果是来自订单详情页，只需要跳转到支付页面
+                    if (isFrom === ROUTER_ORDER_DETAIL) {
+                        history.push('/feesPaid');
+                        return;
+                    }
                     //  打开loading
                     loadingToggle(true);
                     //  获取二维码接口你
@@ -94,3 +100,4 @@ export class CancelOrder extends React.Component {
         );
     }
 }
+

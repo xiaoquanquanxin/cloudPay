@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
 
 // 支付成功layout
-export const FeesPaid = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(

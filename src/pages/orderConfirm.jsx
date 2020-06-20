@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
 
 // 确认订单layout
-export const OrderConfirm = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(

@@ -73,7 +73,8 @@ const QRCodeButtons = withRouter(
                             qrCodeToggleClick(false);
                             setTimeout(() => {
                                 loadingToggle(false);
-                                history.push('/orderDetail?orderid=1234567');
+                                history.replace('/orderDetail?orderid=1234567');
+                                //  todo    5s延时
                             }, 1);
                         }}
                     >付款完成
