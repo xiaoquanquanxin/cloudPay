@@ -2,8 +2,7 @@ import React from 'react';
 import './subTitle.css';
 
 //  副标题
-export function SubTitle({ text, history }){
-    // console.log('🍊', history, text);
+export function SubTitle({ text }){
     return (
         <div className='sub-title'>{text}</div>
     );

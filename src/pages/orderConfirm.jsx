@@ -2,14 +2,11 @@ import React from 'react';
 import '../css/color.css';
 import { BasicHeader } from '../layout/basicHeader';
 import { BasicFooter } from '../layout/basicFooter';
-import { SubTitle } from '../components/subTitle/subTitle';
 import { ROUTER_ORDER_CONFIRM } from '../utils/constant';
-
-//  楼盘图片
-import building from '../images/building.png';
 import { request } from '../utils/request';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
+import { DeliveryDealWith } from '../components/deliveryDealWith/deliveryDealWith';
 
 // 确认订单layout
 export default connect(
@@ -80,22 +77,8 @@ export default connect(
             });
         }
 
-        //  渲染主要
-        renderBody({ placeName, phoneNumber, idCard, costType, costNumber }){
-            return (
-                <div>
-                    <img src={building} alt="当前楼盘logo"/>
-                    <div>{placeName}</div>
-                    <div>{phoneNumber}</div>
-                    <div>{idCard}</div>
-                    <SubTitle text='费用合计'/>
-                    <div>{costType}</div>
-                    <div>{costNumber}</div>
-                </div>
-            );
-        }
-
         render(){
+            const state = this.state;
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
@@ -103,7 +86,13 @@ export default connect(
                         headerType={ROUTER_ORDER_CONFIRM}
                     />
                     {/*主要内容*/}
-                    {this.renderBody(this.state)}
+                    <DeliveryDealWith
+                        placeName={state.placeName}
+                        phoneNumber={state.phoneNumber}
+                        idCard={state.idCard}
+                        costType={state.costType}
+                        costNumber={state.costNumber}
+                    />
                     <BasicFooter
                         footerType={ROUTER_ORDER_CONFIRM}
                     />
@@ -112,3 +101,4 @@ export default connect(
         }
     }
 );
+
