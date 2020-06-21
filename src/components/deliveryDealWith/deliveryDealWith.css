@@ -17,7 +17,8 @@
 
 /*右侧内容*/
 .delivery-container {
-    margin: 0.06rem 0 0.04rem;
+    padding: 0.06rem 0 0.04rem;
+    height: 0.42rem;
 }
 
 /*地点*/

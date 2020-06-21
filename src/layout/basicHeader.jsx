@@ -5,7 +5,8 @@ import { ReBackBtn } from '../components/reBackBtn/reBackBtn';
 import { HeaderTitle } from '../components/headerTitle/headerTitle';
 import { Route } from 'react-router-dom';
 import { HeaderRightSide } from '../components/HeaderRightSide/headerRightSide';
-import {ROUTER_ORDER_CONFIRM,
+import {
+    ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
     ROUTER_FEES_PAID,
 } from '../utils/constant';
