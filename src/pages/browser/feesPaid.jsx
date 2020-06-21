@@ -1,14 +1,14 @@
 import React from 'react';
-import '../css/color.css';
-import { OrderAmount } from '../components/feesPaid/orderAmount';
-import { ChoosePaymentMethod } from '../components/feesPaid/choosePaymentMethod';
-import { QRCode } from '../components/qrCode/qrCode';
-import { BasicHeader } from '../layout/basicHeader';
-import { ROUTER_FEES_PAID } from '../utils/constant';
-import { BasicFooter } from '../layout/basicFooter';
+import '../../css/color.css';
+import { OrderAmount } from '../../components/feesPaid/orderAmount';
+import { ChoosePaymentMethod } from '../../components/feesPaid/choosePaymentMethod';
+import { QRCode } from '../../components/qrCode/qrCode';
+import { BasicHeader } from '../../layout/basicHeader';
+import { ROUTER_FEES_PAID } from '../../utils/constant';
+import { BasicFooter } from '../../layout/basicFooter';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
-import { requestPaymentPage } from '../api/api';
+import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { requestPaymentPage } from '../../api/api';
 
 // 支付成功layout
 export default connect(

@@ -1,12 +1,12 @@
 import React from 'react';
-import '../css/color.css';
-import { BasicHeader } from '../layout/basicHeader';
-import { BasicFooter } from '../layout/basicFooter';
-import { ROUTER_ORDER_CONFIRM } from '../utils/constant';
+import '../../css/color.css';
+import { BasicHeader } from '../../layout/basicHeader';
+import { BasicFooter } from '../../layout/basicFooter';
+import { ROUTER_ORDER_CONFIRM } from '../../utils/constant';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
-import { DeliveryDealWith } from '../components/deliveryDealWith/deliveryDealWith';
-import { requestConfirm } from '../api/api';
+import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { DeliveryDealWith } from '../../components/deliveryDealWith/deliveryDealWith';
+import { requestConfirm } from '../../api/api';
 
 // 确认订单layout
 export default connect(
