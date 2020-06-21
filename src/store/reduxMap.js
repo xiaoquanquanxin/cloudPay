@@ -1,14 +1,19 @@
 import {
     setLoadingIsShow,
-    setqrCodeIsShow
+    setQrCodeIsShow, setToastIsShow
 } from './actions';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
-export const mapStateToProps = ({ namespace_qrCode, namespace_Loading, }) => {
+export const mapStateToProps = ({
+    namespace_qrCode,
+    namespace_loading,
+    namespace_toast,
+}) => {
     return {
         namespace_qrCode,
-        namespace_Loading,
+        namespace_loading,
+        namespace_toast,
     };
 };
 
@@ -19,15 +24,19 @@ export const mapStateToProps = ({ namespace_qrCode, namespace_Loading, }) => {
 export const mapDispatchToProps = (dispatch) => {
     return {
         //  切换loading
-        loadingToggle: (isShow) => {
-            dispatch(setLoadingIsShow(isShow));
+        loadingToggle: (qrIsShow) => {
+            dispatch(setLoadingIsShow(qrIsShow));
         },
         //  二维码打开/关闭
-        qrCodeToggleClick: (isShow, qrCodeImg) => {
+        qrCodeToggleClick: (qrIsShow, qrCodeImg) => {
             //  如果是要展示二维码
             dispatch(
-                setqrCodeIsShow(isShow, qrCodeImg),
+                setQrCodeIsShow(qrIsShow, qrCodeImg),
             );
+        },
+        //  普通弹框
+        toastToggle: (isShow, text, confirmClick, cancelClick,) => {
+            dispatch(setToastIsShow(isShow, text, confirmClick, cancelClick,));
         }
     };
 };

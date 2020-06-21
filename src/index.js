@@ -20,6 +20,6 @@ ReactDOM.render(
 // 每次 state 更新时，打印日志
 // 注意 subscribe() 返回一个函数用来注销监听器
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
-// store.dispatch(setqrCodeIsShow(true));
+// store.dispatch(setQrCodeIsShow(true));
 // 停止监听 state 更新
 unsubscribe();

@@ -88,6 +88,6 @@
 }
 
 .qr-code-buttons > button:first-child {
-    border-width: 0 0.01rem 0 0;
+    border-width: 0 0 0 0.01rem;
     border-style: solid;
 }

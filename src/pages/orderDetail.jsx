@@ -9,6 +9,7 @@ import { BasicFooter } from '../layout/basicFooter';
 import { requestGetOrderDetail } from '../api/api';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
+import { Toast } from '../components/toast/toast';
 
 // 支付成功内容
 export default connect(

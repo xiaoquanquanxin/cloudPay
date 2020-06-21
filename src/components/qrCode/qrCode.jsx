@@ -14,9 +14,8 @@ export const QRCode = withRouter(connect(
     mapDispatchToProps
 )(
     function ({ namespace_qrCode, amount }){
-        // console.log(history);
-        const { qrCodeImg, isShow } = namespace_qrCode;
-        if (!isShow) {
+        const { qrCodeImg, qrIsShow } = namespace_qrCode;
+        if (!qrIsShow) {
             return '';
         }
         console.log('🍎二维码弹框');
@@ -58,7 +57,7 @@ const QRCodeButtons = withRouter(
             return (
                 <div className='qr-code-buttons border-grey'>
                     <button
-                        className='color-grey border-grey'
+                        className='color-grey'
                         onClick={() => {
                             //  放弃付款
                             qrCodeToggleClick(false);
@@ -66,7 +65,7 @@ const QRCodeButtons = withRouter(
                     >放弃付款
                     </button>
                     <button
-                        className='color-blue'
+                        className='color-blue border-grey'
                         onClick={() => {
                             //  付款完成
                             loadingToggle(true);

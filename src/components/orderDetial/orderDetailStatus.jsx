@@ -16,7 +16,7 @@ export function OrderDetailStatus({
             />
             <CountDown
                 orderState={orderState}
-                countDown={'2020-06-20 17:19'}
+                countDown={'2020-06-20 22:00'}
             />
         </div>
     );
@@ -79,4 +79,6 @@ function CountDown({ orderState, countDown }){
     }
     return <p className='countdown-pay color-grey'>{str}</p>;
 }
+
+
 

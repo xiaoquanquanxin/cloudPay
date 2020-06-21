@@ -6,6 +6,7 @@ import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
 import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '../../utils/constant';
 import {
+    requestCancelOrder,
     requestGetQRCode
 } from '../../api/api';
 
@@ -82,22 +83,32 @@ export const ConfirmPaymentBtn = withRouter(
 );
 
 //  取消订单
-export class CancelOrder extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
+export const CancelOrder = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(({ namespace_toast, toastToggle, loadingToggle }) => {
+    console.log('取消订单按钮', namespace_toast);
+    return (
+        <button
+            className='footer-btn-basic footer-btn-light'
+            onClick={() => {
+                toastToggle(true,
+                    '您确定取消订单？',
+                    null,
+                    //  取消订单
+                    () => {
+                        loadingToggle(true);
+                        requestCancelOrder({})
+                            .then(() => {
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 1000);
+                            });
+                    }
+                );
 
-    handleClick(){
-        console.log('取消订单');
-    }
+            }}>取消订单</button>
+    );
+});
 
-    render(){
-        return (
-            <button
-                className='footer-btn-basic footer-btn-light'
-                onClick={this.handleClick}>取消订单</button>
-        );
-    }
-}
 

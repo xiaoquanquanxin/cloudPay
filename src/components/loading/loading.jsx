@@ -9,9 +9,9 @@ export const Loading = connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    ({ namespace_Loading }) => {
-        const { isShow } = namespace_Loading;
-        console.log('🍎Loading', isShow);
+    ({ namespace_loading }) => {
+        const { isShow } = namespace_loading;
+        // console.log('🍎Loading', isShow);
         const loadingClassName = isShow ? 'loading-mask' : 'hide';
         return (
             <div id='loading' className={loadingClassName}>

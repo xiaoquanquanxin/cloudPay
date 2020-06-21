@@ -18,6 +18,7 @@ import {
 import { Loading } from '../components/loading/loading';
 //  异步加载组件
 import asyncComponent from './asyncComponentLoader';
+import { Toast } from '../components/toast/toast';
 //  交付办理组件
 const OrderConfirm = asyncComponent(
     () => import( '../pages/orderConfirm')
@@ -47,7 +48,10 @@ export const App = connect()(
                         {/*默认路由*/}
                         <Redirect from="/*" to={ROUTER_ORDER_CONFIRM}/>
                     </Switch>
+                    {/*loading*/}
                     <Loading/>
+                    {/*全局弹框*/}
+                    <Toast/>
                 </Router>
             );
         }
