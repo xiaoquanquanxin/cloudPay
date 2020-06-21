@@ -1,0 +1,60 @@
+/*logo哪一行*/
+.delivery-basic-info {
+    padding: 0.15rem 0.3rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    border-width: 0 0 0.01rem 0;
+    border-style: solid;
+}
+
+
+.delivery-basic-info img {
+    display: flex;
+    width: 0.4rem;
+    margin-right: 0.2rem;
+}
+
+/*右侧内容*/
+.delivery-container {
+    margin: 0.06rem 0 0.04rem;
+}
+
+/*地点*/
+.delivery-place {
+    font-size: 0.17rem;
+}
+
+/*信息块*/
+.delivery-content {
+    display: flex;
+    font-size: 0.13rem;
+}
+
+
+/*电话*/
+.delivery-phone {
+    margin-right: 0.2rem;
+}
+
+/*身份证*/
+.delivery-id-card {
+
+}
+
+
+/*费用*/
+.delivery-coast-content {
+    text-align: center;
+}
+
+/*费用类型说明*/
+.delivery-coast-type {
+    font-size: 0.14rem;
+}
+
+/*金额*/
+.delivery-coast {
+    font-size: 0.3rem;
+}
