@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/reset.css';
-import { App } from './layout/router';
+import { App } from './route/router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import AppRedux from './store/reducers';
-import { basicConfig } from './utils/basicConfig';
 
-//  基础配置
-basicConfig();
 let store = createStore(AppRedux);
 ReactDOM.render(
     <Provider store={store}>

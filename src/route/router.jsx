@@ -17,8 +17,14 @@ import {
 //  loading组件
 import { Loading } from '../components/loading/loading';
 //  异步加载组件
-import asyncComponent from './asyncComponentLoader';
+import asyncComponent from '../layout/asyncComponentLoader';
 import { Toast } from '../components/toast/toast';
+import { basicConfig } from '../utils/basicConfig';
+
+//  基础配置
+const { isWx } = basicConfig();
+console.log('是否是微信', !!isWx);
+
 //  交付办理组件
 const OrderConfirm = asyncComponent(
     () => import( '../pages/orderConfirm')

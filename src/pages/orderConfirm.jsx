@@ -16,6 +16,7 @@ export default connect(
     class extends React.Component {
         constructor(props){
             super(props);
+            window.document.title = '确认订单';
             // console.log('👵OrderConfirm', props.history);
             props.loadingToggle(true);
             this.state = {

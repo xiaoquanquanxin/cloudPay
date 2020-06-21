@@ -6,7 +6,6 @@ import scan_code from '../../images/scan_code.png';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { requestGetOrderDetail } from '../../api/api';
 
 //  二维码弹框
 export const QRCode = withRouter(connect(

@@ -6,7 +6,6 @@ import { QRCode } from '../components/qrCode/qrCode';
 import { BasicHeader } from '../layout/basicHeader';
 import { ROUTER_FEES_PAID } from '../utils/constant';
 import { BasicFooter } from '../layout/basicFooter';
-import { request } from '../utils/request';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
 import { requestPaymentPage } from '../api/api';
@@ -20,6 +19,7 @@ export default connect(
         constructor(props){
             super(props);
             console.log('👵FeesPaid', props.history);
+            window.document.title = '费用支付';
             props.loadingToggle(true);
             this.state = {
                 //  被选中的方式，3：微信
