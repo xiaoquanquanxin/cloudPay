@@ -9,6 +9,7 @@ import { BasicFooter } from '../layout/basicFooter';
 import { request } from '../utils/request';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
+import { requestPaymentPage } from '../api/api';
 
 // 支付成功layout
 export default connect(
@@ -30,14 +31,7 @@ export default connect(
         }
 
         componentDidMount(){
-            //  请求
-            request({
-                method: 'post',
-                url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
-                data: {
-                    name: 1,
-                },
-            })
+            requestPaymentPage()
                 .then(v => {
                     const data = { amount: 2345432.32 };
                     this.setData(data);

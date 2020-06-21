@@ -3,7 +3,7 @@ import './orderDetailBasic.css';
 import '../../css/color.css';
 
 export function OrderDetailBasic({
-    room, costType = '费用类型', cost = '0'
+    room='1234567654', costType = '费用类型234543', cost = '213450'
 }){
     return (
         <div className='order-detail-basic'>

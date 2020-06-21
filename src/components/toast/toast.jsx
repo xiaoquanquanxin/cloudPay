@@ -10,7 +10,7 @@ export const Toast = connect(
     mapDispatchToProps
 )(
     ({ namespace_toast }) => {
-        console.log('🍎弹框组件', namespace_toast);
+        // console.log('🍎弹框组件', namespace_toast);
         const { isShow, text, confirmClick, cancelClick } = namespace_toast;
         if (!isShow) {
             return '';

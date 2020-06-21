@@ -1,6 +1,7 @@
 import {
     setLoadingIsShow,
-    setQrCodeIsShow, setToastIsShow
+    setQrCodeIsShow,
+    setToastIsShow
 } from './actions';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中

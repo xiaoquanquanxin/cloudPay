@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '../../utils/constant';
 import {
     requestCancelOrder,
-    requestGetQRCode
+    requestGetQRCode, requestJudgeAmountChange
 } from '../../api/api';
 
 //  暂不办理
@@ -69,13 +69,21 @@ export const ConfirmPaymentBtn = withRouter(
         mapStateToProps,
         mapDispatchToProps
     )(
-        ({ history }) => {
+        ({ history, toastToggle }) => {
             return (
                 <button
                     className='footer-btn-basic footer-btn-dark'
                     onClick={() => {
-                        console.log('去费用支付');
-                        history.push(ROUTER_FEES_PAID);
+                        //  判断金额变更
+                        requestJudgeAmountChange()
+                            .then(v => {
+                                console.log('去费用支付');
+                                //  您有预缴费用价格发生变更
+                                // toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
+                                //     toastToggle(false);
+                                // });
+                                history.push(ROUTER_FEES_PAID);
+                            });
                     }}>确认支付以上费用</button>
             );
         }

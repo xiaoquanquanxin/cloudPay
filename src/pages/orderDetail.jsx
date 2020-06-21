@@ -35,7 +35,7 @@ export default connect(
                                 orderState: 2,
                             };
                         });
-                    }, 1111);
+                    }, 101);
                 });
         }
 
