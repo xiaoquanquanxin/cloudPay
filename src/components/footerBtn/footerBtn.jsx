@@ -94,19 +94,23 @@ export const CancelOrder = connect(
             onClick={() => {
                 toastToggle(true,
                     '您确定取消订单？',
-                    null,
-                    //  取消订单
+                    //  确定取消订单
                     () => {
                         loadingToggle(true);
                         requestCancelOrder({})
                             .then(() => {
+                                //  todo
+                                console.log('等待5s，再次请求');
                                 setTimeout(() => {
                                     window.location.reload();
                                 }, 1000);
                             });
+                    },
+                    //  取消取消订单
+                    () => {
+                        toastToggle(false);
                     }
                 );
-
             }}>取消订单</button>
     );
 });

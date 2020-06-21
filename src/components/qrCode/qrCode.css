@@ -87,7 +87,7 @@
     height: 100%;
 }
 
-.qr-code-buttons > button:first-child {
+.qr-code-buttons > button:last-child {
     border-width: 0 0 0 0.01rem;
     border-style: solid;
 }
