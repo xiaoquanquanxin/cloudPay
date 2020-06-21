@@ -18,7 +18,7 @@ import {
 //  loading组件
 import { Loading } from '../components/loading/loading';
 //  异步加载组件
-import asyncComponent from '../layout/asyncComponentLoader';
+import asyncComponent from './asyncComponentLoader';
 //  请用微信打开
 import { OpenWithWeChat } from '../pages/openWithWeChat';
 import { Toast } from '../components/toast/toast';
