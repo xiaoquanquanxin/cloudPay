@@ -58,6 +58,10 @@ export const App = connect()(
         render(){
             return (
                 <Router>
+                    {/*loading*/}
+                    <Loading/>
+                    {/*全局弹框*/}
+                    <Toast/>
                     <Switch>
                         {/*确认订单*/}
                         <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
@@ -70,10 +74,6 @@ export const App = connect()(
                         {/*默认路由*/}
                         <Redirect from="/*" to={ROUTER_OPEN_WITH_WE_CHAT}/>
                     </Switch>
-                    {/*loading*/}
-                    <Loading/>
-                    {/*全局弹框*/}
-                    <Toast/>
                 </Router>
             );
         }
