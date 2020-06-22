@@ -32,16 +32,27 @@ export const ToPayForBtn = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    ({ qrCodeToggleClick, loadingToggle, isFrom, history }) => {
-        // console.log('🍎去支付按钮组件', props);
+    ({ qrCodeToggleClick, loadingToggle, isFrom, history, namespace_payType }) => {
+        // console.log('🍎去支付按钮组件', namespace_payType.payType);
+        let className;
+        //  如果是来自订单详情页
+        if (isFrom === ROUTER_ORDER_DETAIL) {
+            className = 'footer-btn-basic footer-btn-dark';
+        } else {
+            className = 'footer-btn-basic ' +
+                (namespace_payType.payType ? 'footer-btn-dark' : 'footer-btn-freeze');
+        }
         return (
             <button
-                className='footer-btn-basic footer-btn-dark'
+                className={className}
                 onClick={() => {
-                    console.log(isFrom);
                     //  如果是来自订单详情页，只需要跳转到支付页面
                     if (isFrom === ROUTER_ORDER_DETAIL) {
                         history.push('/feesPaid');
+                        return;
+                    }
+                    //  如果没有选择
+                    if (namespace_payType.payType === null) {
                         return;
                     }
                     //  打开loading
@@ -57,7 +68,7 @@ export const ToPayForBtn = withRouter(connect(
                                 qrCodeToggleClick(true, qrCodeImg);
                             }, 1000);
                         });
-                }}>去支付
+                }}>去支付1
             </button>
         );
     },

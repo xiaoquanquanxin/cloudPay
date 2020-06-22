@@ -18,12 +18,15 @@ export default connect(
     class extends React.Component {
         constructor(props){
             super(props);
-            console.log('👵FeesPaid', props.history);
             window.document.title = '费用支付';
+            console.log('👵FeesPaid', props.history);
+
+            //  打开loading
             props.loadingToggle(true);
+            //  重置支付类型
+            this.props.choosePayType(null);
+            console.log('支付方式', props.namespace_payType.payType);
             this.state = {
-                //  被选中的方式，3：微信
-                checkedMethod: 3,
                 //  金额
                 amount: 0,
             };
@@ -37,7 +40,9 @@ export default connect(
                     this.setData(data);
                 })
                 .then(() => {
-                    this.props.loadingToggle(false);
+                    setTimeout(() => {
+                        this.props.loadingToggle(false);
+                    }, 1000);
                 });
         }
 
@@ -51,14 +56,15 @@ export default connect(
         }
 
         //  选择支付方式
-        handleClickCheck(checkedMethod){
-            // console.log(checkedMethod);
-            if (this.state.checkedMethod === checkedMethod) {
+        handleClickCheck(payType){
+            if (this.state.payType === payType) {
                 return;
             }
             this.setState({
-                checkedMethod,
+                payType,
             });
+            console.log(payType);
+            this.props.choosePayType(payType);
         }
 
         render(){
@@ -77,7 +83,7 @@ export default connect(
                         />
                         {/*支付选择*/}
                         <ChoosePaymentMethod
-                            checkedMethod={state.checkedMethod}
+                            payType={state.payType}
                             handleClickCheck={this.handleClickCheck}
                         />
                         {/*二维码*/}

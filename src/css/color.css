@@ -51,6 +51,12 @@
     background-color: var(--btn-dark-blue);
 }
 
+/*脚部按钮-灰色*/
+.footer-btn-freeze {
+    color: var(--font-grey);
+    background-color: var(--freeze);
+}
+
 /*订单详情-金额*/
 .order-detail-cost-amount {
     color: var(--font-orange)

@@ -71,16 +71,22 @@ export default connect(
         }
 
         render(){
+            const state = this.state;
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
                     <BasicHeader
                         headerType={ROUTER_ORDER_DETAIL}
                     />
-                    {this.renderBody(this.state)}
-                    <BasicFooter
-                        footerType={ROUTER_ORDER_DETAIL}
-                    />
+                    {this.renderBody(state)}
+                    {
+                        // 只有待支付状态，才有底部
+                        state.orderState === 2 ?
+                            (<BasicFooter
+                                footerType={ROUTER_ORDER_DETAIL}
+                            />)
+                            : ''
+                    }
                 </div>
             );
         }

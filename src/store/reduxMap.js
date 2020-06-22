@@ -1,7 +1,8 @@
 import {
     setLoadingIsShow,
+    setPayType,
     setQrCodeIsShow,
-    setToastIsShow
+    setToastIsShow,
 } from './actions';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
@@ -10,11 +11,13 @@ export const mapStateToProps = ({
     namespace_qrCode,
     namespace_loading,
     namespace_toast,
+    namespace_payType,
 }) => {
     return {
         namespace_qrCode,
         namespace_loading,
         namespace_toast,
+        namespace_payType,
     };
 };
 
@@ -38,6 +41,11 @@ export const mapDispatchToProps = (dispatch) => {
         //  普通弹框
         toastToggle: (isShow, text, confirmClick, cancelClick,) => {
             dispatch(setToastIsShow(isShow, text, confirmClick, cancelClick,));
+        },
+
+        //  选择支付方式
+        choosePayType: (payType) => {
+            dispatch(setPayType(payType));
         }
     };
 };

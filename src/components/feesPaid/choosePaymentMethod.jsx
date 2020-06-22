@@ -9,7 +9,7 @@ import logo_zhifubao from '../../images/logo_zhifubao.png';
 // 选择支付方式模块
 export function ChoosePaymentMethod(props){
     //  微信和支付宝数据，将来来自props
-    const list = processingData([3, 4], props.checkedMethod);
+    const list = processingData([1, 2], props.payType);
     const text = '选择支付方式';
     return (
         <div className='choose-payment-method'>
@@ -49,18 +49,18 @@ function MethodList(props){
 }
 
 //  处理数据
-function processingData(list, checkedMethod){
+function processingData(list, payType){
     return list.map((method) => {
         const state = {
             method,
         };
         switch (method) {
-            case 3:
+            case 1:
                 state.text = '微信支付';
                 state.alt = '微信支付';
                 state.img = logo_weixin;
                 break;
-            case 4:
+            case 2:
                 state.text = '支付宝支付';
                 state.alt = '支付宝支付';
                 state.img = logo_zhifubao;
@@ -71,7 +71,7 @@ function processingData(list, checkedMethod){
         //  基础class
         state.basicClassName = 'weui-icon-checkedbox';
         //  勾选状态
-        state.extraClassName = checkedMethod === method ? ' weui-icon-success' : ' weui-icon-freeze';
+        state.extraClassName = payType === method ? ' weui-icon-success' : ' weui-icon-freeze';
         return state;
     });
 }

@@ -53,28 +53,27 @@ const QRCodeButtons = withRouter(
         mapDispatchToProps
     )(
         ({ qrCodeToggleClick, history, loadingToggle }) => {
+            //  两个按钮
+            const callbackFn = () => {
+                //  付款完成
+                loadingToggle(true);
+                qrCodeToggleClick(false);
+                setTimeout(() => {
+                    loadingToggle(false);
+                    history.replace('/orderDetail?orderid=1234567');
+                    //  todo    5s延时
+                }, 1000);
+            };
             return (
                 <div className='qr-code-buttons border-grey'>
                     <button
                         className='color-grey'
-                        onClick={() => {
-                            //  放弃付款
-                            qrCodeToggleClick(false);
-                        }}
+                        onClick={callbackFn}
                     >放弃付款
                     </button>
                     <button
                         className='color-blue border-grey'
-                        onClick={() => {
-                            //  付款完成
-                            loadingToggle(true);
-                            qrCodeToggleClick(false);
-                            setTimeout(() => {
-                                loadingToggle(false);
-                                history.replace('/orderDetail?orderid=1234567');
-                                //  todo    5s延时
-                            }, 1000);
-                        }}
+                        onClick={callbackFn}
                     >付款完成
                     </button>
                 </div>
