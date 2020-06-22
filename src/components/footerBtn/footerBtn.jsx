@@ -4,7 +4,7 @@ import '../../css/color.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '../../utils/constant';
+import { ROUTER_ORDER_DETAIL } from '../../utils/constant';
 import {
     requestCancelOrder,
     requestGetQRCode, requestJudgeAmountChange

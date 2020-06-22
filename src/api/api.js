@@ -1,17 +1,18 @@
 import { request } from '../utils/request';
 
 //  确认订单的信息，首页
-export function requestConfirm(data){
+export function requestConfirm(data, catchFn){
     return request({
         method: 'post',
-        url: '/syncAccount',
+        url: '/property-api/syncAccount',
+        // url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
         data: {
             name: 1,
             age: 2,
-            list: '试试',
+            list: [323, 43],
             b: 32,
         },
-    });
+    }, catchFn);
 }
 
 //  支付页

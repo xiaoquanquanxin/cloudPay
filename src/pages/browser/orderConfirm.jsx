@@ -35,7 +35,7 @@ export default connect(
 
         //  钩子函数请求
         componentDidMount(){
-            requestConfirm()
+            requestConfirm(null, this.props.toastToggle)
                 .then(v => {
                     const data = {
                         //  地名
@@ -50,8 +50,6 @@ export default connect(
                         costNumber: 3600.00,
                     };
                     this.setData(data);
-                })
-                .then(() => {
                     this.props.loadingToggle(false);
                 });
         }

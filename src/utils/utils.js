@@ -1,6 +1,6 @@
 import Qs from 'qs';
 import md5 from 'md5';
-import { appKey, appSecret } from './constant';
+import { appSecret } from './constant';
 
 //  重置字体大小
 export function remSet(win, doc, isWx){
@@ -49,8 +49,8 @@ export function requestEndorse(originData){
     //  组合md5
     const md5Data = Object.assign({}, _data);
     const str = Qs.stringify(md5Data, { encode: false }) + '&' + timestamp + '&' + appSecret;
-    console.log(str);
-    console.log(md5(str));
+    // console.log(str);
+    // console.log(md5(str));
     const requestData = Qs.stringify(_data);
     return {
         auth: md5(str),

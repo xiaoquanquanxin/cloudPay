@@ -15,12 +15,17 @@
 /*toast的内容*/
 .toast-container {
     width: 4rem;
-    height: 3rem;
+    height: 2rem;
     background-color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+/*有底部按钮*/
+.toast-container.big {
+    height: 3rem;
 }
 
 /*文本*/
