@@ -25,3 +25,13 @@ http://qq784602719.imwork.net/school/rechargeHome  去掉最后一个斜杠后�
 3.业务流程
 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4
 
+
+、
+####：各种谈框提示
+#####1：微信支付：调用支付JSAPI缺少参数:total_fee
+（1）金额为空
+（2）订单编号重复
+（3）订单编号为空
+
+
+

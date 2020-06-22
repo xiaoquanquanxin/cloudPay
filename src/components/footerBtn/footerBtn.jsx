@@ -9,6 +9,8 @@ import {
     requestCancelOrder,
     requestGetQRCode, requestJudgeAmountChange
 } from '../../api/api';
+import { packagePay } from '../../utils/packagePay';
+import { emptyFunction } from '../../utils/utils';
 
 //  暂不办理
 export const NotDealWithBtn = withRouter(
@@ -92,12 +94,35 @@ export const ConfirmPaymentBtn = withRouter(
                         //  判断金额变更
                         requestJudgeAmountChange()
                             .then(v => {
-                                console.log('去费用支付');
+                                //  todo 逻辑
                                 //  您有预缴费用价格发生变更
-                                toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
-                                    history.go(-1);
+                                // toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
+                                //     history.go(-1);
+                                // });
+                                //  fixme
+                                //  点击【微信支付】预缴信息无变更生成订单，调起微信支付；支付成功，跳转到支付成功页面；支付失败进入订单详情页
+                                if (iswx) {
+                                    console.log('微信支付');
+                                    //  ⚠️⚠️⚠️发起某个请求，获取微信支付的各种数据
+                                    return Promise.resolve();
+                                } else {
+                                    // history.replace(ROUTER_FEES_PAID);
+                                    console.log('pad，跳转');
+                                    //  仅仅是为了终止promise
+                                    return Promise.reject();
+                                }
+                            })
+                            .then(v => {
+                                packagePay((res) => {
+                                    //  支付成功的回调
+                                    if (res.err_msg === 'get_brand_wcpay_request:ok') {
+                                        // 使用以上方式判断前端返回,微信团队郑重提示：
+                                        //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                                    }
                                 });
-                            });
+                            })
+                            .catch(emptyFunction);
+
                     }}>确认支付以上费用</button>
             );
         }
@@ -137,19 +162,4 @@ export const CancelOrder = connect(
     );
 });
 
-//  微信去支付
-export const WxToPayForBtn = withRouter(
-    connect(
-        mapStateToProps,
-        mapDispatchToProps,
-    )(
-        () => {
-            {/*微信去支付*/}
-            return (
-                <button
-                    className='wx-button footer-btn-basic footer-btn-dark'
-                >去支付</button>
-            );
-        }
-    )
-);
+

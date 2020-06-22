@@ -18,14 +18,14 @@ export const Toast = connect(
         //  确认按钮
         const ConfirmButton = confirmClick ? (<button
             className='border-grey'
-            onClick={() => {confirmClick();}}
+            onClick={confirmClick}
         >确定
         </button>) : '';
         //  取消按钮
         const CancelButton = cancelClick ? (
             <button
                 className='border-grey'
-                onClick={() => {cancelClick();}}
+                onClick={cancelClick}
             >取消
             </button>
         ) : '';
@@ -40,4 +40,5 @@ export const Toast = connect(
                 </div>
             </div>
         );
-    });
+    }
+);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { requestEndorse } from './utils';
-
+import { appKey } from './constant';
 //  定义中间件
 axios.interceptors.response.use(
     response => {
@@ -57,6 +57,9 @@ export function request(options){
             'Content-Type': 'application/x-www-form-urlencoded',
             auth,
             timestamp,
+            channel: 'digital-center',
+            clientIp: '192.168.50.91',
+            appKey
         },
         method: options.method,
         url: options.url,

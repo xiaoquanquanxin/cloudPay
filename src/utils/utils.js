@@ -1,6 +1,6 @@
 import Qs from 'qs';
 import md5 from 'md5';
-import { appId } from './constant';
+import { appKey, appSecret } from './constant';
 
 //  重置字体大小
 export function remSet(win, doc, isWx){
@@ -41,21 +41,19 @@ export function remSet(win, doc, isWx){
  * */
 export function requestEndorse(originData){
     const timestamp = new Date().getTime();
-    const appKey = appId;
     const _data = {};
     //  参数排序
     Object.keys(originData).sort().forEach(key => {
         _data[key] = originData[key];
     });
     //  组合md5
-    const md5Data = Object.assign({}, _data, {
-        timestamp,
-        appKey,
-    });
-    // console.log(Qs.stringify(md5Data));
+    const md5Data = Object.assign({}, _data);
+    const str = Qs.stringify(md5Data, { encode: false }) + '&' + timestamp + '&' + appSecret;
+    console.log(str);
+    console.log(md5(str));
     const requestData = Qs.stringify(_data);
     return {
-        auth: md5(Qs.stringify(md5Data)),
+        auth: md5(str),
         timestamp,
         requestData,
     };
@@ -65,7 +63,8 @@ export function requestEndorse(originData){
 export function isWX(){
     const ua = navigator.userAgent.toLowerCase();
     const test = ua.match(/MicroMessenger/i);
-    return !(test && test[0] === 'micromessenger');
+    // return true;
+    return (test && test[0] === 'micromessenger');
 }
 
 //  倒计时
@@ -86,3 +85,6 @@ export function standardTime(timeStamp){
 function fillUpWithZero(n){
     return n > 9 ? n : '0' + n;
 }
+
+//  空函数
+export function emptyFunction(){}

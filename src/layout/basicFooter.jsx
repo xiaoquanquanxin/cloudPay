@@ -4,7 +4,8 @@ import {
     NotDealWithBtn,
     ToPayForBtn,
     ConfirmPaymentBtn,
-    CancelOrder, WxToPayForBtn,
+    CancelOrder,
+
 } from '../components/footerBtn/footerBtn';
 //  路由
 import {
