@@ -12,3 +12,8 @@
     padding: 0 0.2rem;
     box-sizing: border-box;
 }
+
+.basic-footer.iswx {
+    height: 1.1rem;
+    font-size: 0.28rem;
+}

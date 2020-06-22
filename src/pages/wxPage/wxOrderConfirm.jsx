@@ -76,7 +76,7 @@ export default connect(
                         <li className='border-grey'>房间:{state.placeName}</li>
                         <li className='wx-order-type border-grey'>
                             <span>{state.costType}</span>
-                            <span className='order-detail-cost-amount'>{state.costNumber}</span>
+                            <span className='order-detail-cost-amount'>¥{state.costNumber}</span>
                         </li>
                     </ul>
                     <BasicFooter

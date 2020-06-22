@@ -4,7 +4,7 @@ import {
     NotDealWithBtn,
     ToPayForBtn,
     ConfirmPaymentBtn,
-    CancelOrder,
+    CancelOrder, WxToPayForBtn,
 } from '../components/footerBtn/footerBtn';
 //  路由
 import {
@@ -25,7 +25,9 @@ export function BasicFooter({ footerType }){
     switch (footerType) {
         case ROUTER_ORDER_CONFIRM:
             if (isWx) {
-                footerButtonLeft = '去支付';
+                footerButtonLeft = <ConfirmPaymentBtn
+                    iswx={1}
+                />;
             } else {
                 //  暂不办理
                 footerButtonLeft = <NotDealWithBtn/>;
@@ -60,8 +62,10 @@ export function BasicFooter({ footerType }){
         default:
             console.log(`错误的类型 footerType : ${footerType}`);
     }
+    //  底部class
+    const className = 'basic-footer ' + (isWx ? 'iswx' : '');
     return (
-        <footer className='basic-footer'>
+        <footer className={className}>
             {footerButtonLeft}
             {footerButtonRight}
         </footer>

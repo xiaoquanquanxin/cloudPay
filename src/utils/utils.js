@@ -65,7 +65,7 @@ export function requestEndorse(originData){
 export function isWX(){
     const ua = navigator.userAgent.toLowerCase();
     const test = ua.match(/MicroMessenger/i);
-    return (test && test[0] === 'micromessenger');
+    return !(test && test[0] === 'micromessenger');
 }
 
 //  倒计时
