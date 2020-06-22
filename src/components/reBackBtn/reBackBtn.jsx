@@ -3,16 +3,28 @@ import './reBackBtn.css';
 import '../../css/color.css';
 import { ArrowsHead } from '../arrowsHead/arrowsHead';
 
+import { withRouter } from 'react-router-dom';
 //  返回按钮
-export function ReBackBtn({ history }){
+export const ReBackBtn = withRouter((
+    { history, goRoute, ReBackBtnBefore }) => {
+    console.log('🍎返回');
+    // console.log(goRoute);
+    // console.log(ReBackBtnBefore);
     return (
         <button className='re-back-btn' onClick={() => {
-            console.log('返回');
-            history.go(-1);
+            if (typeof goRoute === 'number') {
+                history.go(goRoute);
+            } else {
+                ReBackBtnBefore(
+                    () => {
+                        history.replace(goRoute);
+                    }
+                );
+            }
         }}>
             {/*箭头*/}
             <ArrowsHead/>
             <span className='color-grey'>返回</span>
         </button>
     );
-}
+});

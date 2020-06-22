@@ -5,13 +5,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: +2;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: +3;
 }
+
 /*菊花*/
 .loading-content {
     width: 1rem;
@@ -19,6 +20,7 @@
     margin-top: -2rem;
     animation: loop-rotate 2s infinite linear;
 }
+
 /*动画*/
 @keyframes loop-rotate {
     0% {

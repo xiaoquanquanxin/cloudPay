@@ -82,7 +82,7 @@ export const ConfirmPaymentBtn = withRouter(
                                 // toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
                                 //     toastToggle(false);
                                 // });
-                                history.push(ROUTER_FEES_PAID);
+                                history.replace(ROUTER_FEES_PAID);
                             });
                     }}>确认支付以上费用</button>
             );
