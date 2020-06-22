@@ -1,7 +1,7 @@
 import { request } from '../utils/request';
 
 //  确认订单的信息，首页
-export function requestConfirm(data, catchFn){
+export function requestConfirm(data){
     return request({
         method: 'post',
         url: '/property-api/syncAccount',
@@ -12,7 +12,7 @@ export function requestConfirm(data, catchFn){
             list: [323, 43],
             b: 32,
         },
-    }, catchFn);
+    });
 }
 
 //  支付页

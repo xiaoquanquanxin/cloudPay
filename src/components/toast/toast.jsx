@@ -9,8 +9,9 @@ export const Toast = connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    ({ namespace_toast }) => {
-        console.log('🍎弹框组件', namespace_toast);
+    ({ namespace_toast, toastToggle }) => {
+        //  console.log('🍎弹框组件', namespace_toast);
+        Toast.toastToggle = toastToggle;
         const { isShow, text, confirmClick, cancelClick } = namespace_toast;
         if (!isShow) {
             return '';
@@ -29,8 +30,8 @@ export const Toast = connect(
                 onClick={cancelClick}
             >取消</button>
         ) : '';
-        console.log(confirmClick && cancelClick);
         //  底部有按钮吗？
+        // console.log(!!(confirmClick && cancelClick));
         const hasFooterButtons = (confirmClick || cancelClick) ? (
             <div className='toast-buttons border-grey'>
                 {CancelButton}

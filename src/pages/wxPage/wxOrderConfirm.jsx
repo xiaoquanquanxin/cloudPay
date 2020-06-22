@@ -34,7 +34,7 @@ export default connect(
 
         //  钩子函数请求
         componentDidMount(){
-            requestConfirm(null, this.props.toastToggle)
+            requestConfirm(null)
                 .then(v => {
                     const data = {
                         //  地名

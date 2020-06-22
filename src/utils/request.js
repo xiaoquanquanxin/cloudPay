@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { requestEndorse } from './utils';
 import { appKey } from './constant';
+import { Toast } from '../components/toast/toast';
 
 //  定义中间件
 axios.interceptors.response.use(
@@ -22,7 +23,7 @@ axios.interceptors.response.use(
 );
 
 //  疯转请求
-export function request(options, catchFn){
+export function request(options){
     //  加签完毕的数据
     const {
         requestData,
@@ -44,7 +45,7 @@ export function request(options, catchFn){
         data: requestData,
     })
         .catch(v => {
-            catchFn(true, v, () => {catchFn(false);});
+            Toast.toastToggle(true, v,);
         });
 }
 

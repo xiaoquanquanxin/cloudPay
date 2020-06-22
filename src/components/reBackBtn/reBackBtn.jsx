@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 //  返回按钮
 export const ReBackBtn = withRouter((
     { history, goRoute, ReBackBtnBefore }) => {
-    console.log('🍎返回');
+    // console.log('🍎返回');
     // console.log(goRoute);
     // console.log(ReBackBtnBefore);
     return (

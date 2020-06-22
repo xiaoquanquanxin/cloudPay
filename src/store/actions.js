@@ -18,8 +18,9 @@ export function setLoadingIsShow(isShow){
 //  是否打开toast
 export const ACTION_TOAST = 'ACTION_TOAST';
 
-//  是否loading
+//  是否toast
 export function setToastIsShow(isShow, text, confirmClick, cancelClick){
+    console.log('是否toast action', isShow);
     return { type: ACTION_TOAST, isShow, text, confirmClick, cancelClick };
 }
 
