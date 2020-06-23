@@ -4,7 +4,7 @@ import { request } from '../utils/request';
 export function requestGetPaymentInfo(data){
     return request({
         method: 'post',
-        url: '/property-api/prepayment/getPaymentInfo',
+        url: '/prepayment/getPaymentInfo',
         data: data,
     });
 }
@@ -14,9 +14,9 @@ export function requestGetPaymentInfo(data){
 export function requestGetQRCode(data){
     let url;
     if (data.payType === 1) {
-        url = '/property-api/weChatPay/scanCodePay';
+        url = '/weChatPay/scanCodePay';
     } else {
-        url = '/property-api/aliPay/scanCodePay';
+        url = '/aliPay/scanCodePay';
     }
     return request({
         method: 'post',
@@ -57,7 +57,7 @@ export function requestCancelOrder(data){
 export function requestJudgeAmountChange(data){
     return request({
         method: 'post',
-        url: '/property-api/prepayment/createAdvanceOrder',
+        url: '/prepayment/createAdvanceOrder',
         data,
     });
 }
@@ -66,7 +66,7 @@ export function requestJudgeAmountChange(data){
 export function __testPropertyApiPrepaymentQueryFeeitemDetails(data){
     return request({
         method: 'post',
-        url: '/property-api/prepayment/queryFeeitemDetails',
+        url: '/prepayment/queryFeeitemDetails',
         data: {
             cmdsId: '7e1905fdad244d02aaa84bd93b2decba',
             pmdsRoomId: 'e04c5fe7-5ac4-4d06-ad3a-071c6b970c0b',
