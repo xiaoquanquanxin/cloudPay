@@ -6,6 +6,7 @@ import scan_code from '../../images/scan_code.png';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
+import { ROUTER_ORDER_DETAIL } from '../../utils/constant';
 
 //  二维码弹框
 export const QRCode = withRouter(connect(
@@ -52,7 +53,7 @@ const QRCodeButtons = withRouter(
         mapStateToProps,
         mapDispatchToProps
     )(
-        ({ qrCodeToggleClick, history, loadingToggle }) => {
+        ({ qrCodeToggleClick, history, namespace_feesPaid, loadingToggle }) => {
             //  两个按钮
             const callbackFn = () => {
                 //  付款完成
@@ -60,9 +61,10 @@ const QRCodeButtons = withRouter(
                 qrCodeToggleClick(false);
                 setTimeout(() => {
                     loadingToggle(false);
-                    history.replace('/orderDetail?orderid=1234567');
+                    const { phoneNum, orderNo } = namespace_feesPaid;
+                    history.replace(`${ROUTER_ORDER_DETAIL}?orderNo=${orderNo}&phoneNum=${phoneNum}`);
                     //  todo    5s延时
-                }, 1000);
+                }, 5000);
             };
             return (
                 <div className='qr-code-buttons border-grey'>

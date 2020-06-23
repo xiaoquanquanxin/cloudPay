@@ -8,7 +8,7 @@ import { ROUTER_FEES_PAID } from '../../utils/constant';
 import { BasicFooter } from '../../layout/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
-import { requestFeesPaid } from '../../api/api';
+import { requestGetPaymentInfo } from '../../api/api';
 
 // 支付成功layout
 export default connect(
@@ -24,7 +24,7 @@ export default connect(
             //  打开loading
             props.loadingToggle(true);
             //  重置支付类型
-            this.props.choosePayType(null);
+            this.props.setFeesPaid({ payType: null });
             // console.log('支付方式', props.namespace_payType.payType);
             this.state = {};
             this.handleClickCheck = this.handleClickCheck.bind(this);
@@ -32,18 +32,17 @@ export default connect(
 
         //  请求
         componentDidMount(){
-            // console.log(this.props.namespace_feesPaid)
-            requestFeesPaid(this.props.namespace_feesPaid)
+            const { namespace_feesPaid, loadingToggle } = this.props;
+            requestGetPaymentInfo(namespace_feesPaid)
                 .then(v => {
                     const payMoney = v.data.payMoney;
-                    this.setData(state => {
+                    this.setState(state => {
+                        this.props.setFeesPaid({ payMoney });
                         return { payMoney };
                     });
                 })
                 .then(() => {
-                    setTimeout(() => {
-                        this.props.loadingToggle(false);
-                    }, 1000);
+                    loadingToggle(false);
                 });
         }
 
@@ -56,7 +55,7 @@ export default connect(
                 payType,
             });
             console.log(payType);
-            this.props.choosePayType(payType);
+            this.props.setFeesPaid({ payType });
         }
 
         render(){

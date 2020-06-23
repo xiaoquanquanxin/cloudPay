@@ -1,7 +1,7 @@
 import { request } from '../utils/request';
 
-//  支付页
-export function requestFeesPaid(data){
+//  获取付款详情
+export function requestGetPaymentInfo(data){
     return request({
         method: 'post',
         url: '/property-api/prepayment/getPaymentInfo',
@@ -9,17 +9,19 @@ export function requestFeesPaid(data){
     });
 }
 
-//  获取二维码
+//  获取二维码--支付宝扫码支付
+//  //  获取二维码--微信扫码支付
 export function requestGetQRCode(data){
+    let url;
+    if (data.payType === 1) {
+        url = '/property-api/weChatPay/scanCodePay';
+    } else {
+        url = '/property-api/aliPay/scanCodePay';
+    }
     return request({
         method: 'post',
-        url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
-        data: {
-            name: 1,
-            age: 2,
-            list: [32],
-            b: 32,
-        },
+        url,
+        data,
     });
 }
 

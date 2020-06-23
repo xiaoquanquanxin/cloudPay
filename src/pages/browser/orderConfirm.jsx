@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { DeliveryDealWith } from '../../components/deliveryDealWith/deliveryDealWith';
 import Qs from 'qs';
-import { SubTitle } from '../../components/subTitle/subTitle';
 
 // 确认订单layout
 export default connect(

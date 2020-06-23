@@ -6,16 +6,18 @@ import { Surplus } from './countDown';
 
 //  订单状态
 export function OrderDetailStatus({
-    orderState = -1, orderTime = '-', countDown
+    tranStatus = -1, orderTime = '-', countDown
 }){
+    tranStatus = Number(tranStatus);
+    console.log(tranStatus);
     return (
         <div className='order-detail-status border-grey'>
             <StatusTitle
-                orderState={orderState}
+                tranStatus={tranStatus}
                 orderTime={orderTime}
             />
             <CountDown
-                orderState={orderState}
+                tranStatus={tranStatus}
                 countDown={'2020-06-22 22:00'}
             />
         </div>
@@ -23,25 +25,26 @@ export function OrderDetailStatus({
 }
 
 //  状态名称
-function StatusTitle({ orderState, orderTime }){
+function StatusTitle({ tranStatus, orderTime }){
     let str;
     //  感谢您使用在线缴费！
-    switch (orderState) {
+    switch (tranStatus) {
+        //  0待支付  1支付成功  2 已取消
         case 1:
             str = '支付成功';
             break;
-        case 2:
+        case 0:
             str = '待支付';
             break;
-        case 3:     // 3、4一样
-        case 4:
+        case 2:
+            // case 4:
             str = '已取消';
             break;
         case -1:
             str = '';
             break;
         default:
-            throw new Error(`错误的${orderState}`);
+            throw new Error(`错误的${tranStatus}`);
     }
 
     return (
@@ -53,10 +56,10 @@ function StatusTitle({ orderState, orderTime }){
 }
 
 //  倒计时
-function CountDown({ orderState, countDown }){
+function CountDown({ tranStatus, countDown }){
     let str;
     //  感谢您使用在线缴费！
-    switch (orderState) {
+    switch (tranStatus) {
         case 1:
             str = '感谢您使用在线缴费';
             break;
@@ -75,7 +78,7 @@ function CountDown({ orderState, countDown }){
             str = '';
             break;
         default:
-            throw new Error(`错误的${orderState}`);
+            throw new Error(`错误的${tranStatus}`);
     }
     return <p className='countdown-pay color-grey'>{str}</p>;
 }

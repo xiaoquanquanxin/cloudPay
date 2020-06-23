@@ -6,9 +6,10 @@ import { OrderDetailBasic } from '../../components/orderDetial/orderDetailBasic'
 import { BasicHeader } from '../../layout/basicHeader';
 import { ROUTER_ORDER_DETAIL } from '../../utils/constant';
 import { BasicFooter } from '../../layout/basicFooter';
-import { requestGetOrderDetail } from '../../api/api';
+import { requestGetPaymentInfo } from '../../api/api';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import Qs from 'qs';
 
 // 支付成功内容
 export default connect(
@@ -19,30 +20,34 @@ export default connect(
         constructor(props){
             super(props);
             window.document.title = '订单详情';
-            console.log('👵OrderDetail', props.history);
-            this.state = {};
+            // console.log('👵OrderDetail',);
+            this.state = Qs.parse(props.history.location.search.slice(1));
             props.loadingToggle(true);
         }
 
         componentDidMount(){
-            //  请求
-            requestGetOrderDetail()
+            const { loadingToggle } = this.props;
+            requestGetPaymentInfo(this.state)
                 .then(v => {
-                    setTimeout(() => {
-                        this.props.loadingToggle(false);
-                        this.setState(state => {
-                            return {
-                                orderState: 2,
-                            };
-                        });
-                    }, 101);
+                    this.setState(state => {
+                        return v.data;
+                    });
+                    console.log(v.data);
+                    loadingToggle(false);
                 });
         }
 
         renderBody({
-            code, amount, completionTime,
-            room, feeName, cost,
-            orderTime, orderState, countDown
+            cost,
+            orderTime, tranStatus, countDown,
+
+            roomIds,
+            feeName,
+            payMoney,
+
+            transactionid,
+            tranDate,
+            tranPayType,
         }){
             return (
                 <div>
@@ -50,20 +55,20 @@ export default connect(
                     <div>
                         {/*订单状态*/}
                         <OrderDetailStatus
-                            orderState={orderState}
+                            tranStatus={tranStatus}
                             orderTime={orderTime}
                             countDown={countDown}/>
                         {/*订单基础信息*/}
                         <OrderDetailBasic
-                            room={room}
+                            roomIds={roomIds}
                             feeName={feeName}
-                            cost={cost}
+                            payMoney={payMoney}
                         />
                         {/*信息*/}
                         <OrderDetailInfo
-                            code={code}
-                            amount={amount}
-                            completionTime={completionTime}
+                            transactionid={transactionid}
+                            tranDate={tranDate}
+                            tranPayType={tranPayType}
                         />
                     </div>
                 </div>
@@ -72,6 +77,7 @@ export default connect(
 
         render(){
             const state = this.state;
+            console.log(state);
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
@@ -81,7 +87,7 @@ export default connect(
                     {this.renderBody(state)}
                     {
                         // 只有待支付状态，才有底部
-                        state.orderState === 2 ?
+                        state.tranStatus === 0 ?
                             (<BasicFooter
                                 footerType={ROUTER_ORDER_DETAIL}
                             />)
