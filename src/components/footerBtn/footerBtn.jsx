@@ -4,7 +4,7 @@ import '../../css/color.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { ROUTER_ORDER_DETAIL } from '../../utils/constant';
+import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '../../utils/constant';
 import {
     requestCancelOrder,
     requestGetQRCode, requestJudgeAmountChange
@@ -84,21 +84,25 @@ export const ConfirmPaymentBtn = withRouter(
         mapStateToProps,
         mapDispatchToProps
     )(
-        ({ history, toastToggle, iswx }) => {
+        ({ history, toastToggle, loadingToggle, iswx, namespace_orderConfirm, setFeesPaid }) => {
             const className = 'footer-btn-basic footer-btn-dark ' +
                 (iswx ? 'wx-button' : '');
             return (
                 <button
                     className={className}
                     onClick={() => {
+                        // console.log(namespace_orderConfirm);
+                        loadingToggle(true);
                         //  判断金额变更
-                        requestJudgeAmountChange()
+                        requestJudgeAmountChange(namespace_orderConfirm)
                             .then(v => {
                                 //  todo 逻辑
                                 //  您有预缴费用价格发生变更
                                 // toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
                                 //     history.go(-1);
                                 // });
+                                // console.log(namespace_orderConfirm);
+                                // console.log(v.data);
                                 //  fixme
                                 //  点击【微信支付】预缴信息无变更生成订单，调起微信支付；支付成功，跳转到支付成功页面；支付失败进入订单详情页
                                 if (iswx) {
@@ -106,8 +110,13 @@ export const ConfirmPaymentBtn = withRouter(
                                     //  ⚠️⚠️⚠️发起某个请求，获取微信支付的各种数据
                                     return Promise.resolve();
                                 } else {
-                                    // history.replace(ROUTER_FEES_PAID);
-                                    console.log('pad，跳转');
+                                    //  向redux里传入feesPaid里需要的参数
+                                    setFeesPaid({
+                                        phoneNum: namespace_orderConfirm.phoneNum,
+                                        orderNo: v.data.orderNo
+                                    });
+                                    history.replace(ROUTER_FEES_PAID);
+                                    // console.log('pad，跳转');
                                     //  仅仅是为了终止promise
                                     return Promise.reject();
                                 }

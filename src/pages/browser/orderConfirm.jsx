@@ -6,7 +6,8 @@ import { ROUTER_ORDER_CONFIRM } from '../../utils/constant';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { DeliveryDealWith } from '../../components/deliveryDealWith/deliveryDealWith';
-import { requestConfirm } from '../../api/api';
+import Qs from 'qs';
+import { SubTitle } from '../../components/subTitle/subTitle';
 
 // 确认订单layout
 export default connect(
@@ -17,58 +18,27 @@ export default connect(
         constructor(props){
             super(props);
             window.document.title = '确认订单';
-            // console.log('👵OrderConfirm', props.history);
-            props.loadingToggle(true);
-            this.state = {
-                //  地名
-                placeName: '',
-                //  手机号
-                phoneNumber: '',
-                //  身份证
-                idCard: '',
-                //  费用类型
-                costType: '',
-                //  费用金额
-                costNumber: 0,
-            };
-        }
-
-        //  钩子函数请求
-        componentDidMount(){
-            requestConfirm(null)
-                .then(v => {
-                    const data = {
-                        //  地名
-                        placeName: '实地·广州常春藤-7号地块-Z3-12#-101 | 石晓迪',
-                        //  手机号
-                        phoneNumber: '137****0077',
-                        //  身份证
-                        idCard: '132628********4510',
-                        //  费用类型
-                        costType: '住宅物业费合计',
-                        //  费用金额
-                        costNumber: 3600.00,
-                    };
-                    this.setData(data);
-                    this.props.loadingToggle(false);
-                });
-        }
-
-        //  请求赋值
-        setData({ placeName, phoneNumber, idCard, costType, costNumber }){
-            this.setState((state) => {
-                return {
-                    placeName,
-                    phoneNumber,
-                    idCard,
-                    costType,
-                    costNumber
-                };
-            });
+            const search = decodeURIComponent(props.history.location.search.slice(1));
+            if (search === '') {
+                return;
+            }
+            //  解析出来的数据
+            const data = JSON.parse(Qs.parse(search).data);
+            data.feeItems = JSON.stringify(data.feeItems);
+            console.log(data);
+            //  放到redux里
+            props.setOrderConfirm(data);
+            this.state = data;
         }
 
         render(){
-            const state = this.state;
+            const {
+                itemSourceName,
+                phoneNum,
+                idCard,
+                feeName,
+                totalAmount
+            } = this.state;
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
@@ -77,11 +47,11 @@ export default connect(
                     />
                     {/*主要内容*/}
                     <DeliveryDealWith
-                        placeName={state.placeName}
-                        phoneNumber={state.phoneNumber}
-                        idCard={state.idCard}
-                        costType={state.costType}
-                        costNumber={state.costNumber}
+                        itemSourceName={itemSourceName}
+                        phoneNum={phoneNum}
+                        idCard={idCard}
+                        feeName={feeName}
+                        totalAmount={totalAmount}
                     />
                     <BasicFooter
                         footerType={ROUTER_ORDER_CONFIRM}

@@ -41,7 +41,7 @@ export default connect(
 
         renderBody({
             code, amount, completionTime,
-            room, costType, cost,
+            room, feeName, cost,
             orderTime, orderState, countDown
         }){
             return (
@@ -56,7 +56,7 @@ export default connect(
                         {/*订单基础信息*/}
                         <OrderDetailBasic
                             room={room}
-                            costType={costType}
+                            feeName={feeName}
                             cost={cost}
                         />
                         {/*信息*/}

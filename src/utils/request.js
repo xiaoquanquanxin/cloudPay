@@ -2,6 +2,7 @@ import axios from 'axios';
 import { requestEndorse } from './utils';
 import { appKey } from './constant';
 import { Toast } from '../components/toast/toast';
+import { Loading } from '../components/loading/loading';
 
 //  定义中间件
 axios.interceptors.response.use(
@@ -46,6 +47,8 @@ export function request(options){
     })
         .catch(v => {
             Toast.toastToggle(true, v,);
+            Loading.loadingToggle(false);
+            return Promise.reject();
         });
 }
 

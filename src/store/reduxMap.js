@@ -3,6 +3,8 @@ import {
     setPayType,
     setQrCodeIsShow,
     setToastIsShow,
+    setOrderConfirm,
+    setFeesPaid,
 } from './actions';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
@@ -12,12 +14,16 @@ export const mapStateToProps = ({
     namespace_loading,
     namespace_toast,
     namespace_payType,
+    namespace_orderConfirm,
+    namespace_feesPaid
 }) => {
     return {
         namespace_qrCode,
         namespace_loading,
         namespace_toast,
         namespace_payType,
+        namespace_orderConfirm,
+        namespace_feesPaid
     };
 };
 
@@ -46,6 +52,16 @@ export const mapDispatchToProps = (dispatch) => {
         //  选择支付方式
         choosePayType: (payType) => {
             dispatch(setPayType(payType));
+        },
+
+        //  orderConfirm通过url获取的参数
+        setOrderConfirm: (data) => {
+            dispatch(setOrderConfirm(data));
+        },
+
+        //  费用支付页面需要的数据
+        setFeesPaid: (data) => {
+            dispatch(setFeesPaid(data));
         }
     };
 };

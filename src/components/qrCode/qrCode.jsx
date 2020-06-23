@@ -12,7 +12,7 @@ export const QRCode = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    function ({ namespace_qrCode, amount }){
+    function ({ namespace_qrCode, payMoney }){
         const { qrCodeImg, qrIsShow } = namespace_qrCode;
         if (!qrIsShow) {
             return '';
@@ -23,7 +23,7 @@ export const QRCode = withRouter(connect(
                 <div className='qr-code-container'>
                     <RenderScan/>
                     <div className='qr-code-content'>
-                        <h3 className='order-amount'>{amount}</h3>
+                        <h3 className='order-amount'>{payMoney}</h3>
                         <img src={qrCodeImg} alt="二维码载入失败，请重试"/>
                         <p className='color-grey'>请扫描二维码进行支付</p>
                     </div>

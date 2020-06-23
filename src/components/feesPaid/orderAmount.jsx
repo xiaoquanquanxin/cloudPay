@@ -2,11 +2,11 @@ import React from 'react';
 import './orderAmount.css';
 import '../../css/color.css';
 
-export function OrderAmount({ amount }){
+export function OrderAmount({ payMoney }){
     return (
         <div className='order-amount-wrap border-grey'>
             <span>订单金额</span>
-            <span className='order-amount'>¥{amount}</span>
+            <span className='order-amount'>¥{payMoney}</span>
         </div>
     );
 }

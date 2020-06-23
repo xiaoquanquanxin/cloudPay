@@ -1,31 +1,11 @@
 import { request } from '../utils/request';
 
-//  确认订单的信息，首页
-export function requestConfirm(data){
-    return request({
-        method: 'post',
-        url: '/property-api/syncAccount',
-        // url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
-        data: {
-            name: 1,
-            age: 2,
-            list: [323, 43],
-            b: 32,
-        },
-    });
-}
-
 //  支付页
-export function requestPaymentPage(data){
+export function requestFeesPaid(data){
     return request({
         method: 'post',
-        url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
-        data: {
-            name: 1,
-            age: 2,
-            list: [32],
-            b: 32,
-        },
+        url: '/property-api/prepayment/getPaymentInfo',
+        data: data,
     });
 }
 
@@ -75,12 +55,20 @@ export function requestCancelOrder(data){
 export function requestJudgeAmountChange(data){
     return request({
         method: 'post',
-        url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
+        url: '/property-api/prepayment/createAdvanceOrder',
+        data,
+    });
+}
+
+//  测试-查询专项预缴费项明细
+export function __testPropertyApiPrepaymentQueryFeeitemDetails(data){
+    return request({
+        method: 'post',
+        url: '/property-api/prepayment/queryFeeitemDetails',
         data: {
-            name: 1,
-            age: 2,
-            list: [32],
-            b: 32,
+            cmdsId: '7e1905fdad244d02aaa84bd93b2decba',
+            pmdsRoomId: 'e04c5fe7-5ac4-4d06-ad3a-071c6b970c0b',
+            feeId: 4801
         },
     });
 }

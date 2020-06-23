@@ -13,7 +13,7 @@ import {
     ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
     ROUTER_FEES_PAID,
-    ROUTER_OPEN_WITH_WE_CHAT,
+    ROUTER_OPEN_WITH_WE_CHAT, ROUTER_ORIGIN_PAGE,
 } from '../utils/constant';
 //  loading组件
 import { Loading } from '../components/loading/loading';
@@ -23,6 +23,7 @@ import asyncComponent from './asyncComponentLoader';
 import { OpenWithWeChat } from '../pages/openWithWeChat';
 import { Toast } from '../components/toast/toast';
 import { basicConfig } from '../utils/basicConfig';
+import { OriginPage } from '../pages/originPage';
 
 //  基础配置
 const { isWx } = basicConfig();
@@ -52,6 +53,8 @@ const OrderDetail = isWx ? asyncComponent(
     //  浏览器
     () => import( '../pages/browser/orderDetail')
 );
+
+
 //  基础结构
 export const App = connect()(
     class extends React.Component {
@@ -71,6 +74,10 @@ export const App = connect()(
                         <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
                         {/*请用微信打开*/}
                         <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
+
+                        {/*测试用的数据来源*/}
+                        <Route path={ROUTER_ORIGIN_PAGE} component={OriginPage}/>
+
                         {/*默认路由*/}
                         <Redirect from="/*" to={ROUTER_OPEN_WITH_WE_CHAT}/>
                     </Switch>

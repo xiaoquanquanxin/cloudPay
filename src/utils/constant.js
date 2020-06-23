@@ -33,3 +33,6 @@ export const ROUTER_ORDER_DETAIL = routerItem.rod;
 export const ROUTER_FEES_PAID = routerItem.rfp;
 //  请用微信打开，浏览器为404
 export const ROUTER_OPEN_WITH_WE_CHAT = '/404';
+
+//  数据来源
+export const ROUTER_ORIGIN_PAGE = '/origin';

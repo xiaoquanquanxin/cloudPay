@@ -8,7 +8,7 @@ import { ROUTER_FEES_PAID } from '../../utils/constant';
 import { BasicFooter } from '../../layout/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
-import { requestPaymentPage } from '../../api/api';
+import { requestFeesPaid } from '../../api/api';
 
 // 支付成功layout
 export default connect(
@@ -19,40 +19,32 @@ export default connect(
         constructor(props){
             super(props);
             window.document.title = '费用支付';
-            console.log('👵FeesPaid', props.history);
+            // console.log('👵FeesPaid', props.history);
 
             //  打开loading
             props.loadingToggle(true);
             //  重置支付类型
             this.props.choosePayType(null);
-            console.log('支付方式', props.namespace_payType.payType);
-            this.state = {
-                //  金额
-                amount: 0,
-            };
+            // console.log('支付方式', props.namespace_payType.payType);
+            this.state = {};
             this.handleClickCheck = this.handleClickCheck.bind(this);
         }
 
+        //  请求
         componentDidMount(){
-            requestPaymentPage()
+            // console.log(this.props.namespace_feesPaid)
+            requestFeesPaid(this.props.namespace_feesPaid)
                 .then(v => {
-                    const data = { amount: 2345432.32 };
-                    this.setData(data);
+                    const payMoney = v.data.payMoney;
+                    this.setData(state => {
+                        return { payMoney };
+                    });
                 })
                 .then(() => {
                     setTimeout(() => {
                         this.props.loadingToggle(false);
                     }, 1000);
                 });
-        }
-
-        //  赋值
-        setData({ amount }){
-            this.setState(state => {
-                return {
-                    amount,
-                };
-            });
         }
 
         //  选择支付方式
@@ -79,7 +71,7 @@ export default connect(
                     <div>
                         {/*支付信息*/}
                         <OrderAmount
-                            amount={state.amount}
+                            payMoney={state.payMoney}
                         />
                         {/*支付选择*/}
                         <ChoosePaymentMethod
@@ -88,7 +80,7 @@ export default connect(
                         />
                         {/*二维码*/}
                         <QRCode
-                            amount={state.amount}
+                            payMoney={state.payMoney}
                         />
                     </div>
                     <BasicFooter
