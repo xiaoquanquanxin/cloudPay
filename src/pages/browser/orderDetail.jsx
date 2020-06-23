@@ -21,7 +21,14 @@ export default connect(
             super(props);
             window.document.title = '订单详情';
             // console.log('👵OrderDetail',);
-            this.state = Qs.parse(props.history.location.search.slice(1));
+            const state = Qs.parse(props.history.location.search.slice(1));
+            this.state = state;
+            const { setFeesPaid } = this.props;
+            //  设置
+            setFeesPaid({
+                phoneNum: state.phoneNum,
+                orderNo: state.orderNo,
+            });
             props.loadingToggle(true);
         }
 
@@ -29,16 +36,16 @@ export default connect(
             const { loadingToggle } = this.props;
             requestGetPaymentInfo(this.state)
                 .then(v => {
+                    //  支付状态
+                    v.data.tranStatus = Number(v.data.tranStatus);
                     this.setState(state => {
                         return v.data;
                     });
-                    console.log(v.data);
                     loadingToggle(false);
                 });
         }
 
         renderBody({
-
             orderTime,
             tranStatus,
 

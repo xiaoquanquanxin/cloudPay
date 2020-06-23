@@ -13,7 +13,7 @@ export const Loading = connect(
         const { isShow } = namespace_loading;
         Loading.loadingToggle = loadingToggle;
         // console.log('🍎Loading', isShow);
-        const loadingClassName = isShow ? 'loading-mask' : 'hide';
+        const loadingClassName = isShow ? 'loading-mask basic-full-mask' : 'hide';
         return (
             <div id='loading' className={loadingClassName}>
                 <svg className='loading-content' xmlns='http://www.w3.org/2000/svg' width='120' height='120'

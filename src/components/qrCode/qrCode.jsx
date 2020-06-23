@@ -1,5 +1,5 @@
 import React from 'react';
-import './qrCode.css';
+import './qrCode.less';
 import '../../css/color.css';
 //  扫描
 import scan_code from '../../images/scan_code.png';
@@ -20,7 +20,7 @@ export const QRCode = withRouter(connect(
         }
         console.log('🍎二维码弹框');
         return (
-            <div className='qr-code-wrap'>
+            <div className='qr-code-wrap basic-full-mask'>
                 <div className='qr-code-container'>
                     <RenderScan/>
                     <div className='qr-code-content'>

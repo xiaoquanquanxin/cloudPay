@@ -145,8 +145,8 @@ export const ConfirmPaymentBtn = withRouter(
 export const CancelOrder = connect(
     mapStateToProps,
     mapDispatchToProps
-)(({ namespace_toast, toastToggle, loadingToggle }) => {
-    console.log('取消订单按钮', namespace_toast);
+)(({ namespace_toast, toastToggle, loadingToggle, namespace_feesPaid }) => {
+    // console.log('取消订单按钮', namespace_toast);
     return (
         <button
             className='footer-btn-basic footer-btn-light'
@@ -156,7 +156,8 @@ export const CancelOrder = connect(
                     //  确定取消订单
                     () => {
                         loadingToggle(true);
-                        requestCancelOrder({})
+                        console.log(namespace_feesPaid);
+                        requestCancelOrder(namespace_feesPaid)
                             .then(() => {
                                 //  todo
                                 console.log('等待5s，再次请求');

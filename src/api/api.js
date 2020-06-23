@@ -1,6 +1,6 @@
 import { request } from '../utils/request';
 
-//  获取付款详情
+//  获取付款详情  - 获取订单详情
 export function requestGetPaymentInfo(data){
     return request({
         method: 'post',
@@ -25,31 +25,12 @@ export function requestGetQRCode(data){
     });
 }
 
-//  获取订单详情
-export function requestGetOrderDetail(data){
-    return request({
-        method: 'post',
-        url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
-        data: {
-            name: 1,
-            age: 2,
-            list: [32],
-            b: 32,
-        },
-    });
-}
-
-//  取消订单
+//  取消预缴订单
 export function requestCancelOrder(data){
     return request({
         method: 'post',
-        url: 'https://web-api.juejin.im/v3/web/wbbr/bgeda',
-        data: {
-            name: 1,
-            age: 2,
-            list: [32],
-            b: 32,
-        },
+        url: '/property-api/prepayment/cancelAdvanceOrder',
+        data,
     });
 }
 

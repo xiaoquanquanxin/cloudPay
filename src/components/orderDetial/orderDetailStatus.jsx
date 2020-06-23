@@ -8,7 +8,6 @@ import { Surplus } from './countDown';
 export function OrderDetailStatus({
     tranStatus = -1, tranDate = '-'
 }){
-    tranStatus = Number(tranStatus);
     return (
         <div className='order-detail-status border-grey'>
             <StatusTitle

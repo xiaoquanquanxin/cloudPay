@@ -40,7 +40,7 @@ export const Toast = connect(
         ) : '';
         const containerClassName = 'toast-container ' + (hasFooterButtons ? 'big' : '');
         return (
-            <div id='toast' className='toast-mask'>
+            <div id='toast' className='toast-mask basic-full-mask'>
                 <div className={containerClassName}>
                     <p className='text'>{text}</p>
                     {hasFooterButtons}
