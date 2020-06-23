@@ -1,0 +1,18 @@
+.origin-content {
+    font-size: 0.5rem;
+}
+
+.origin-content button {
+    text-align: center;
+    cursor: pointer;
+    border: 0.01rem solid;
+}
+
+
+.origin-list {
+    font-size: 0.2rem;
+}
+
+.is-checked-item {
+    color: red
+}
