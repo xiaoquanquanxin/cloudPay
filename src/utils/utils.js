@@ -69,7 +69,7 @@ export function isWX(){
 
 //  倒计时
 export function timeSurplus(countDown){
-    const surplus = new Date(countDown).getTime() - new Date().getTime();
+    const surplus = new Date(countDown).getTime()+ 15 * 60 * 1000 - new Date().getTime();
     //  秒
     return Math.trunc(surplus / 1000);
 }

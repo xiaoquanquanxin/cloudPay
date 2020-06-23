@@ -38,10 +38,11 @@ export default connect(
         }
 
         renderBody({
-            cost,
-            orderTime, tranStatus, countDown,
 
-            roomIds,
+            orderTime,
+            tranStatus,
+
+            roomNames,
             feeName,
             payMoney,
 
@@ -57,10 +58,10 @@ export default connect(
                         <OrderDetailStatus
                             tranStatus={tranStatus}
                             orderTime={orderTime}
-                            countDown={countDown}/>
+                            tranDate={tranDate}/>
                         {/*订单基础信息*/}
                         <OrderDetailBasic
-                            roomIds={roomIds}
+                            roomNames={roomNames}
                             feeName={feeName}
                             payMoney={payMoney}
                         />
@@ -77,7 +78,6 @@ export default connect(
 
         render(){
             const state = this.state;
-            console.log(state);
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
