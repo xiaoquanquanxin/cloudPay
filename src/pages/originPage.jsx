@@ -36,7 +36,7 @@ export const OriginPage = connect(
                             list,
                         };
                     });
-                    // this.props.loadingToggle(false);
+                    this.props.loadingToggle(false);
                 });
         }
 

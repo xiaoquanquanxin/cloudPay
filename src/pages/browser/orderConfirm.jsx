@@ -1,13 +1,13 @@
 import React from 'react';
-import '../../css/color.css';
+import { connect } from 'react-redux';
+import Qs from 'qs';
 import { BasicHeader } from '../../layout/basicHeader';
 import { BasicFooter } from '../../layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '../../utils/constant';
-import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { DeliveryDealWith } from '../../components/deliveryDealWith/deliveryDealWith';
-import Qs from 'qs';
 import { isWX } from '../../utils/utils';
+import '../../css/color.css';
 
 // 确认订单layout
 export default connect(
@@ -29,6 +29,11 @@ export default connect(
             //  终端类型 0 Android 1 iPhone 2 pad 3 微信
             data.terminalSource = isWX() ? 3 : 2;
             console.log(data);
+            if (data.feeItems.length <= 5) {
+                props.toastToggle(true, '参数异常', () => {
+                    props.history.goBack();
+                });
+            }
             //  放到redux里
             props.setOrderConfirm(data);
             this.state = data;

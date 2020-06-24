@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
-import './toast.css';
+import './toast.less';
 import '../../css/color.css';
 
 //  弹框组件
