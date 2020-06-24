@@ -1,5 +1,5 @@
 import React from 'react';
-import './reBackBtn.css';
+import './reBackBtn.less';
 import '../../css/color.css';
 import { ArrowsHead } from '../arrowsHead/arrowsHead';
 
