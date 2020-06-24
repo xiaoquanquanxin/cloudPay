@@ -1,5 +1,5 @@
 import React from 'react';
-import './deliveryDealWith.css';
+import './deliveryDealWith.less';
 import '@css/color.css';
 
 //  副标题
@@ -8,7 +8,7 @@ import { SubTitle } from '@components/subTitle/subTitle';
 import building from '@images/building.png';
 
 //  交付办理
-export function DeliveryDealWith({ projectAddress, phoneNum, idCard, feeName, totalAmount },){
+export function DeliveryDealWith({ projectAddress = '地址', phoneNum, idCard, feeName, totalAmount },){
     return (
         <div>
             <div className='delivery-basic-info border-grey'>
