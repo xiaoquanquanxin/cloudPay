@@ -3,8 +3,8 @@ import './choosePaymentMethod.css';
 import { SubTitle } from '../subTitle/subTitle';
 import { PaymentMethods } from './paymentMethods';
 //  微信支付宝图图
-import logo_weixin from '../../images/logo_weixin.png';
-import logo_zhifubao from '../../images/logo_zhifubao.png';
+import logo_weixin from '@images/logo_weixin.png';
+import logo_zhifubao from '@images/logo_zhifubao.png';
 
 // 选择支付方式模块
 export function ChoosePaymentMethod(props){

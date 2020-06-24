@@ -1,6 +1,6 @@
 import React from 'react';
-// import { request } from '../../utils/request';
-import { appId } from '../../utils/constant';
+// import { request } from '@utils/request';
+import { appId } from '@utils/constant';
 
 //  去支付按钮
 export class GoToPay extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './paymentMethods.css';
-import '../../css/color.css';
+import '@css/color.css';
 
 //  实际支付方式
 export function PaymentMethods(props){

@@ -1,17 +1,17 @@
 import React from 'react';
 import './footerBtn.css';
-import '../../css/color.css';
+import '@css/color.css';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '../../utils/constant';
+import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '@utils/constant';
 import {
     requestGetQRCode,
     requestCancelOrder,
     requestJudgeAmountChange,
-} from '../../api/api';
-import { packagePay } from '../../utils/packagePay';
-import { emptyFunction } from '../../utils/utils';
+} from '@api/api';
+import { packagePay } from '@utils/packagePay';
+import { emptyFunction } from '@utils/utils';
 
 //  暂不办理
 export const NotDealWithBtn = withRouter(

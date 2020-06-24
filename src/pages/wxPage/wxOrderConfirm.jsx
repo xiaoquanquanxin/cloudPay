@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../css/color.css';
-import '../../css/wxOrderConfirm.css';
-import { BasicFooter } from '../../layout/basicFooter';
-import { ROUTER_ORDER_CONFIRM } from '../../utils/constant';
+import '@css/color.css';
+import '@css/wxOrderConfirm.css';
+import { BasicFooter } from '@layout/basicFooter';
+import { ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 // 确认订单layout
 export default connect(

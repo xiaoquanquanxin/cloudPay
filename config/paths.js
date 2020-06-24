@@ -64,8 +64,23 @@ module.exports = {
     testsSetup: resolveModule(resolveApp, 'src/setupTests'),
     proxySetup: resolveApp('src/setupProxy.js'),
     appNodeModules: resolveApp('node_modules'),
-    src: resolveApp('src'),
+    //  api
+    api: resolveApp('src/api'),
+    //  组件
     components: resolveApp('src/components'),
+    //  页面
+    pages: resolveApp('src/pages'),
+    //  css
+    css: resolveApp('src/css'),
+    //  图片
+    images: resolveApp('src/images'),
+    //  布局
+    layout: resolveApp('src/layout'),
+    //  store
+    store: resolveApp('src/store'),
+    //  工具
+    utils: resolveApp('src/utils'),
+
     publicUrlOrPath,
 };
 

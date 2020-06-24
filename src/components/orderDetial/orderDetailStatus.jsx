@@ -1,7 +1,7 @@
 import React from 'react';
 import './orderDetailStatus.css';
-import '../../css/color.css';
-import { timeSurplus } from '../../utils/utils';
+import '@css/color.css';
+import { timeSurplus } from '@utils/utils';
 import { Surplus } from './countDown';
 
 //  订单状态

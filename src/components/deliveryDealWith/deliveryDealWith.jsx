@@ -1,11 +1,11 @@
 import React from 'react';
 import './deliveryDealWith.css';
-import '../../css/color.css';
+import '@css/color.css';
 
 //  副标题
 import { SubTitle } from '../subTitle/subTitle';
 //  楼盘图片
-import building from '../../images/building.png';
+import building from '@images/building.png';
 
 //  交付办理
 export function DeliveryDealWith({ projectAddress, phoneNum, idCard, feeName, totalAmount },){

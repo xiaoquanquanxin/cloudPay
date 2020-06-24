@@ -1,6 +1,6 @@
 import React from 'react';
 import './headerTitle.css';
-import '../../css/color.css';
+import '@css/color.css';
 
 //  头部组件
 export function HeaderTitle(props){

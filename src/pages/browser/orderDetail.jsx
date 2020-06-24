@@ -1,14 +1,14 @@
 import React from 'react';
-import '../../css/color.css';
-import { OrderDetailInfo } from '../../components/orderDetial/orderDetailInfo';
-import { OrderDetailStatus } from '../../components/orderDetial/orderDetailStatus';
-import { OrderDetailBasic } from '../../components/orderDetial/orderDetailBasic';
-import { BasicHeader } from '../../layout/basicHeader';
-import { ROUTER_ORDER_DETAIL } from '../../utils/constant';
-import { BasicFooter } from '../../layout/basicFooter';
-import { requestGetPaymentInfo } from '../../api/api';
+import '@css/color.css';
+import { OrderDetailInfo } from '@components/orderDetial/orderDetailInfo';
+import { OrderDetailStatus } from '@components/orderDetial/orderDetailStatus';
+import { OrderDetailBasic } from '@components/orderDetial/orderDetailBasic';
+import { BasicHeader } from '@layout/basicHeader';
+import { ROUTER_ORDER_DETAIL } from '@utils/constant';
+import { BasicFooter } from '@layout/basicFooter';
+import { requestGetPaymentInfo } from '@api/api';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import Qs from 'qs';
 
 // 支付成功内容

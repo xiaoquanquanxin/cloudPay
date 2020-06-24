@@ -1,13 +1,13 @@
 import React from 'react';
-import '../../css/color.css';
+import '@css/color.css';
 import './qrCode.less';
 
 //  扫描
-import scan_code from '../../images/scan_code.png';
+import scan_code from '@images/scan_code.png';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { withRouter } from 'react-router-dom';
-import { ROUTER_ORDER_DETAIL } from '../../utils/constant';
+import { ROUTER_ORDER_DETAIL } from '@utils/constant';
 
 //  二维码弹框
 export const QRCode = withRouter(connect(

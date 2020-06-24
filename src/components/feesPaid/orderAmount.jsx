@@ -1,6 +1,6 @@
 import React from 'react';
 import './orderAmount.less';
-import '../../css/color.css';
+import '@css/color.css';
 
 export function OrderAmount({ payMoney }){
     return (

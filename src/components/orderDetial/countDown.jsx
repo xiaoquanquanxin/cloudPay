@@ -1,5 +1,5 @@
 import React from 'react';
-import { standardTime } from '../../utils/utils';
+import { standardTime } from '@utils/utils';
 
 //  倒计时
 export class Surplus extends React.Component {

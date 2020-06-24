@@ -1,7 +1,7 @@
 import React from 'react';
 import './loading.less';
 import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps } from '../../store/reduxMap';
+import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
 
 //  Loading
 export const Loading = connect(

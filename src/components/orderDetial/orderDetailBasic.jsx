@@ -1,6 +1,6 @@
 import React from 'react';
 import './orderDetailBasic.css';
-import '../../css/color.css';
+import '@css/color.css';
 
 export function OrderDetailBasic({
     roomNames, feeName, payMoney,

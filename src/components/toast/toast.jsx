@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import './toast.less';
-import '../../css/color.css';
+import '@css/color.css';
 
 //  弹框组件
 export const Toast = connect(

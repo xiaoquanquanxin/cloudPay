@@ -1,5 +1,5 @@
 import './payForSuccessLogo.css';
-import '../../css/color.css';
+import '@css/color.css';
 import React from 'react';
 
 export function PayForSuccessLogo(){
