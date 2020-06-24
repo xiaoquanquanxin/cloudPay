@@ -6,7 +6,7 @@ import {
 import { ROUTER_ORDER_CONFIRM } from '../utils/constant';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
-import Qs from 'qs';
+
 
 //  数据来源页面
 export const OriginPage = connect(
@@ -20,6 +20,7 @@ export const OriginPage = connect(
                 list: [],
                 jumpList: [],
             };
+            props.loadingToggle(true);
             this.goToOrderConfirm = this.goToOrderConfirm.bind(this);
             this.chooseItem = this.chooseItem.bind(this);
         }
@@ -35,6 +36,7 @@ export const OriginPage = connect(
                             list,
                         };
                     });
+                    // this.props.loadingToggle(false);
                 });
         }
 

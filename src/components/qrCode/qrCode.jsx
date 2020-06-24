@@ -1,6 +1,7 @@
 import React from 'react';
-import './qrCode.css';
 import '../../css/color.css';
+import './qrCode.less';
+
 //  扫描
 import scan_code from '../../images/scan_code.png';
 import { connect } from 'react-redux';
