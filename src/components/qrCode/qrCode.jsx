@@ -1,5 +1,5 @@
 import React from 'react';
-import './qrCode.less';
+import './qrCode.css';
 import '../../css/color.css';
 //  扫描
 import scan_code from '../../images/scan_code.png';
