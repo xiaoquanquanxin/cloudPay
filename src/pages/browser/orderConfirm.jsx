@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Qs from 'qs';
-import { BasicHeader } from '../../layout/basicHeader';
+import { BasicHeader } from '@src/layout/basicHeader';
 import { BasicFooter } from '../../layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '../../utils/constant';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
