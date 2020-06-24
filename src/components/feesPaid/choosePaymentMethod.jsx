@@ -1,6 +1,6 @@
 import React from 'react';
 import './choosePaymentMethod.css';
-import { SubTitle } from '../subTitle/subTitle';
+import { SubTitle } from '@components/subTitle/subTitle';
 import { PaymentMethods } from './paymentMethods';
 //  微信支付宝图图
 import logo_weixin from '@images/logo_weixin.png';

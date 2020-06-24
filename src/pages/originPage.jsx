@@ -2,10 +2,10 @@ import React from 'react';
 import './originPage.css';
 import {
     __testPropertyApiPrepaymentQueryFeeitemDetails,
-} from '../api/api';
-import { ROUTER_ORDER_CONFIRM } from '../utils/constant';
+} from '@api/api';
+import { ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 
 //  数据来源页面

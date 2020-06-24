@@ -3,7 +3,7 @@ import './deliveryDealWith.css';
 import '@css/color.css';
 
 //  副标题
-import { SubTitle } from '../subTitle/subTitle';
+import { SubTitle } from '@components/subTitle/subTitle';
 //  楼盘图片
 import building from '@images/building.png';
 

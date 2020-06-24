@@ -1,7 +1,7 @@
 import React from 'react';
 import './orderDetailInfo.css';
 import '@css/color.css';
-import { SubTitle } from '../subTitle/subTitle';
+import { SubTitle } from '@components/subTitle/subTitle';
 
 export function OrderDetailInfo({
     transactionid = '-',

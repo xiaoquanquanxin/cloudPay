@@ -1,16 +1,16 @@
 import React from 'react';
-import '../css/basic-header.css';
-import '../css/color.css';
-import { ReBackBtn } from '../components/reBackBtn/reBackBtn';
-import { HeaderTitle } from '../components/headerTitle/headerTitle';
-import { HeaderRightSide } from '../components/HeaderRightSide/headerRightSide';
+import '@css/basic-header.css';
+import '@css/color.css';
+import { ReBackBtn } from '@components/reBackBtn/reBackBtn';
+import { HeaderTitle } from '@components/headerTitle/headerTitle';
+import { HeaderRightSide } from '@components/HeaderRightSide/headerRightSide';
 import {
     ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
     ROUTER_FEES_PAID,
-} from '../utils/constant';
+} from '@utils/constant';
 import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '../store/reduxMap';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 //  头部组件
 export const BasicHeader = connect(

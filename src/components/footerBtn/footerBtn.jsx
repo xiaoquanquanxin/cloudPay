@@ -1,18 +1,17 @@
 import React from 'react';
 import './footerBtn.css';
+import { withRouter } from 'react-router-dom';
 import '@css/color.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { withRouter } from 'react-router-dom';
 import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '@utils/constant';
+import { packagePay } from '@utils/packagePay';
+import { emptyFunction } from '@utils/utils';
 import {
     requestGetQRCode,
     requestCancelOrder,
     requestJudgeAmountChange,
 } from '@api/api';
-import { packagePay } from '@utils/packagePay';
-import { emptyFunction } from '@utils/utils';
-
 //  暂不办理
 export const NotDealWithBtn = withRouter(
     ({ history }) => {
@@ -52,7 +51,7 @@ export const ToPayForBtn = withRouter(
                     onClick={() => {
                         //  如果是来自订单详情页，只需要跳转到支付页面
                         if (isFrom === ROUTER_ORDER_DETAIL) {
-                            history.push('/feesPaid');
+                            history.push(ROUTER_FEES_PAID);
                             return;
                         }
                         //  如果没有选择

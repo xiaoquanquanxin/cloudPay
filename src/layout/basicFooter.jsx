@@ -1,19 +1,19 @@
 import React from 'react';
-import '../css/basic-footer.css';
+import '@css/basic-footer.css';
 import {
     NotDealWithBtn,
     ToPayForBtn,
     ConfirmPaymentBtn,
     CancelOrder,
 
-} from '../components/footerBtn/footerBtn';
+} from '@components/footerBtn/footerBtn';
 //  路由
 import {
     ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
     ROUTER_FEES_PAID,
-} from '../utils/constant';
-import { isWX } from '../utils/utils';
+} from '@utils/constant';
+import { isWX } from '@utils/utils';
 
 //  是微信？
 const isWx = isWX();
