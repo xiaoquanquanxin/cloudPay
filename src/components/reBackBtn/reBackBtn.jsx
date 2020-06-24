@@ -13,7 +13,11 @@ export const ReBackBtn = withRouter((
     return (
         <button className='re-back-btn' onClick={() => {
             if (typeof goRoute === 'number') {
-                history.go(goRoute);
+                if (goRoute === -1) {
+                    history.goBack();
+                } else {
+                    history.go(goRoute);
+                }
             } else {
                 ReBackBtnBefore(
                     () => {
