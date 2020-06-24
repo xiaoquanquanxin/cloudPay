@@ -1,5 +1,5 @@
 import React from 'react';
-import './choosePaymentMethod.css';
+import './choosePaymentMethod.less';
 import { SubTitle } from '@components/subTitle/subTitle';
 import { PaymentMethods } from './paymentMethods';
 //  微信支付宝图图
@@ -7,16 +7,16 @@ import logo_weixin from '@images/logo_weixin.png';
 import logo_zhifubao from '@images/logo_zhifubao.png';
 
 // 选择支付方式模块
-export function ChoosePaymentMethod(props){
+export function ChoosePaymentMethod({ payType, handleClickCheck }){
     //  微信和支付宝数据，将来来自props
-    const list = processingData([1, 2], props.payType);
+    const list = processingData([1, 2], payType);
     const text = '选择支付方式';
     return (
         <div className='choose-payment-method'>
             <SubTitle text={text}/>
             <MethodList
                 list={list}
-                handleClickCheck={props.handleClickCheck}
+                handleClickCheck={handleClickCheck}
             />
         </div>
     );
