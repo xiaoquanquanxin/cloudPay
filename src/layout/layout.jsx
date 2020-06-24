@@ -75,6 +75,7 @@ export const App = connect()(
                         {/*请用微信打开*/}
                         <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
 
+                        {/*fixme test*/}
                         {/*测试用的数据来源*/}
                         <Route path={ROUTER_ORIGIN_PAGE} component={OriginPage}/>
 
