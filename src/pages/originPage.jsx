@@ -43,24 +43,19 @@ export const OriginPage = connect(
             const data = encodeURIComponent(JSON.stringify(
                 Object.assign({
                     //  用户主数据id
-                    cmdsId: '7e1905fdad244d02aaa84bd93b2decba',//  	T文本	是
+                    cmdsId: '7e1905fdad244d02aaa84bd93b2decba',
                     //  客户名称
-                    userName: 'userName',//  	T文本	是
+                    userName: '权鑫',
                     //  订单金额
-                    totalAmount: '0.01',//    	T文本	是
+                    totalAmount: '0.01',
                     //  房间主数据id
                     pmdsRoomId: 'e04c5fe7-5ac4-4d06-ad3a-071c6b970c0b',//  	T文本	是
                     //  用户手机号
-                    // phoneNum: 15910216632,//  	T文本	是
                     phoneNum: 15712852037,//  	T文本	是
-                    //  优惠券
-                    haveCoupon: 0,
-                    //  终端类型 0 Android 1 iPhone 2 pad 3 微信
-                    terminalSource: 2,
                     //  费项id
                     feeId: 4801,
                 }, {
-                    feeItems: this.state.jumpList
+                    feeItems: JSON.stringify(this.state.jumpList)
                 })
             ));
             console.log(data);

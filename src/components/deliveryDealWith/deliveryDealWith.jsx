@@ -8,13 +8,13 @@ import { SubTitle } from '../subTitle/subTitle';
 import building from '../../images/building.png';
 
 //  交付办理
-export function DeliveryDealWith({ itemSourceName, phoneNum, idCard, feeName, totalAmount },){
+export function DeliveryDealWith({ projectAddress, phoneNum, idCard, feeName, totalAmount },){
     return (
         <div>
             <div className='delivery-basic-info border-grey'>
                 <img src={building} alt="当前楼盘logo"/>
                 <div className='delivery-container'>
-                    <div className='delivery-place'>{itemSourceName}</div>
+                    <div className='delivery-place'>{projectAddress}</div>
                     <div className='delivery-content color-grey'>
                         <div className='delivery-phone'>手机号码：{phoneNum}</div>
                         <div className='delivery-id-card'>身份证号码：{idCard}</div>

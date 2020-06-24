@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
 import { DeliveryDealWith } from '../../components/deliveryDealWith/deliveryDealWith';
 import Qs from 'qs';
+import { isWX } from '../../utils/utils';
 
 // 确认订单layout
 export default connect(
@@ -23,7 +24,10 @@ export default connect(
             }
             //  解析出来的数据
             const data = JSON.parse(Qs.parse(search).data);
-            data.feeItems = JSON.stringify(data.feeItems);
+            //  优惠券
+            data.haveCoupon = 0;
+            //  终端类型 0 Android 1 iPhone 2 pad 3 微信
+            data.terminalSource = isWX() ? 3 : 2;
             console.log(data);
             //  放到redux里
             props.setOrderConfirm(data);
@@ -32,7 +36,7 @@ export default connect(
 
         render(){
             const {
-                itemSourceName,
+                projectAddress,
                 phoneNum,
                 idCard,
                 feeName,
@@ -46,7 +50,7 @@ export default connect(
                     />
                     {/*主要内容*/}
                     <DeliveryDealWith
-                        itemSourceName={itemSourceName}
+                        projectAddress={projectAddress}
                         phoneNum={phoneNum}
                         idCard={idCard}
                         feeName={feeName}

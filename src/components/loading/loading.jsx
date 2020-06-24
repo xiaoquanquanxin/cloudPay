@@ -1,5 +1,5 @@
 import React from 'react';
-import './loading.css';
+import './loading.less';
 import '../../css/reset.css';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../../store/reduxMap';

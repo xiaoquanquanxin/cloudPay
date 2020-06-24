@@ -19,7 +19,7 @@ export default connect(
             props.loadingToggle(true);
             this.state = {
                 //  地名
-                itemSourceName: '',
+                projectAddress: '',
                 //  手机号
                 phoneNum: '',
                 //  身份证
@@ -37,10 +37,10 @@ export default connect(
         }
 
         //  请求赋值
-        setData({ itemSourceName, phoneNum, idCard, feeName, feeIteamId }){
+        setData({ projectAddress, phoneNum, idCard, feeName, feeIteamId }){
             this.setState((state) => {
                 return {
-                    itemSourceName,
+                    projectAddress,
                     phoneNum,
                     idCard,
                     feeName,
@@ -54,7 +54,7 @@ export default connect(
             return (
                 <div className='basic-struct'>
                     <ul className='wx-order-confirm'>
-                        <li className='border-grey'>房间:{state.itemSourceName}</li>
+                        <li className='border-grey'>房间:{state.projectAddress}</li>
                         <li className='wx-order-type border-grey'>
                             <span>{state.feeName}</span>
                             <span className='order-detail-cost-amount'>¥{state.feeIteamId}</span>
