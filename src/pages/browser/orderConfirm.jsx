@@ -5,7 +5,7 @@ import { BasicHeader } from '@src/layout/basicHeader';
 import { BasicFooter } from '../../layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '../../utils/constant';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reduxMap';
-import { DeliveryDealWith } from '../../components/deliveryDealWith/deliveryDealWith';
+import { DeliveryDealWith } from '@components/deliveryDealWith/deliveryDealWith';
 import { isWX } from '../../utils/utils';
 import '../../css/color.css';
 
