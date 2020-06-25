@@ -1,15 +1,14 @@
 import React from 'react';
 import '@css/color.less';
-import { OrderDetailInfo } from '@components/orderDetial/orderDetailInfo';
-import { OrderDetailStatus } from '@components/orderDetial/orderDetailStatus';
-import { OrderDetailBasic } from '@components/orderDetial/orderDetailBasic';
+import Qs from 'qs';
 import { BasicHeader } from '@layout/basicHeader';
 import { ROUTER_ORDER_DETAIL } from '@utils/constant';
 import { BasicFooter } from '@layout/basicFooter';
 import { requestGetPaymentInfo } from '@api/api';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import Qs from 'qs';
+
+import { OrderDetailBasic } from '@components/orderDetial/orderDetailBasic';
 
 // 支付成功内容
 export default connect(
@@ -45,56 +44,20 @@ export default connect(
                 });
         }
 
-        renderBody({
-            orderTime,
-            tranStatus,
-
-            roomNames,
-            feeName,
-            payMoney,
-
-            transactionid,
-            tranDate,
-            tranPayType,
-        }){
-            return (
-                <div>
-                    {/*主要内容*/}
-                    <div>
-                        {/*订单状态*/}
-                        <OrderDetailStatus
-                            tranStatus={tranStatus}
-                            orderTime={orderTime}
-                            tranDate={tranDate}/>
-                        {/*订单基础信息*/}
-                        <OrderDetailBasic
-                            roomNames={roomNames}
-                            feeName={feeName}
-                            payMoney={payMoney}
-                        />
-                        {/*信息*/}
-                        <OrderDetailInfo
-                            transactionid={transactionid}
-                            tranDate={tranDate}
-                            tranPayType={tranPayType}
-                        />
-                    </div>
-                </div>
-            );
-        }
-
         render(){
-            const state = this.state;
             return (
                 <div className='basic-struct'>
                     {/*头部基础*/}
                     <BasicHeader
                         headerType={ROUTER_ORDER_DETAIL}
                     />
-                    {this.renderBody(state)}
+                    {/*订单基础信息*/}
+                    <OrderDetailBasic
+                        renderData={this.state}
+                    />
                     {
                         // 只有待支付状态，才有底部
-                        state.tranStatus === 0 ?
+                        this.state.tranStatus === 0 ?
                             (<BasicFooter
                                 footerType={ROUTER_ORDER_DETAIL}
                             />)
