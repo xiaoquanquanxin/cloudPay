@@ -1,48 +1,72 @@
-/*房间和什么费用*/
+//  支付状态
+.order-detail-status {
+	border-width: 0 0 0.01rem;
+	border-style: solid;
+	padding: 0.14rem 0.3rem;
+
+	p {
+		line-height: 0.26rem;
+	}
+
+
+	.status-detail-line {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	//  状态
+	.status-detail {
+		font-size: 0.17rem;
+	}
+
+	//  倒计时
+	//  时间
+	.countdown-pay, .status-detail-time {
+		font-size: 0.13rem;
+	}
+}
+
+//  房间和什么费用
 .order-detail-basic {
-    margin: 0.2rem 0.3rem;
+	margin: 0.2rem 0.3rem;
+	//  房间
+	.order-detail-room {
+		font-size: 0.17rem;
+		font-weight: 500;
+	}
+
+	//  什么费用
+	.order-detail-cost {
+		display: flex;
+		justify-content: space-between;
+		font-size: 0.15rem;
+		font-weight: 200;
+	}
+
+	.order-detail-room, .order-detail-cost {
+		line-height: 0.66rem;
+		border-width: 0 0 0.01rem;
+		border-style: solid;
+	}
 }
 
-/*房间*/
-.order-detail-room {
-    font-size: 0.17rem;
-    font-weight: 500;
-}
-
-/*什么费用*/
-.order-detail-cost {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.15rem;
-    font-weight: 200;
-}
-
-.order-detail-room, .order-detail-cost {
-    line-height: 0.66rem;
-    border-width: 0 0 0.01rem;
-    border-style: solid;
-}
-
-
-
-
-/*整体内容*/
+//  订单信息下面的内容
 .pay-for-success-info {
-    margin: 0 0.3rem;
-    padding: 0.16rem 0;
-    border-width: 0.01rem 0;
-    border-style: solid;
-    font-weight: 300;
-    font-size: 0.15rem;
+	margin: 0 0.3rem;
+	padding: 0.16rem 0;
+	border-width: 0.01rem 0;
+	border-style: solid;
+	font-weight: 300;
+	font-size: 0.15rem;
 
-    /*具体内容*/
-    .info-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 0.38rem;
-        font-size: 0.14rem;
-    }
+	//  具体内容
+	.info-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 0.38rem;
+		font-size: 0.14rem;
+	}
 
 
 }

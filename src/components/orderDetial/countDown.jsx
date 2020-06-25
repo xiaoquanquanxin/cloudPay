@@ -23,6 +23,8 @@ export class Surplus extends React.Component {
             this.setState({ timeStamp, }, () => {
                 if (timeStamp <= 0) {
                     this.SurplusClearInterval();
+                    //  todo
+                    console.log('停表，刷新');
                     // window.location.reload();
                 }
             });
