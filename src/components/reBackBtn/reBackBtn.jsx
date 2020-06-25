@@ -1,6 +1,6 @@
 import React from 'react';
 import './reBackBtn.less';
-import '@css/color.css';
+import '@css/color.less';
 import { ArrowsHead } from '@components/arrowsHead/arrowsHead';
 
 import { withRouter } from 'react-router-dom';

@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import './toast.less';
-import '@css/color.css';
+import '@css/color.less';
+
+//  弹框的title logo
+import toast_logo from '@images/toast_logo.png';
 
 //  弹框组件
 export const Toast = connect(
@@ -19,30 +22,31 @@ export const Toast = connect(
         //  确认按钮
         const ConfirmButton = confirmClick ? (
             <button
-                className='border-grey'
+                className='footer-btn-blue'
                 onClick={confirmClick}
             >确定</button>
         ) : '';
         //  取消按钮
         const CancelButton = cancelClick ? (
             <button
-                className='border-grey'
+                className='footer-btn-red'
                 onClick={cancelClick}
             >取消</button>
         ) : '';
         //  底部有按钮吗？
         // console.log(!!(confirmClick && cancelClick));
         const hasFooterButtons = (confirmClick || cancelClick) ? (
-            <div className='toast-buttons border-grey'>
+            <div className='toast-buttons'>
                 {CancelButton}
                 {ConfirmButton}
             </div>
         ) : '';
-        const containerClassName = 'toast-container ' + (hasFooterButtons ? 'big' : '');
+        const containerClassName = 'toast-container ' + (hasFooterButtons ? 'pad' : '');
         return (
             <div id='toast' className='toast-mask basic-full-mask'>
                 <div className={containerClassName}>
-                    <p className='text'>{text}</p>
+                    <img className='toast_logo' src={toast_logo} alt=""/>
+                    <p className='text color-dark'>{text}</p>
                     {hasFooterButtons}
                 </div>
             </div>

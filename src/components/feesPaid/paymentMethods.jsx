@@ -1,6 +1,6 @@
 import React from 'react';
 import './paymentMethods.less';
-import '@css/color.css';
+import '@css/color.less';
 
 //  实际支付方式
 export function PaymentMethods({

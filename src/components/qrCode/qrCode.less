@@ -1,84 +1,85 @@
+@import "~@css/mixin";
 /*整体遮罩*/
 .qr-code-wrap {
-    //.basic-full-mask();
+	.basic-full-mask;
 }
 
 /*二维码容器*/
 .qr-code-container {
-    width: 4.38rem;
-    height: 5.85rem;
-    border-radius: 0.2rem;
-    background-color: white;
-    overflow: hidden;
+	width: 4.38rem;
+	height: 5.85rem;
+	border-radius: 0.2rem;
+	background-color: white;
+	overflow: hidden;
 }
 
 /*标题*/
 .qr-code-title {
-    height: 0.9rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	height: 0.9rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /*扫描标志*/
 .qr-code-scan-code {
-    width: 0.26rem;
-    height: 0.26rem;
-    margin-right: 0.14rem;
+	width: 0.26rem;
+	height: 0.26rem;
+	margin-right: 0.14rem;
 }
 
 /*具体费项名称*/
 .qr-code-name {
-    font-size: 0.24rem;
+	font-size: 0.24rem;
 }
 
 /*主要内容*/
 .qr-code-content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
 /*金额*/
 .qr-code-content > h3 {
-    font-size: 0.28rem;
-    font-weight: normal;
-    margin-top: 0.3rem;
-    margin-bottom: 0.1rem;
+	font-size: 0.28rem;
+	font-weight: normal;
+	margin-top: 0.3rem;
+	margin-bottom: 0.1rem;
 }
 
 /*二维码*/
 .qr-code-content > img {
-    margin: 0.04rem;
-    width: 2.3rem;
-    height: 2.3rem;
+	margin: 0.04rem;
+	width: 2.3rem;
+	height: 2.3rem;
 }
 
 /*提示文本--请扫描二维码进行支付*/
 .qr-code-content > p {
-    font-size: 0.15rem;
-    margin-bottom: 0.7rem;
+	font-size: 0.15rem;
+	margin-bottom: 0.7rem;
 }
 
 
 /*按钮*/
 .qr-code-buttons {
-    height: 0.87rem;
-    font-size: 0.26rem;
-    border-width: 0.01rem 0 0;
-    border-style: solid;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+	height: 0.87rem;
+	font-size: 0.26rem;
+	border-width: 0.01rem 0 0;
+	border-style: solid;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .qr-code-buttons > button {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .qr-code-buttons > button:last-child {
-    border-width: 0 0 0 0.01rem;
-    border-style: solid;
+	border-width: 0 0 0 0.01rem;
+	border-style: solid;
 }

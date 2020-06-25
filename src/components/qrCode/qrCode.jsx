@@ -1,5 +1,5 @@
 import React from 'react';
-import '@css/color.css';
+import '@css/color.less';
 import './qrCode.less';
 
 //  扫描
@@ -39,7 +39,7 @@ export const QRCode = withRouter(connect(
 //  向物业缴费
 function RenderScan(){
     return (
-        <div className='qr-code-title footer-btn-dark'>
+        <div className='qr-code-title footer-btn-blue'>
             <img className='qr-code-scan-code'
                  src={scan_code}
                  alt="扫描"/>

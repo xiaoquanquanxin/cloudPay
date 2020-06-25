@@ -1,46 +1,51 @@
-@import '../../css/mixin';
+@import '@css/mixin';
 //	遮罩
 .toast-mask {
 	.basic-full-mask;
 
 	.toast-container {
-		//toast的内容
-		width: 4rem;
-		height: 2rem;
+		//	toast的内容
+		width: 3rem;
 		background-color: white;
 		display: flex;
-		justify-content: center;
 		flex-direction: column;
 		align-items: center;
-		//	有底部按钮
-		&.big {
-			height: 3rem;
+		border-radius: 0.2rem;
+		justify-content: space-between;
+		//	pad端
+		&.pad {
+			height: 3.1rem;
+			padding-bottom: 0.2rem;
+		}
+
+		//	弹框头部样式
+		.toast_logo {
+			display: flex;
+			width: 100%;
 		}
 
 		.text {
 			text-align: center;
-			line-height: 2rem;
+			font-size: 0.14rem;
+			margin: 0 0.2rem;
 		}
 
 		//	按钮
 		.toast-buttons {
-			height: 0.87rem;
-			font-size: 0.26rem;
-			border-width: 0.01rem 0 0;
-			border-style: solid;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
-			width: 100%;
 
 			button {
-				width: 100%;
-				height: 100%;
-				//	最后一个按钮才有前边框
-				&:last-child {
-					border-width: 0 0 0 0.01rem;
-					border-style: solid;
-				}
+				font-size: 0.17rem;
+				border-radius: 0.1rem;
+				height: 0.57rem;
+				width: 1.25rem;
+				overflow-y: hidden;
+			}
+
+			button:first-child {
+				margin-right: 0.1rem;
 			}
 		}
 	}

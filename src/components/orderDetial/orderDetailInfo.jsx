@@ -1,6 +1,6 @@
 import React from 'react';
 import './orderDetailInfo.css';
-import '@css/color.css';
+import '@css/color.less';
 import { SubTitle } from '@components/subTitle/subTitle';
 
 export function OrderDetailInfo({

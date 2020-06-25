@@ -1,5 +1,5 @@
 import React from 'react';
-import '@css/color.css';
+import '@css/color.less';
 import { BasicHeader } from '@layout/basicHeader';
 import { ROUTER_FEES_PAID } from '@utils/constant';
 import { BasicFooter } from '@layout/basicFooter';

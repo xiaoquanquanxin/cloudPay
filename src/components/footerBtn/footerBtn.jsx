@@ -1,7 +1,7 @@
 import React from 'react';
 import './footerBtn.css';
 import { withRouter } from 'react-router-dom';
-import '@css/color.css';
+import '@css/color.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '@utils/constant';
@@ -40,10 +40,10 @@ export const ToPayForBtn = withRouter(
             let className;
             //  如果是来自订单详情页
             if (isFrom === ROUTER_ORDER_DETAIL) {
-                className = 'footer-btn-basic footer-btn-dark';
+                className = 'footer-btn-basic footer-btn-blue';
             } else {
                 className = 'footer-btn-basic ' +
-                    (namespace_feesPaid.payType ? 'footer-btn-dark' : 'footer-btn-freeze');
+                    (namespace_feesPaid.payType ? 'footer-btn-blue' : 'footer-btn-freeze');
             }
             return (
                 <button
@@ -87,7 +87,7 @@ export const ConfirmPaymentBtn = withRouter(
         mapDispatchToProps
     )(
         ({ history, toastToggle, loadingToggle, iswx, namespace_orderConfirm, setFeesPaid }) => {
-            const className = 'footer-btn-basic footer-btn-dark ' +
+            const className = 'footer-btn-basic footer-btn-blue ' +
                 (iswx ? 'wx-button' : '');
             return (
                 <button
@@ -100,9 +100,13 @@ export const ConfirmPaymentBtn = withRouter(
                             .then(v => {
                                 //  todo 逻辑
                                 //  您有预缴费用价格发生变更
-                                // toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
-                                //     history.go(-1);
-                                // });
+                                if (true) {
+                                    toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
+                                        //     history.go(-1);
+                                    });
+                                    loadingToggle(false);
+                                }
+                                return;
                                 // console.log(namespace_orderConfirm);
                                 // console.log(v.data);
                                 //  fixme

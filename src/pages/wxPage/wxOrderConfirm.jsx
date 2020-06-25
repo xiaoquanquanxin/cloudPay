@@ -1,5 +1,5 @@
 import React from 'react';
-import '@css/color.css';
+import '@css/color.less';
 import '@css/wxOrderConfirm.css';
 import { BasicFooter } from '@layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '@utils/constant';

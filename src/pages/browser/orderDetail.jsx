@@ -1,5 +1,5 @@
 import React from 'react';
-import '@css/color.css';
+import '@css/color.less';
 import { OrderDetailInfo } from '@components/orderDetial/orderDetailInfo';
 import { OrderDetailStatus } from '@components/orderDetial/orderDetailStatus';
 import { OrderDetailBasic } from '@components/orderDetial/orderDetailBasic';

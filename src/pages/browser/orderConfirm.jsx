@@ -7,7 +7,7 @@ import { ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { DeliveryDealWith } from '@components/deliveryDealWith/deliveryDealWith';
 import { isWX } from '@utils/utils';
-import '@css/color.css';
+import '@css/color.less';
 
 // 确认订单layout
 export default connect(

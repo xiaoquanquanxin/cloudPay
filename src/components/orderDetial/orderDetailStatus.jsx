@@ -1,6 +1,6 @@
 import React from 'react';
 import './orderDetailStatus.css';
-import '@css/color.css';
+import '@css/color.less';
 import { timeSurplus } from '@utils/utils';
 import { Surplus } from './countDown';
 

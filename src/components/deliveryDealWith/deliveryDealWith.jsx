@@ -1,6 +1,6 @@
 import React from 'react';
 import './deliveryDealWith.less';
-import '@css/color.css';
+import '@css/color.less';
 
 //  副标题
 import { SubTitle } from '@components/subTitle/subTitle';

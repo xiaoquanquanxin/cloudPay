@@ -1,6 +1,6 @@
 import React from 'react';
 import '@css/basic-header.css';
-import '@css/color.css';
+import '@css/color.less';
 import { ReBackBtn } from '@components/reBackBtn/reBackBtn';
 import { HeaderTitle } from '@components/headerTitle/headerTitle';
 import { HeaderRightSide } from '@components/HeaderRightSide/headerRightSide';
