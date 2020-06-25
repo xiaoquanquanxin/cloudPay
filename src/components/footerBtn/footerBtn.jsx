@@ -98,15 +98,15 @@ export const ConfirmPaymentBtn = withRouter(
                         //  判断金额变更
                         requestJudgeAmountChange(namespace_orderConfirm)
                             .then(v => {
-                                //  todo 逻辑
+                                //  todo 新改的逻辑，就不应该有价格变更了
                                 //  您有预缴费用价格发生变更
-                                if (true) {
+                                if (false) {
                                     toastToggle(true, '您有预缴费用价格发生变更，请重新选择', () => {
-                                        //     history.go(-1);
+                                        history.go(-1);
                                     });
                                     loadingToggle(false);
+                                    return;
                                 }
-                                return;
                                 // console.log(namespace_orderConfirm);
                                 // console.log(v.data);
                                 //  fixme
