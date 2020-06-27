@@ -38,7 +38,7 @@ export const BasicHeader = connect(
                 rightSide = '确认订单';
                 ReBackBtnBefore = (callbackFn) => {
                     toastToggle(true,
-                        '您确定取消订单？🍎🍎🍎',
+                        '您确定取消订单？',
                         //  确定取消订单
                         () => {
                             toastToggle(false);
