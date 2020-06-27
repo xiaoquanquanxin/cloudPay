@@ -1,9 +1,8 @@
 import React from 'react';
-import '@css/basic-header.css';
+import '@css/basic-header.less';
 import '@css/color.less';
 import { ReBackBtn } from '@components/reBackBtn/reBackBtn';
-import { HeaderTitle } from '@components/headerTitle/headerTitle';
-import { HeaderRightSide } from '@components/HeaderRightSide/headerRightSide';
+
 import {
     ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
@@ -70,9 +69,9 @@ export const BasicHeader = connect(
                 {/*返回按钮*/}
                 {ReBackBtnRoute}
                 {/*头部title*/}
-                <HeaderTitle title={title}/>
+                <span className='header-title color-dark'>{title}</span>
                 {/*确认订单*/}
-                <HeaderRightSide rightSide={rightSide}/>
+                <span className='header-right-side color-grey'>{rightSide}</span>
             </header>
         );
     }
