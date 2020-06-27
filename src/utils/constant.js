@@ -16,7 +16,7 @@ const routerList = [{
     //  微信路由
     roc: '/wxOrderConfirm',
     rod: '/wxOrderDetail',
-    rfp: '/wxFeesPaid',
+    rfp: '/wxPaySuccess',
 }, {
     //  浏览器路由
     roc: '/orderConfirm',

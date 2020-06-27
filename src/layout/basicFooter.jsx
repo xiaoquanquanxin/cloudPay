@@ -27,7 +27,7 @@ export function BasicFooter({ footerType }){
         case ROUTER_ORDER_CONFIRM:
             if (isWx) {
                 footerButtonLeft = <ConfirmPaymentBtn
-                    iswx={1}
+                    iswx={true}
                 />;
             } else {
                 //  暂不办理

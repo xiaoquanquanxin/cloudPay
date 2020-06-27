@@ -39,10 +39,10 @@ const OrderConfirm = isWx ? asyncComponent(
 );
 //  费用支付组件
 const FeesPaid = isWx ? asyncComponent(
-    //  微信
-    () => import( '@pages/browser/feesPaid')
+    //  微信-微信支付成功
+    () => import( '@pages/wxPage/wxPaySuccess')
 ) : asyncComponent(
-    //  浏览器
+    //  浏览器-费用支付组件
     () => import( '@pages/browser/feesPaid')
 );
 //  订单详情组件
@@ -53,6 +53,7 @@ const OrderDetail = isWx ? asyncComponent(
     //  浏览器
     () => import( '@pages/browser/orderDetail')
 );
+
 
 //  基础结构
 export const App = connect()(

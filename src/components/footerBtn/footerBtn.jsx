@@ -107,8 +107,6 @@ export const ConfirmPaymentBtn = withRouter(
                                     loadingToggle(false);
                                     return;
                                 }
-                                // console.log(namespace_orderConfirm);
-                                // console.log(v.data);
                                 //  fixme
                                 //  点击【微信支付】预缴信息无变更生成订单，调起微信支付；支付成功，跳转到支付成功页面；支付失败进入订单详情页
                                 if (iswx) {
@@ -128,6 +126,7 @@ export const ConfirmPaymentBtn = withRouter(
                                 }
                             })
                             .then(v => {
+                                loadingToggle(false);
                                 packagePay((res) => {
                                     //  支付成功的回调
                                     if (res.err_msg === 'get_brand_wcpay_request:ok') {
