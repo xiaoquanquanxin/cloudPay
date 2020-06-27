@@ -17,7 +17,7 @@ export const BasicHeader = connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    ({ headerType, toastToggle }) => {
+    ({ headerType, toastToggle, namespace_feesPaid, loadingToggle }) => {
         let title;
         let rightSide;
         //  返回按钮的路径
@@ -42,8 +42,13 @@ export const BasicHeader = connect(
                         //  确定取消订单
                         () => {
                             toastToggle(false);
-                            callbackFn();
-                            return true;
+                            loadingToggle(true);
+                            setTimeout(() => {
+                                loadingToggle(false);
+                                const { phoneNum, orderNo } = namespace_feesPaid;
+                                callbackFn(`${ROUTER_ORDER_DETAIL}?orderNo=${orderNo}&phoneNum=${phoneNum}`);
+                                //  todo    5s延时
+                            }, 5000);
                         },
                         //  取消取消订单
                         () => {

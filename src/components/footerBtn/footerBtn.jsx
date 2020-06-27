@@ -49,9 +49,9 @@ export const ToPayForBtn = withRouter(
                 <button
                     className={className}
                     onClick={() => {
-                        //  如果是来自订单详情页，只需要跳转到支付页面
+                        //  如果是来自订单详情页，只需要replace到支付页面
                         if (isFrom === ROUTER_ORDER_DETAIL) {
-                            history.push(ROUTER_FEES_PAID);
+                            history.replace(ROUTER_FEES_PAID);
                             return;
                         }
                         //  如果没有选择

@@ -19,8 +19,13 @@ export const ReBackBtn = withRouter((
                     history.go(goRoute);
                 }
             } else {
+                //  在pad支付那一页
                 ReBackBtnBefore(
-                    () => {
+                    (params) => {
+                        if (params) {
+                            history.replace(params);
+                            return;
+                        }
                         history.replace(goRoute);
                     }
                 );

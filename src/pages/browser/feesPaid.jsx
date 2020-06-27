@@ -52,7 +52,7 @@ export default connect(
             this.setState({
                 payType,
             });
-            console.log(payType);
+//            console.log(payType);
             this.props.setFeesPaid({ payType });
         }
 
