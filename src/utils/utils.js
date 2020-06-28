@@ -1,6 +1,6 @@
 import Qs from 'qs';
 import md5 from 'md5';
-import { appSecret } from './constant';
+import {appSecret} from './constant';
 
 //  重置字体大小
 export function remSet(win, doc, isWx){
@@ -48,7 +48,7 @@ export function requestEndorse(originData){
     });
     //  组合md5
     const md5Data = Object.assign({}, _data);
-    const str = Qs.stringify(md5Data, { encode: false }) + '&' + timestamp + '&' + appSecret;
+    const str = Qs.stringify(md5Data, {encode: false}) + '&' + timestamp + '&' + appSecret;
     // console.log(str);
     // console.log(md5(str));
     const requestData = Qs.stringify(_data);
@@ -69,7 +69,7 @@ export function isWX(){
 
 //  倒计时
 export function timeSurplus(countDown){
-    const surplus = new Date(countDown).getTime()+ 15 * 60 * 1000 - new Date().getTime();
+    const surplus = new Date(countDown).getTime() + 15 * 60 * 1000 - new Date().getTime();
     //  秒
     return Math.trunc(surplus / 1000);
 }
@@ -87,4 +87,43 @@ function fillUpWithZero(n){
 }
 
 //  空函数
-export function emptyFunction(){}
+export function emptyFunction(){
+}
+
+//  解析确认订单参数
+export function analyticOrderConfirmParameter(props){
+    const search = decodeURIComponent(props.history.location.search.slice(1));
+    if (search === '') {
+        return {};
+    }
+    //  解析出来的数据
+    const data = JSON.parse(Qs.parse(search).data);
+    //  优惠券
+    data.haveCoupon = 0;
+    //  终端类型 0 Android 1 iPhone 2 pad 3 微信
+    data.terminalSource = isWX() ? 3 : 2;
+    console.log(data);
+    if (data.feeItems.length <= 5) {
+        props.toastToggle(true, '参数异常', () => {
+            props.history.goBack();
+        });
+    }
+    //  放到redux里
+    props.setOrderConfirm(data);
+    return data
+}
+
+//  解析pad端支付参数
+export function analyticFeesPaidParameter(props){
+    // console.log('👵OrderDetail',);
+    const state = Qs.parse(props.history.location.search.slice(1));
+    const {setFeesPaid} = props;
+    //  20200628105714726
+    //  15712852037
+    //  设置
+    setFeesPaid({
+        phoneNum: state.phoneNum,
+        orderNo: state.orderNo,
+    });
+    return state;
+}

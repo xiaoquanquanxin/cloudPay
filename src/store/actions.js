@@ -25,12 +25,8 @@ export function setToastIsShow(isShow, text, confirmClick, cancelClick){
 }
 
 //  是否选择了支付类型
-export const ACTION_PAY_TYPE = 'ACTION_PAY_TYPE';
+// export const ACTION_PAY_TYPE = 'ACTION_PAY_TYPE';
 
-//  是否loading
-export function setPayType(payType){
-    return { type: ACTION_PAY_TYPE, payType };
-}
 
 //
 //

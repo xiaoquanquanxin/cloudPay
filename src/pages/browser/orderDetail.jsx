@@ -1,6 +1,5 @@
 import React from 'react';
 import '@css/color.less';
-import Qs from 'qs';
 import { BasicHeader } from '@layout/basicHeader';
 import { ROUTER_ORDER_DETAIL } from '@utils/constant';
 import { BasicFooter } from '@layout/basicFooter';
@@ -9,6 +8,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 import { OrderDetailBasic } from '@components/orderDetial/orderDetailBasic';
+import {analyticFeesPaidParameter} from "@utils/utils";
 
 // 支付成功内容
 export default connect(
@@ -19,16 +19,12 @@ export default connect(
         constructor(props){
             super(props);
             window.document.title = '订单详情';
-            // console.log('👵OrderDetail',);
-            const state = Qs.parse(props.history.location.search.slice(1));
-            this.state = state;
-            const { setFeesPaid } = this.props;
-            //  设置
-            setFeesPaid({
-                phoneNum: state.phoneNum,
-                orderNo: state.orderNo,
-            });
+            //  重置支付类型
+            props.setFeesPaid({payType: null});
+            //  loading
             props.loadingToggle(true);
+            //  解析参数
+            this.state = analyticFeesPaidParameter(props);
         }
 
         componentDidMount(){

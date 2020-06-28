@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Qs from 'qs';
 import { BasicHeader } from '@layout/basicHeader';
 import { BasicFooter } from '@layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { DeliveryDealWith } from '@components/deliveryDealWith/deliveryDealWith';
-import { analyticOrderConfirmParameter, isWX } from '@utils/utils';
+import { analyticOrderConfirmParameter } from '@utils/utils';
 import '@css/color.less';
 
 // 确认订单layout

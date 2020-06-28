@@ -1,5 +1,5 @@
 import React from 'react';
-import { isWX } from '@utils/utils';
+import {isWX} from '@utils/utils';
 
 //  请用微信打开
 export function OpenWithWeChat(){
@@ -21,3 +21,5 @@ export function OpenWithWeChat(){
         </div>
     );
 }
+
+export default OpenWithWeChat

@@ -1,13 +1,13 @@
 import React from 'react';
 import '@css/color.less';
-import { BasicHeader } from '@layout/basicHeader';
-import { ROUTER_FEES_PAID } from '@utils/constant';
-import { BasicFooter } from '@layout/basicFooter';
-import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetPaymentInfo } from '@api/api';
-
-import { PaymentInfo } from '@components/paymentInfo/paymentInfo';
+import {BasicHeader} from '@layout/basicHeader';
+import {ROUTER_FEES_PAID} from '@utils/constant';
+import {BasicFooter} from '@layout/basicFooter';
+import {connect} from 'react-redux';
+import {mapDispatchToProps, mapStateToProps} from '@store/reduxMap';
+import {requestGetPaymentInfo} from '@api/api';
+import {PaymentInfo} from '@components/paymentInfo/paymentInfo';
+import {analyticFeesPaidParameter} from "@utils/utils";
 // 支付成功layout
 export default connect(
     mapStateToProps,
@@ -17,26 +17,24 @@ export default connect(
         constructor(props){
             super(props);
             window.document.title = '费用支付';
-            // console.log('👵FeesPaid', props.history);
-
-            //  打开loading
-            props.loadingToggle(true);
             //  重置支付类型
-            this.props.setFeesPaid({ payType: null });
-            // console.log('支付方式', props.namespace_payType.payType);
-            this.state = {};
+            props.setFeesPaid({payType: null});
+            //  loading
+            props.loadingToggle(true);
+            //  解析参数
+            this.state = analyticFeesPaidParameter(props);
             this.handleClickCheck = this.handleClickCheck.bind(this);
         }
 
         //  请求
         componentDidMount(){
-            const { namespace_feesPaid, loadingToggle } = this.props;
-            requestGetPaymentInfo(namespace_feesPaid)
+            const {loadingToggle} = this.props;
+            requestGetPaymentInfo(this.state)
                 .then(v => {
                     const payMoney = v.data.payMoney;
                     this.setState(state => {
-                        this.props.setFeesPaid({ payMoney });
-                        return { payMoney };
+                        this.props.setFeesPaid({payMoney});
+                        return {payMoney};
                     });
                 })
                 .then(() => {
@@ -53,7 +51,7 @@ export default connect(
                 payType,
             });
 //            console.log(payType);
-            this.props.setFeesPaid({ payType });
+            this.props.setFeesPaid({payType});
         }
 
         render(){
