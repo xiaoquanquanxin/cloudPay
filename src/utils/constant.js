@@ -2,8 +2,6 @@
 import { isWX } from './utils';
 
 export const appId = 'wx94c24d52e8352f8a';
-//  测试号的appsecret
-export const appsecret = 'bda7cc2271c7b62db7e2eb63d508de25';
 
 //  ap使用
 export const appKey = '2b2b6d213622c1cf977774c2dcac1c3b';
@@ -19,7 +17,7 @@ const routerList = [{
     rfp: '/wxPaySuccess',
 }, {
     //  浏览器路由
-    roc: '/orderConfirm',
+    roc: '/404',
     rod: '/orderDetail',
     rfp: '/feesPaid',
 }];

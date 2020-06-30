@@ -1,6 +1,5 @@
 import {
     setLoadingIsShow,
-    setPayType,
     setQrCodeIsShow,
     setToastIsShow,
     setOrderConfirm,
@@ -49,10 +48,6 @@ export const mapDispatchToProps = (dispatch) => {
             dispatch(setToastIsShow(isShow, text, confirmClick, cancelClick,));
         },
 
-        // //  选择支付方式
-        // choosePayType: (payType) => {
-        //     dispatch(setPayType(payType));
-        // },
 
         //  orderConfirm通过url获取的参数
         setOrderConfirm: (data) => {

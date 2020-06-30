@@ -1,6 +1,6 @@
 import Qs from 'qs';
 import md5 from 'md5';
-import { appSecret } from './constant';
+import {appSecret} from './constant';
 
 //  重置字体大小
 export function remSet(win, doc, isWx){
@@ -115,4 +115,43 @@ export function analyticOrderConfirmParameter(props){
     props.setOrderConfirm(data);
 
     return data;
+}
+
+
+//  解析确认订单参数
+export function analyticOrderConfirmParameter(props){
+    const search = decodeURIComponent(props.history.location.search.slice(1));
+    if (search === '') {
+        return {};
+    }
+    //  解析出来的数据
+    const data = JSON.parse(Qs.parse(search).data);
+    //  优惠券
+    data.haveCoupon = 0;
+    //  终端类型 0 Android 1 iPhone 2 pad 3 微信
+    data.terminalSource = isWX() ? 3 : 2;
+    console.log(data);
+    if (data.feeItems.length <= 5) {
+        props.toastToggle(true, '参数异常', () => {
+            props.history.goBack();
+        });
+    }
+    //  放到redux里
+    props.setOrderConfirm(data);
+    return data
+}
+
+//  解析pad端支付参数
+export function analyticFeesPaidParameter(props){
+    // console.log('👵OrderDetail',);
+    const state = Qs.parse(props.history.location.search.slice(1));
+    const {setFeesPaid} = props;
+    //  20200628105714726
+    //  15712852037
+    //  设置
+    setFeesPaid({
+        phoneNum: state.phoneNum,
+        orderNo: state.orderNo,
+    });
+    return state;
 }

@@ -5,8 +5,7 @@ import { BasicFooter } from '@layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import Qs from 'qs';
-import { analyticOrderConfirmParameter, isWX } from '@utils/utils';
+import { analyticOrderConfirmParameter } from '@utils/utils';
 
 // 确认订单layout
 export default connect(
