@@ -69,7 +69,7 @@ export function isWX(){
 
 //  倒计时
 export function timeSurplus(countDown){
-    const surplus = new Date(countDown).getTime()+ 15 * 60 * 1000 - new Date().getTime();
+    const surplus = new Date(countDown).getTime() + 15 * 60 * 1000 - new Date().getTime();
     //  秒
     return Math.trunc(surplus / 1000);
 }
@@ -88,3 +88,31 @@ function fillUpWithZero(n){
 
 //  空函数
 export function emptyFunction(){}
+
+//  解析 确认订单 的 参数
+export function analyticOrderConfirmParameter(props){
+    const search = decodeURIComponent(props.history.location.search.slice(1));
+    if (search === '') {
+        console.log('search为空');
+        props.toastToggle(true, '参数异常', () => {
+            props.history.goBack();
+        });
+        return {};
+    }
+    //  解析出来的数据
+    const data = JSON.parse(Qs.parse(search).data);
+    //  优惠券
+    data.haveCoupon = 0;
+    //  终端类型 0 Android 1 iPhone 2 pad 3 微信
+    data.terminalSource = isWX() ? 3 : 2;
+    if (data.feeItems.length <= 5) {
+        console.log('feeItems异常');
+        props.toastToggle(true, '参数异常', () => {
+            props.history.goBack();
+        });
+    }
+    //  放到redux里
+    props.setOrderConfirm(data);
+
+    return data;
+}
