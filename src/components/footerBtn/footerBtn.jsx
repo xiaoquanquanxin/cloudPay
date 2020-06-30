@@ -115,15 +115,16 @@ export const ConfirmPaymentBtn = withRouter(
                                     //  todo    order/goods/details 小程序中
                                     return Promise.resolve();
                                 } else {
+                                    throw new Error('错误的iswx类型，应该只有微信才会有');
                                     //  向redux里传入feesPaid里需要的参数
-                                    setFeesPaid({
-                                        phoneNum: namespace_orderConfirm.phoneNum,
-                                        orderNo: v.data.orderNo
-                                    });
-                                    history.replace(ROUTER_FEES_PAID);
-                                    // console.log('pad，跳转');
+                                    //  setFeesPaid({
+                                    //  phoneNum: namespace_orderConfirm.phoneNum,
+                                    //  orderNo: v.data.orderNo
+                                    //  });
+                                    //  history.replace(ROUTER_FEES_PAID);
+                                    //  console.log('pad，跳转');
                                     //  仅仅是为了终止promise
-                                    return Promise.reject();
+                                    //  return Promise.reject();
                                 }
                             })
                             .then(v => {

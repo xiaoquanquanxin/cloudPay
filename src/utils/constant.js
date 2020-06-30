@@ -29,6 +29,8 @@ export const ROUTER_ORDER_CONFIRM = routerItem.roc;
 export const ROUTER_ORDER_DETAIL = routerItem.rod;
 //  费用支付
 export const ROUTER_FEES_PAID = routerItem.rfp;
+//  支付成功给
+export const ROUTER_PAY_SUCCESS = routerItem.rfp;
 //  请用微信打开，浏览器为404
 export const ROUTER_OPEN_WITH_WE_CHAT = '/404';
 

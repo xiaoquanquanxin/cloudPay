@@ -1,6 +1,6 @@
 import React from 'react';
 import '@css/color.less';
-import '@css/wxOrderConfirm.css';
+import '@css/wxOrderConfirm.less';
 import { BasicFooter } from '@layout/basicFooter';
 import { ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { connect } from 'react-redux';
