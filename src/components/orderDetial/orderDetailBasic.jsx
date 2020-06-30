@@ -4,7 +4,7 @@ import '@css/color.less';
 import { SubTitle } from '@components/subTitle/subTitle';
 import { timeSurplus } from '@utils/utils';
 import { Surplus } from '@components/orderDetial/countDown';
-import { WxOrderInfo } from '@components/wxPaySuccess/wxOrderInfo';
+import { OrderInfo } from '@components/orderInfo/wxOrderInfo';
 
 export function OrderDetailBasic(props){
     const {
@@ -59,7 +59,7 @@ export function OrderDetailBasic(props){
                     className='order-detail-cost-amount'>¥{payMoney}</span></p>
             </div>
             <SubTitle text='订单信息'/>
-            <WxOrderInfo
+            <OrderInfo
                 iswx={false}
                 transactionid={transactionid}
                 tranDate={tranDate}
