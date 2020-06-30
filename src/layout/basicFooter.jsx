@@ -1,5 +1,5 @@
 import React from 'react';
-import '@css/basic-footer.css';
+import '@css/basic-footer.less';
 import {
     NotDealWithBtn,
     ToPayForBtn,
@@ -16,7 +16,7 @@ import {
 import { isWX } from '@utils/utils';
 
 //  是微信？
-const isWx = isWX();
+const iswx = isWX();
 
 //  脚部信息
 export function BasicFooter({ footerType }){
@@ -25,42 +25,32 @@ export function BasicFooter({ footerType }){
     // console.log(footerType);
     switch (footerType) {
         case ROUTER_ORDER_CONFIRM:
-            if (isWx) {
-                footerButtonLeft = <ConfirmPaymentBtn
-                    iswx={true}
-                />;
-            } else {
-                //  暂不办理
-                footerButtonLeft = <NotDealWithBtn/>;
+            //  暂不办理
+            footerButtonLeft = <ConfirmPaymentBtn/>;
+            if (!iswx) {
                 //  确认支付以上费用
                 footerButtonRight = <ConfirmPaymentBtn/>;
             }
             break;
         case ROUTER_FEES_PAID:
-            if (isWx) {
+            if (iswx) {
                 throw new Error('错误的类型');
             } else {
                 //  去支付
                 footerButtonRight = <ToPayForBtn/>;
             }
-
             break;
         case ROUTER_ORDER_DETAIL:
-            if (isWx) {
-                footerButtonLeft = '取消订单\n ';
-                footerButtonRight = '去支付';
-            } else {
-                // 取消订单
-                footerButtonLeft = <CancelOrder/>;
-                //  去支付
-                footerButtonRight = <ToPayForBtn isFrom={ROUTER_ORDER_DETAIL}/>;
-            }
+            // 取消订单
+            footerButtonLeft = <CancelOrder/>;
+            //  去支付
+            footerButtonRight = <ToPayForBtn isFrom={ROUTER_ORDER_DETAIL}/>;
             break;
         default:
             console.log(`错误的类型 footerType : ${footerType}`);
     }
     //  底部class
-    const className = 'basic-footer ' + (isWx ? 'iswx' : '');
+    const className = 'basic-footer ' + (iswx ? 'iswx' : '');
     return (
         <footer className={className}>
             {footerButtonLeft}

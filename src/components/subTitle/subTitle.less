@@ -1,0 +1,33 @@
+/*sub-title*/
+.sub-title {
+	margin: 0 0.3rem;
+	line-height: 0.48rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-weight: 500;
+	font-size: 0.17rem;
+
+	&::before {
+		display: inline-block;
+		content: '';
+		width: 0.04rem;
+		height: 0.16rem;
+		border-radius: 0.02rem;
+		margin-right: 0.06rem;
+		background-color: var(--detail-info-title-blue);
+	}
+
+	&.iswx {
+		font-size: 0.28rem;
+		line-height: 1rem;
+		margin: 0 0.34rem;
+
+		&::before {
+			width: 0.08rem;
+			height: 0.28rem;
+			border-radius: 0.04rem;
+            margin-right: 0.2rem;
+		}
+	}
+}

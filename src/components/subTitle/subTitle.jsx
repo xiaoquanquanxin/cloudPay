@@ -1,9 +1,13 @@
 import React from 'react';
-import './subTitle.css';
+import './subTitle.less';
+import { isWX } from '@utils/utils';
+
+const iswx = isWX();
 
 //  副标题
 export function SubTitle({ text }){
+    const className = 'sub-title ' + (iswx ? 'iswx' : '');
     return (
-        <div className='sub-title'>{text}</div>
+        <div className={className}>{text}</div>
     );
 }

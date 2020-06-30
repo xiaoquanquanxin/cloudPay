@@ -1,17 +1,20 @@
 import React from 'react';
-import './footerBtn.css';
+import './footerBtn.less';
 import { withRouter } from 'react-router-dom';
 import '@css/color.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { ROUTER_FEES_PAID, ROUTER_ORDER_DETAIL } from '@utils/constant';
 import { packagePay } from '@utils/packagePay';
-import { emptyFunction } from '@utils/utils';
+import { emptyFunction, isWX } from '@utils/utils';
 import {
     requestGetQRCode,
     requestCancelOrder,
     requestJudgeAmountChange,
 } from '@api/api';
+//  是微信？
+const iswx = isWX();
+
 //  暂不办理
 export const NotDealWithBtn = withRouter(
     ({ history }) => {
@@ -45,6 +48,7 @@ export const ToPayForBtn = withRouter(
                 className = 'footer-btn-basic ' +
                     (namespace_feesPaid.payType ? 'footer-btn-blue' : 'footer-btn-freeze');
             }
+            className = iswx? className + ' iswx' : className;
             return (
                 <button
                     className={className}
@@ -86,9 +90,9 @@ export const ConfirmPaymentBtn = withRouter(
         mapStateToProps,
         mapDispatchToProps
     )(
-        ({ history, toastToggle, loadingToggle, iswx, namespace_orderConfirm, setFeesPaid }) => {
+        ({ history, toastToggle, loadingToggle, namespace_orderConfirm, setFeesPaid }) => {
             const className = 'footer-btn-basic footer-btn-blue ' +
-                (iswx ? 'wx-button' : '');
+                (iswx ? 'iswx' : '');
             return (
                 <button
                     className={className}
@@ -151,9 +155,10 @@ export const CancelOrder = connect(
     mapDispatchToProps
 )(({ namespace_toast, toastToggle, loadingToggle, namespace_feesPaid }) => {
     // console.log('取消订单按钮', namespace_toast);
+    const className = 'footer-btn-basic footer-btn-light ' + (iswx ? 'iswx' : '');
     return (
         <button
-            className='footer-btn-basic footer-btn-light'
+            className={className}
             onClick={() => {
                 toastToggle(true,
                     '您确定取消订单？',

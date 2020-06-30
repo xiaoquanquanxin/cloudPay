@@ -1,7 +1,11 @@
 import React from 'react';
 import './wxOrderInfo.less';
+import { isWX } from '@utils/utils';
+
+const iswx = isWX();
+
 //  订单详情和支付成功的公共部分
-export function OrderInfo({ transactionid, tranDate, tranPayType, iswx }){
+export function OrderInfo({ transactionid, tranDate, tranPayType, }){
     return (
         <div className={'pay-for-success-info border-grey ' + (iswx ? 'iswx' : '')}>
             <div className='info-item'>

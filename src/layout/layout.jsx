@@ -12,7 +12,9 @@ import {
     ROUTER_ORDER_CONFIRM,
     ROUTER_ORDER_DETAIL,
     ROUTER_FEES_PAID,
-    ROUTER_OPEN_WITH_WE_CHAT, ROUTER_ORIGIN_PAGE, ROUTER_PAY_SUCCESS,
+    ROUTER_OPEN_WITH_WE_CHAT,
+    ROUTER_ORIGIN_PAGE,
+    ROUTER_PAY_SUCCESS,
 } from '@utils/constant';
 //  loading组件
 import { Loading } from '@components/loading/loading';
@@ -29,27 +31,20 @@ const isWx = isWX();
 remSet(window, document, isWx);
 console.log('是否是微信', !!isWx);
 
-//  交付办理组件-仅微信
-const OrderConfirm = asyncComponent(() => import( '@pages/wxPage/wxOrderConfirm'));
+//  微信-确认订单页面
+const ComponentWXOrderConfirm = asyncComponent(() => import( '@pages/wxPage/wxOrderConfirm'));
 
-//  浏览器-费用支付组件
-const ComponentFeesPaid = asyncComponent(
-    () => import( '@pages/browser/feesPaid'),
-);
+//  微信-支付成功页面
+const ComponentWXPaySuccess = asyncComponent(() => import('@pages/wxPage/wxPaySuccess'));
 
-//  微信-支付成功组件
-const ComponentPaySuccess = asyncComponent(
-    () => import('@pages/wxPage/wxPaySuccess'),
-);
+//  微信-订单详情组件
+const ComponentWXOrderDetail = asyncComponent(() => import( '@pages/wxPage/wxOrderDetail'));
 
-//  订单详情组件
-const OrderDetail = isWx ? asyncComponent(
-    //  微信
-    () => import( '@pages/browser/orderDetail')
-) : asyncComponent(
-    //  浏览器
-    () => import( '@pages/browser/orderDetail')
-);
+//  浏览器-费用支付，二维码，微信支付宝页面
+const ComponentFeesPaid = asyncComponent(() => import( '@pages/browser/feesPaid'));
+
+//  浏览器-订单详情组件
+const ComponentOrderDetail = asyncComponent(() => import( '@pages/browser/orderDetail'));
 
 //  基础结构
 export const App = function (){
@@ -62,6 +57,10 @@ export const App = function (){
         const redirectRoute = (
             <Redirect from="/*" to={ROUTER_OPEN_WITH_WE_CHAT}/>
         );
+        //  请用微信打开，404
+        const cp404 = (
+            <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
+        );
 
         // debugger
         if (isWx) {
@@ -69,13 +68,12 @@ export const App = function (){
             return (
                 <Switch>
                     {/*确认订单 ✅*/}
-                    <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
+                    <Route path={ROUTER_ORDER_CONFIRM} component={ComponentWXOrderConfirm}/>
                     {/*支付成功*/}
-                    <Route path={ROUTER_PAY_SUCCESS} component={ComponentPaySuccess}/>
+                    <Route path={ROUTER_PAY_SUCCESS} component={ComponentWXPaySuccess}/>
                     {/*订单详情*/}
-                    <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
-                    {/*请用微信打开*/}
-                    <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
+                    <Route path={ROUTER_ORDER_DETAIL} component={ComponentWXOrderDetail}/>
+                    {cp404}
                     {testRoute}
                     {redirectRoute}
                 </Switch>
@@ -88,9 +86,8 @@ export const App = function (){
                         {/*费用支付*/}
                         <Route path={ROUTER_FEES_PAID} component={ComponentFeesPaid}/>
                         {/*订单详情*/}
-                        <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
-                        {/*请用微信打开*/}
-                        <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
+                        <Route path={ROUTER_ORDER_DETAIL} component={ComponentOrderDetail}/>
+                        {cp404}
                         {testRoute}
                         {redirectRoute}
                     </Switch>

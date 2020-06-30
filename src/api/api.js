@@ -2,6 +2,7 @@ import { request } from '../utils/request';
 
 //  获取付款详情  - 获取订单详情
 export function requestGetPaymentInfo(data){
+    //  ?orderNo=20200630141722824&phoneNum=15712852037
     return request({
         method: 'post',
         url: '/property-api/prepayment/getPaymentInfo',

@@ -49,3 +49,56 @@
 		border-style: solid;
 	}
 }
+
+
+.iswx {
+	//  支付状态
+	.order-detail-status {
+		border: none;
+		padding: 0.3rem 0.34rem;
+
+		p {
+			line-height: 0.5rem;
+		}
+
+		.status-detail-line {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		//  状态
+		.status-detail {
+			font-size: 0.28rem;
+		}
+
+		//  倒计时
+		//  时间
+		.countdown-pay, .status-detail-time {
+			font-size: 0.24rem;
+		}
+	}
+
+	//  房间和什么费用
+	.order-detail-basic {
+		margin: 0 0.34rem;
+		//  房间
+		.order-detail-room {
+			font-weight: 500;
+			border-width: 0 0 0.01rem;
+			border-style: solid;
+		}
+
+		//  什么费用
+		.order-detail-cost {
+			display: flex;
+			justify-content: space-between;
+			font-weight: 200;
+			border: none;
+		}
+
+		.order-detail-room, .order-detail-cost {
+			line-height: 1rem;
+			font-size: 0.28rem;
+		}
+	}
+}

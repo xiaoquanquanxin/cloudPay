@@ -17,7 +17,6 @@ const routerList = [{
     rfp: '/wxPaySuccess',
 }, {
     //  浏览器路由
-    roc: '/404',
     rod: '/orderDetail',
     rfp: '/feesPaid',
 }];

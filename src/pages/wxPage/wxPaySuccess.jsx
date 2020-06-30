@@ -14,7 +14,6 @@ export default connect(
         constructor(props){
             super(props);
             window.document.title = '支付成功';
-            //  ?orderNo=20200630141722824&phoneNum=15712852037
             props.loadingToggle(true);
             //  解析参数
             this.state = analyticFeesPaidParameter(props);

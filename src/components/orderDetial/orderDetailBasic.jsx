@@ -2,9 +2,21 @@ import React from 'react';
 import './orderDetailBasic.less';
 import '@css/color.less';
 import { SubTitle } from '@components/subTitle/subTitle';
-import { timeSurplus } from '@utils/utils';
+import { isWX, timeSurplus } from '@utils/utils';
 import { Surplus } from '@components/orderDetial/countDown';
 import { OrderInfo } from '@components/orderInfo/wxOrderInfo';
+
+const iswx = isWX();
+
+//  wx页面的填充
+function WXPadding(){
+    if (iswx) {
+        return (
+            <p style={{ backgroundColor: '#F8F8F8', height: '0.2rem' }}/>
+        );
+    }
+    return '';
+}
 
 export function OrderDetailBasic(props){
     const {
@@ -42,7 +54,7 @@ export function OrderDetailBasic(props){
     }
 
     return (
-        <div>
+        <div className={iswx ? 'iswx' : ''}>
             {/*订单状态*/}
             <div className='order-detail-status border-grey'>
                 <p className='status-detail-line'>
@@ -51,15 +63,16 @@ export function OrderDetailBasic(props){
                 </p>
                 <p className='countdown-pay color-grey'>{countDownPayText}</p>
             </div>
+            <WXPadding/>
             {/*房间*/}
             <div className='order-detail-basic'>
                 <p className='order-detail-room border-grey color-dark'>房间：{roomNames}</p>
                 <p className='order-detail-cost border-grey color-dark'><span>{feeName}</span><span
                     className='order-detail-cost-amount'>¥{payMoney}</span></p>
             </div>
+            <WXPadding/>
             <SubTitle text='订单信息'/>
             <OrderInfo
-                iswx={false}
                 transactionid={transactionid}
                 tranDate={tranDate}
                 tranPayType={tranPayType}
