@@ -58,27 +58,45 @@ const OrderDetail = isWx ? asyncComponent(
 //  基础结构
 export const App = function (){
     const SwitchContent = (() => {
-
+        // debugger
         if (isWx) {
+            //  微信
             return (
-              <div>
-                  {/*确认订单*/}
-                  <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
-                  {/*费用支付*/}
-                  <Route path={ROUTER_FEES_PAID} component={FeesPaid}/>
-                  {/*订单详情*/}
-                  <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
-              </div>
+                <Switch>
+                    {/*确认订单*/}
+                    <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
+                    {/*费用支付*/}
+                    <Route path={ROUTER_FEES_PAID} component={FeesPaid}/>
+                    {/*订单详情*/}
+                    <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
+                    {/*请用微信打开*/}
+                    <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
+                    {/*fixme test*/}
+                    {/*测试用的数据来源*/}
+                    <Route path={ROUTER_ORIGIN_PAGE} component={OriginPage}/>
+                    {/*默认路由*/}
+                    <Redirect from="/*" to={ROUTER_OPEN_WITH_WE_CHAT}/>
+                </Switch>
             )
         } else {
+            //  pad
             return (
                <div>
-                   {/*确认订单*/}
-                   <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
-                   {/*费用支付*/}
-                   <Route path={ROUTER_FEES_PAID} component={FeesPaid}/>
-                   {/*订单详情*/}
-                   <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
+                   <Switch>
+                       {/*确认订单，在pad是404*/}
+                       <Route path={ROUTER_ORDER_CONFIRM} component={OrderConfirm}/>
+                       {/*费用支付*/}
+                       <Route path={ROUTER_FEES_PAID} component={FeesPaid}/>
+                       {/*订单详情*/}
+                       <Route path={ROUTER_ORDER_DETAIL} component={OrderDetail}/>
+                       {/*请用微信打开*/}
+                       <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
+                       {/*fixme test*/}
+                       {/*测试用的数据来源*/}
+                       <Route path={ROUTER_ORIGIN_PAGE} component={OriginPage}/>
+                       {/*默认路由*/}
+                       <Redirect from="/*" to={ROUTER_OPEN_WITH_WE_CHAT}/>
+                   </Switch>
                </div>
             )
         }
@@ -89,16 +107,7 @@ export const App = function (){
             <Loading/>
             {/*全局弹框*/}
             <Toast/>
-            <Switch>
-                {/*<SwitchContent/>*/}
-                {/*请用微信打开*/}
-                <Route path={ROUTER_OPEN_WITH_WE_CHAT} component={OpenWithWeChat}/>
-                {/*fixme test*/}
-                {/*测试用的数据来源*/}
-                <Route path={ROUTER_ORIGIN_PAGE} component={OriginPage}/>
-                {/*默认路由*/}
-                <Redirect from="/*" to={ROUTER_OPEN_WITH_WE_CHAT}/>
-            </Switch>
+            {SwitchContent}
         </Router>
     );
 }
