@@ -6,7 +6,14 @@ export function requestGetPaymentInfo(data){
         method: 'post',
         url: '/property-api/prepayment/getPaymentInfo',
         data: data,
-    });
+    })
+        .then(v => {
+            //  支付状态
+            v.data.tranStatus = Number(v.data.tranStatus);
+            //  支付方式
+            v.data.tranPayType = '在线支付';
+            return v;
+        });
 }
 
 //  获取二维码--支付宝扫码支付

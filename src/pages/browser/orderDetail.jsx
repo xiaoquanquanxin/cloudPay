@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 import { OrderDetailBasic } from '@components/orderDetial/orderDetailBasic';
-import {analyticFeesPaidParameter} from "@utils/utils";
+import { analyticFeesPaidParameter } from '@utils/utils';
 
 // 支付成功内容
 export default connect(
@@ -20,7 +20,7 @@ export default connect(
             super(props);
             window.document.title = '订单详情';
             //  重置支付类型
-            props.setFeesPaid({payType: null});
+            props.setFeesPaid({ payType: null });
             //  loading
             props.loadingToggle(true);
             //  解析参数
@@ -31,8 +31,6 @@ export default connect(
             const { loadingToggle } = this.props;
             requestGetPaymentInfo(this.state)
                 .then(v => {
-                    //  支付状态
-                    v.data.tranStatus = Number(v.data.tranStatus);
                     this.setState(state => {
                         return v.data;
                     });

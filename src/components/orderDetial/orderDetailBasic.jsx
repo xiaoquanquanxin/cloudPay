@@ -13,7 +13,6 @@ export function OrderDetailBasic(props){
         transactionid, tranPayType,
     } = Object.assign({
         tranStatus: -1,
-        tranPayType: '在线支付'
     }, props.renderData);
 
     let tranStatusText;
