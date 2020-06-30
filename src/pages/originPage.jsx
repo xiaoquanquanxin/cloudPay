@@ -1,12 +1,12 @@
 import React from 'react';
 import './originPage.css';
 import {
-    __testPropertyApiPrepaymentQueryFeeitemDetails,
+    __testPropertyApiPrepaymentQueryFeeitemDetails, requestJudgeAmountChange,
 } from '@api/api';
-import {ROUTER_FEES_PAID, ROUTER_ORDER_CONFIRM} from '@utils/constant';
-import {connect} from 'react-redux';
-import {mapDispatchToProps, mapStateToProps} from '@store/reduxMap';
-
+import { ROUTER_FEES_PAID, ROUTER_ORDER_CONFIRM } from '@utils/constant';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
+import { isWX } from '@utils/utils';
 
 //  数据来源页面
 export const OriginPage = connect(
@@ -20,52 +20,56 @@ export const OriginPage = connect(
                 list: [],
                 jumpList: [],
             };
-            // props.loadingToggle(true);
+            props.loadingToggle(true);
             this.goToOrderConfirm = this.goToOrderConfirm.bind(this);
             this.chooseItem = this.chooseItem.bind(this);
         }
 
         //  请求
         componentDidMount(){
-            return
             //  测试-查询专项预缴费项明细
-            // __testPropertyApiPrepaymentQueryFeeitemDetails()
-            //     .then(v => {
-            //         const list = v.data.feeItems;
-            //         this.setState(state => {
-            //             return {
-            //                 list,
-            //             };
-            //         });
-            //         this.props.loadingToggle(false);
-            //     });
+            __testPropertyApiPrepaymentQueryFeeitemDetails()
+                .then(v => {
+                    const list = v.data.feeItems;
+                    this.setState(state => {
+                        return {
+                            list,
+                        };
+                    });
+                    this.props.loadingToggle(false);
+                });
         }
 
         //  跳转
         goToOrderConfirm(){
-            // const data = encodeURIComponent(JSON.stringify(
-            //     Object.assign({
-            //         //  用户主数据id
-            //         cmdsId: '7e1905fdad244d02aaa84bd93b2decba',
-            //         //  客户名称
-            //         userName: '权鑫',
-            //         //  订单金额
-            //         totalAmount: '0.01',
-            //         //  房间主数据id
-            //         pmdsRoomId: 'e04c5fe7-5ac4-4d06-ad3a-071c6b970c0b',//  	T文本	是
-            //         //  用户手机号
-            //         phoneNum: 15712852037,//  	T文本	是
-            //         //  费项id
-            //         feeId: 4801,
-            //     }, {
-            //         feeItems: JSON.stringify(this.state.jumpList)
-            //     })
-            // ));
-            // console.log(data);
-
-            this.props.history.push(`${ROUTER_FEES_PAID
-            }?orderNo=${20200628105714726
-            }&phoneNum=${15712852037}`);
+            const data = (
+                Object.assign({
+                    //  用户主数据id
+                    cmdsId: '7e1905fdad244d02aaa84bd93b2decba',
+                    //  客户名称
+                    userName: '权鑫',
+                    //  订单金额
+                    totalAmount: '0.01',
+                    //  房间主数据id
+                    pmdsRoomId: 'e04c5fe7-5ac4-4d06-ad3a-071c6b970c0b',//  	T文本	是
+                    //  用户手机号
+                    phoneNum: 15712852037,//  	T文本	是
+                    //  费项id
+                    feeId: 4801,
+                    //  终端类型
+                    terminalSource: isWX() ? 3 : 2,
+                    //  优惠券
+                    haveCoupon: 0,
+                }, {
+                    feeItems: JSON.stringify(this.state.jumpList)
+                })
+            );
+            requestJudgeAmountChange(data)
+                .then(v => {
+                    this.props.history.push(`${ROUTER_FEES_PAID
+                    }?orderNo=${v.data.orderNo
+                    }&phoneNum=${15712852037}`);
+                });
         }
 
         //  选择这个

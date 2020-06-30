@@ -111,7 +111,8 @@ export const ConfirmPaymentBtn = withRouter(
                                 //  点击【微信支付】预缴信息无变更生成订单，调起微信支付；支付成功，跳转到支付成功页面；支付失败进入订单详情页
                                 if (iswx) {
                                     console.log('微信支付');
-                                    //  ⚠️⚠️⚠️发起某个请求，获取微信支付的各种数据
+                                    //  todo    发起某个请求，获取微信支付的各种数据
+                                    //  todo    order/goods/details 小程序中
                                     return Promise.resolve();
                                 } else {
                                     //  向redux里传入feesPaid里需要的参数
