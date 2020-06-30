@@ -24,12 +24,7 @@ import asyncComponent from './asyncComponentLoader';
 import { OpenWithWeChat } from '@pages/openWithWeChat';
 import { Toast } from '@components/toast/toast';
 import { OriginPage } from '@pages/originPage';
-import { isWX, remSet } from '@utils/utils';
-
-//  基础配置
-const isWx = isWX();
-remSet(window, document, isWx);
-console.log('是否是微信', !!isWx);
+import { isWX } from '@utils/utils';
 
 //  微信-确认订单页面
 const ComponentWXOrderConfirm = asyncComponent(() => import( '@pages/wxPage/wxOrderConfirm'));
@@ -63,7 +58,7 @@ export const App = function (){
         );
 
         // debugger
-        if (isWx) {
+        if (isWX()) {
             //  微信
             return (
                 <Switch>
