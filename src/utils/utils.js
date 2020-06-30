@@ -64,7 +64,7 @@ export function isWX(){
     const ua = navigator.userAgent.toLowerCase();
     const test = ua.match(/MicroMessenger/i);
     // return true;
-    return (test && test[0] === 'micromessenger');
+    return !(test && test[0] === 'micromessenger');
 }
 
 //  倒计时
@@ -90,7 +90,6 @@ function fillUpWithZero(n){
 export function emptyFunction(){}
 
 //  解析 确认订单 的 参数
-//  ⚠️ ⚠️ ⚠️ 这个可能不需要了
 export function analyticOrderConfirmParameter(props){
     const search = decodeURIComponent(props.history.location.search.slice(1));
     if (search === '') {
@@ -100,12 +99,9 @@ export function analyticOrderConfirmParameter(props){
         });
         return {};
     }
+//    console.log(Qs.parse(search));
     //  解析出来的数据
     const data = JSON.parse(Qs.parse(search).data);
-    //  优惠券
-    data.haveCoupon = 0;
-    //  终端类型 0 Android 1 iPhone 2 pad 3 微信
-    data.terminalSource = isWX() ? 3 : 2;
     if (data.feeItems.length <= 5) {
         console.log('feeItems异常');
         props.toastToggle(true, '参数异常', () => {
@@ -114,8 +110,11 @@ export function analyticOrderConfirmParameter(props){
     }
     //  放到redux里
     props.setOrderConfirm(data);
-
     return data;
+    //  优惠券
+    //  data.haveCoupon = 0;
+    //  终端类型 0 Android 1 iPhone 2 pad 3 微信
+    //  data.terminalSource = isWX() ? 3 : 2;
 }
 
 //  解析pad端支付参数

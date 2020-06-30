@@ -7,7 +7,9 @@ import { ROUTER_FEES_PAID, ROUTER_ORDER_CONFIRM } from '@utils/constant';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { isWX } from '@utils/utils';
+import Qs from 'qs';
 
+const iswx = isWX();
 //  数据来源页面
 export const OriginPage = connect(
     mapStateToProps,
@@ -64,12 +66,18 @@ export const OriginPage = connect(
                     feeItems: JSON.stringify(this.state.jumpList)
                 })
             );
-            requestJudgeAmountChange(data)
-                .then(v => {
-                    this.props.history.push(`${ROUTER_FEES_PAID
-                    }?orderNo=${v.data.orderNo
-                    }&phoneNum=${15712852037}`);
-                });
+            if (iswx) {
+                this.props.history.push(`${ROUTER_ORDER_CONFIRM
+                }?data=${encodeURIComponent(JSON.stringify(data))}`);
+            } else {
+
+                requestJudgeAmountChange(data)
+                    .then(v => {
+                        this.props.history.push(`${ROUTER_FEES_PAID
+                        }?orderNo=${v.data.orderNo
+                        }&phoneNum=${15712852037}`);
+                    });
+            }
         }
 
         //  选择这个

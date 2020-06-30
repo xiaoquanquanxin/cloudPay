@@ -17,6 +17,7 @@ export default connect(
             super(props);
             window.document.title = '确认订单';
             this.state = analyticOrderConfirmParameter(props);
+            console.log(this.state);
         }
 
         render(){
