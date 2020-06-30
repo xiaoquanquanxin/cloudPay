@@ -7,6 +7,9 @@ export const appId = 'wx94c24d52e8352f8a';
 export const appKey = '2b2b6d213622c1cf977774c2dcac1c3b';
 export const appSecret = '63634dfc87ec7891aa9e8710ced51011';
 
+//  获取clientIp
+export const CLIENT_IP = '071c2ae0710c95ff1113828d5e7a78b8';
+
 /**
  * 路由
  * */

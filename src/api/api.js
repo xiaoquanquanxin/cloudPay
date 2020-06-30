@@ -1,9 +1,38 @@
 import { request } from '../utils/request';
+import { CLIENT_IP } from '@utils/constant';
+
+//  获取clientIp
+export function requestGetClientIp(){
+    //  如果有clientIp，直接返回
+    if (requestGetClientIp.clientIp) {
+        return Promise.resolve(requestGetClientIp.clientIp);
+    }
+    return request({
+        url: '/hachi-api/ipInfo/getIpInfo.do',
+        method: 'get',
+        params: { clientKey: CLIENT_IP, }
+    })
+        .then(v => {
+            requestGetClientIp.clientIp = v.data.ip;
+            return requestGetClientIp.clientIp;
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+//  封装请求
+const _request = function (data){
+    return requestGetClientIp()
+        .then((clientIp => {
+            return request(Object.assign(data, { clientIp }));
+        }));
+};
 
 //  获取付款详情  - 获取订单详情
 export function requestGetPaymentInfo(data){
     //  ?orderNo=20200630141722824&phoneNum=15712852037
-    return request({
+    return _request({
         method: 'post',
         url: '/property-api/prepayment/getPaymentInfo',
         data: data,
@@ -26,7 +55,7 @@ export function requestGetQRCode(data){
     } else {
         url = '/property-api/aliPay/scanCodePay';
     }
-    return request({
+    return _request({
         method: 'post',
         url,
         data,
@@ -35,7 +64,7 @@ export function requestGetQRCode(data){
 
 //  取消预缴订单
 export function requestCancelOrder(data){
-    return request({
+    return _request({
         method: 'post',
         url: '/property-api/prepayment/cancelAdvanceOrder',
         data,
@@ -44,7 +73,7 @@ export function requestCancelOrder(data){
 
 //  判断金额变更
 export function requestJudgeAmountChange(data){
-    return request({
+    return _request({
         method: 'post',
         url: '/property-api/prepayment/createAdvanceOrder',
         data,
@@ -53,7 +82,7 @@ export function requestJudgeAmountChange(data){
 
 //  测试-查询专项预缴费项明细
 export function __testPropertyApiPrepaymentQueryFeeitemDetails(data){
-    return request({
+    return _request({
         method: 'post',
         url: '/property-api/prepayment/queryFeeitemDetails',
         data: {
@@ -62,5 +91,6 @@ export function __testPropertyApiPrepaymentQueryFeeitemDetails(data){
             feeId: 4801
         },
     });
+
 }
 

@@ -98,7 +98,7 @@ remSet(window, document, isWX());
  * header的数据type是form表单
  *
  * */
-export function requestEndorse(originData){
+export function requestEndorse(originData = {}){
     const timestamp = new Date().getTime();
     const _data = {};
     //  参数排序

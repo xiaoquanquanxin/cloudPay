@@ -37,6 +37,7 @@
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
+    "http-proxy-middleware": "^1.0.4",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
@@ -144,6 +145,6 @@
       "react-app"
     ]
   },
-  "proxy": "https://cloudpay-dev.hachi-tech.com",
+  "proxy2": "https://cloudpay-dev.hachi-tech.com",
   "proxy1": "http://192.168.30.26:9000"
 }
