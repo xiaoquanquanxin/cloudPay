@@ -38,11 +38,7 @@ export function BasicFooter({ footerType }){
             break;
         case ROUTER_FEES_PAID:
             if (isWx) {
-                //  支付完成
-                //  继续办理
-                footerButtonLeft = '继续办理';
-                //  查看订单
-                footerButtonRight = '查看订单';
+                throw new Error('错误的类型');
             } else {
                 //  去支付
                 footerButtonRight = <ToPayForBtn/>;
