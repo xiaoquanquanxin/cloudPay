@@ -34,7 +34,7 @@ export function requestGetPaymentInfo(data){
     //  ?orderNo=20200630141722824&phoneNum=15712852037
     return _request({
         method: 'post',
-        url: '/property-api/prepayment/getPaymentInfo',
+        url: '/cloud-pay-api/prepayment/getPaymentInfo',
         data: data,
     })
         .then(v => {
@@ -51,9 +51,9 @@ export function requestGetPaymentInfo(data){
 export function requestGetQRCode(data){
     let url;
     if (data.payType === 1) {
-        url = '/property-api/weChatPay/scanCodePay';
+        url = '/cloud-pay-api/weChatPay/scanCodePay';
     } else {
-        url = '/property-api/aliPay/scanCodePay';
+        url = '/cloud-pay-api/aliPay/scanCodePay';
     }
     return _request({
         method: 'post',
@@ -66,7 +66,7 @@ export function requestGetQRCode(data){
 export function requestCancelOrder(data){
     return _request({
         method: 'post',
-        url: '/property-api/prepayment/cancelAdvanceOrder',
+        url: '/cloud-pay-api/prepayment/cancelAdvanceOrder',
         data,
     });
 }
@@ -75,7 +75,7 @@ export function requestCancelOrder(data){
 export function requestJudgeAmountChange(data){
     return _request({
         method: 'post',
-        url: '/property-api/prepayment/createAdvanceOrder',
+        url: '/cloud-pay-api/prepayment/createAdvanceOrder',
         data,
     });
 }
@@ -84,7 +84,7 @@ export function requestJudgeAmountChange(data){
 export function __testPropertyApiPrepaymentQueryFeeitemDetails(data){
     return _request({
         method: 'post',
-        url: '/property-api/prepayment/queryFeeitemDetails',
+        url: '/cloud-pay-api/prepayment/queryFeeitemDetails',
         data: {
             cmdsId: '7e1905fdad244d02aaa84bd93b2decba',
             pmdsRoomId: 'e04c5fe7-5ac4-4d06-ad3a-071c6b970c0b',
